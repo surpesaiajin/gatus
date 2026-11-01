@@ -5,34 +5,50 @@ import (
 	"testing"
 )
 
-func TestSSH_validatePasswordCfg(t *testing.T) {
-	cfg := &Config{}
-	if err := cfg.Validate(); err != nil {
-		t.Error("didn't expect an error")
+func TestConfig_Validate(t *testing.T) {
+	tests := []struct {
+		name    string
+		config  Config
+		wantErr error
+	}{
+		{
+			name:    "Caixa-Branca/Preta: Todos os campos vazios (validação de banner)",
+			config:  Config{Username: "", Password: "", PrivateKey: ""},
+			wantErr: nil,
+		},
+		{
+			name:    "Caixa-Preta: Usuário preenchido com senha válida",
+			config:  Config{Username: "username", Password: "password", PrivateKey: ""},
+			wantErr: nil,
+		},
+		{
+			name:    "Caixa-Preta: Usuário preenchido com chave privada válida",
+			config:  Config{Username: "user", Password: "", PrivateKey: "-----BEGIN"},
+			wantErr: nil,
+		},
+		{
+			name:    "MC/DC Par: Usuário ausente mas com senha preenchida",
+			config:  Config{Username: "", Password: "password", PrivateKey: ""},
+			wantErr: ErrEndpointWithoutSSHUsername,
+		},
+		{
+			name:    "MC/DC Par: Usuário ausente mas com chave privada preenchida",
+			config:  Config{Username: "", Password: "", PrivateKey: "-----BEGIN"},
+			wantErr: ErrEndpointWithoutSSHUsername,
+		},
+		{
+			name:    "MC/DC Par: Usuário preenchido mas sem senha ou chave privada",
+			config:  Config{Username: "username", Password: "", PrivateKey: ""},
+			wantErr: ErrEndpointWithoutSSHAuth,
+		},
 	}
-	cfg.Username = "username"
-	if err := cfg.Validate(); err == nil {
-		t.Error("expected an error")
-	} else if !errors.Is(err, ErrEndpointWithoutSSHAuth) {
-		t.Errorf("expected error to be '%v', got '%v'", ErrEndpointWithoutSSHAuth, err)
-	}
-	cfg.Password = "password"
-	if err := cfg.Validate(); err != nil {
-		t.Errorf("expected no error, got '%v'", err)
-	}
-}
 
-func TestSSH_validatePrivateKeyCfg(t *testing.T) {
-	t.Run("fail when username missing but private key provided", func(t *testing.T) {
-		cfg := &Config{PrivateKey: "-----BEGIN"}
-		if err := cfg.Validate(); !errors.Is(err, ErrEndpointWithoutSSHUsername) {
-			t.Fatalf("expected ErrEndpointWithoutSSHUsername, got %v", err)
-		}
-	})
-	t.Run("success when username with private key", func(t *testing.T) {
-		cfg := &Config{Username: "user", PrivateKey: "-----BEGIN"}
-		if err := cfg.Validate(); err != nil {
-			t.Fatalf("expected no error, got %v", err)
-		}
-	})
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			err := tt.config.Validate()
+			if !errors.Is(err, tt.wantErr) {
+				t.Errorf("Config.Validate() error = %v, wantErr %v", err, tt.wantErr)
+			}
+		})
+	}
 }

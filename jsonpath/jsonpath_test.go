@@ -70,6 +70,15 @@ func TestEval(t *testing.T) {
 			ExpectedOutputLength: 2,
 			ExpectedError:        false,
 		},
+		// --- NOVO CENÁRIO TDD - CICLO 1: Caminho vazio com array contendo quebras de linha/espaços ---
+		{
+			Name:                 "tdd-empty-path-with-array-newlines-and-spaces",
+			Path:                 "",
+			Data:                 "[\n  1,\n  2\n]",
+			ExpectedOutput:       "[1 2]",
+			ExpectedOutputLength: 2,
+			ExpectedError:        false,
+		},
 		{
 			Name:                 "array-of-values-and-invalid-index",
 			Path:                 "ids[wat]",
@@ -154,6 +163,15 @@ func TestEval(t *testing.T) {
 			Name:                 "partially-invalid-path-issue122",
 			Path:                 "data.name.invalid",
 			Data:                 `{"data": {"name": "john"}}`,
+			ExpectedOutput:       "",
+			ExpectedOutputLength: 0,
+			ExpectedError:        true,
+		},
+		// --- NOVO CENÁRIO TDD - CICLO 2: Caminho continuando após tipo primitivo (número) ---
+		{
+			Name:                 "tdd-walk-after-primitive-number",
+			Path:                 "data.count.extra",
+			Data:                 `{"data": {"count": 1}}`,
 			ExpectedOutput:       "",
 			ExpectedOutputLength: 0,
 			ExpectedError:        true,
@@ -311,7 +329,6 @@ func TestEval(t *testing.T) {
 			ExpectedError:        true,
 		},
 		{
-			// Used to panic, because the key before the accessor was type-asserted to a map without checking
 			Name:                 "key-with-accessor-against-an-array-body",
 			Path:                 `data[0]`,
 			Data:                 `[1, 2]`,
