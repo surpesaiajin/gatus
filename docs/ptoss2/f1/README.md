@@ -2,6 +2,8 @@
 
 **Responsável:** surpesaiajin · **Ordem:** caixa-preta → caixa-branca.
 
+**Contexto histórico:** os resultados, a análise e os comandos abaixo registram a parte 1, anterior às alterações do produto por TDD, consolidada em [`17567023`](https://github.com/surpesaiajin/gatus/commit/175670236bde4e786691fb5858573e9c1e2de544). A reprodução desse estado deve usar essa revisão. O [TDD de I1](../tdd-i1/README.md) registra a evolução posterior: CP11 passa a partir do Green V02, sem alteração do teste. Os resultados históricos desta F1 foram preservados.
+
 ## Objetivo e referência técnica
 
 Testar `(*client.Config).parseDNSResolver`, que separa protocolo, host e porta de `Config.DNSResolver` ou retorna erro. Os testes verificam configuração em memória, sem consultas DNS ou conexões ao resolvedor.

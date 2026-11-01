@@ -1,0 +1,481 @@
+PTOSS-2 / I1 - registros de V01 e V02
+Execucoes originais de 01/11/2026, Go 1.27.0 Windows/amd64; horarios UTC-03.
+Transcricao integral, em ordem, dos campos Output dos cinco JSONL selecionados.
+Cabecalhos e contagens foram extraidos dos metadados durante a consolidacao.
+Os commits originais foram criados depois das execucoes; os atuais tem as mesmas arvores de arquivos, com mensagens revisadas.
+Os dois identificadores aparecem nos cabecalhos; as saidas originais permanecem integrais.
+As saidas vieram de go test -json; este arquivo nao e uma nova execucao.
+O caminho local absoluto do perfil final foi omitido do cabecalho; a saida foi preservada.
+
+
+V01 RED
+Inicio: 2026-11-01T13:35:46.085991-03:00
+Fim: 2026-11-01T13:36:07.189423-03:00
+Revisao atual equivalente: bdbbc8277bd5098fef9dfc48357de688465c2358
+Revisao registrada originalmente: 7cb923b8c4241cf877cb837e86738a5ba8589cbe
+Pacote: ./client; filtro: ^TestConfig_PTOSS2_TDD_V01_DNSResolverSuffix$
+Opcoes: -mod=readonly -count=1 -timeout=2m -json
+Contagens: funcoes 0 PASS/1 FAIL; subtestes 4 PASS/5 FAIL; SKIP 0; exit 1.
+Saida original:
+=== RUN   TestConfig_PTOSS2_TDD_V01_DNSResolverSuffix
+=== PAUSE TestConfig_PTOSS2_TDD_V01_DNSResolverSuffix
+=== CONT  TestConfig_PTOSS2_TDD_V01_DNSResolverSuffix
+=== RUN   TestConfig_PTOSS2_TDD_V01_DNSResolverSuffix/letters_after_port
+=== PAUSE TestConfig_PTOSS2_TDD_V01_DNSResolverSuffix/letters_after_port
+=== RUN   TestConfig_PTOSS2_TDD_V01_DNSResolverSuffix/path_after_port
+=== PAUSE TestConfig_PTOSS2_TDD_V01_DNSResolverSuffix/path_after_port
+=== RUN   TestConfig_PTOSS2_TDD_V01_DNSResolverSuffix/query_after_port
+=== PAUSE TestConfig_PTOSS2_TDD_V01_DNSResolverSuffix/query_after_port
+=== RUN   TestConfig_PTOSS2_TDD_V01_DNSResolverSuffix/fragment_after_port
+=== PAUSE TestConfig_PTOSS2_TDD_V01_DNSResolverSuffix/fragment_after_port
+=== RUN   TestConfig_PTOSS2_TDD_V01_DNSResolverSuffix/space_after_port
+=== PAUSE TestConfig_PTOSS2_TDD_V01_DNSResolverSuffix/space_after_port
+=== RUN   TestConfig_PTOSS2_TDD_V01_DNSResolverSuffix/valid_tcp_hostname
+=== PAUSE TestConfig_PTOSS2_TDD_V01_DNSResolverSuffix/valid_tcp_hostname
+=== RUN   TestConfig_PTOSS2_TDD_V01_DNSResolverSuffix/valid_udp_ipv4
+=== PAUSE TestConfig_PTOSS2_TDD_V01_DNSResolverSuffix/valid_udp_ipv4
+=== RUN   TestConfig_PTOSS2_TDD_V01_DNSResolverSuffix/valid_minimum_port
+=== PAUSE TestConfig_PTOSS2_TDD_V01_DNSResolverSuffix/valid_minimum_port
+=== RUN   TestConfig_PTOSS2_TDD_V01_DNSResolverSuffix/valid_maximum_port
+=== PAUSE TestConfig_PTOSS2_TDD_V01_DNSResolverSuffix/valid_maximum_port
+=== CONT  TestConfig_PTOSS2_TDD_V01_DNSResolverSuffix/letters_after_port
+=== CONT  TestConfig_PTOSS2_TDD_V01_DNSResolverSuffix/valid_tcp_hostname
+=== CONT  TestConfig_PTOSS2_TDD_V01_DNSResolverSuffix/valid_maximum_port
+--- PASS: TestConfig_PTOSS2_TDD_V01_DNSResolverSuffix/valid_maximum_port (0.00s)
+=== CONT  TestConfig_PTOSS2_TDD_V01_DNSResolverSuffix/valid_minimum_port
+    config_dns_resolver_ptoss2_tdd_test.go:65: parseDNSResolver("tcp://localhost:53abc") error = nil, want rejection of suffix after port
+--- PASS: TestConfig_PTOSS2_TDD_V01_DNSResolverSuffix/valid_minimum_port (0.00s)
+=== CONT  TestConfig_PTOSS2_TDD_V01_DNSResolverSuffix/valid_udp_ipv4
+    config_dns_resolver_ptoss2_tdd_test.go:68: parseDNSResolver("tcp://localhost:53abc") = {Protocol:tcp Host:localhost Port:53}, want nil configuration for invalid suffix
+--- PASS: TestConfig_PTOSS2_TDD_V01_DNSResolverSuffix/valid_udp_ipv4 (0.00s)
+=== CONT  TestConfig_PTOSS2_TDD_V01_DNSResolverSuffix/query_after_port
+=== CONT  TestConfig_PTOSS2_TDD_V01_DNSResolverSuffix/fragment_after_port
+    config_dns_resolver_ptoss2_tdd_test.go:65: parseDNSResolver("tcp://localhost:53?mode=tcp") error = nil, want rejection of suffix after port
+--- PASS: TestConfig_PTOSS2_TDD_V01_DNSResolverSuffix/valid_tcp_hostname (0.00s)
+    config_dns_resolver_ptoss2_tdd_test.go:68: parseDNSResolver("tcp://localhost:53?mode=tcp") = {Protocol:tcp Host:localhost Port:53}, want nil configuration for invalid suffix
+=== CONT  TestConfig_PTOSS2_TDD_V01_DNSResolverSuffix/path_after_port
+    config_dns_resolver_ptoss2_tdd_test.go:84: ValidateAndSetDefaults("tcp://localhost:53?mode=tcp") error = <nil>, wantErr = true
+--- FAIL: TestConfig_PTOSS2_TDD_V01_DNSResolverSuffix/query_after_port (0.00s)
+=== CONT  TestConfig_PTOSS2_TDD_V01_DNSResolverSuffix/space_after_port
+    config_dns_resolver_ptoss2_tdd_test.go:65: parseDNSResolver("tcp://localhost:53/path") error = nil, want rejection of suffix after port
+    config_dns_resolver_ptoss2_tdd_test.go:84: ValidateAndSetDefaults("tcp://localhost:53abc") error = <nil>, wantErr = true
+    config_dns_resolver_ptoss2_tdd_test.go:65: parseDNSResolver("tcp://localhost:53#resolver") error = nil, want rejection of suffix after port
+--- FAIL: TestConfig_PTOSS2_TDD_V01_DNSResolverSuffix/letters_after_port (0.00s)
+    config_dns_resolver_ptoss2_tdd_test.go:68: parseDNSResolver("tcp://localhost:53/path") = {Protocol:tcp Host:localhost Port:53}, want nil configuration for invalid suffix
+    config_dns_resolver_ptoss2_tdd_test.go:65: parseDNSResolver("tcp://localhost:53 ") error = nil, want rejection of suffix after port
+    config_dns_resolver_ptoss2_tdd_test.go:68: parseDNSResolver("tcp://localhost:53#resolver") = {Protocol:tcp Host:localhost Port:53}, want nil configuration for invalid suffix
+    config_dns_resolver_ptoss2_tdd_test.go:84: ValidateAndSetDefaults("tcp://localhost:53/path") error = <nil>, wantErr = true
+--- FAIL: TestConfig_PTOSS2_TDD_V01_DNSResolverSuffix/path_after_port (0.00s)
+    config_dns_resolver_ptoss2_tdd_test.go:68: parseDNSResolver("tcp://localhost:53 ") = {Protocol:tcp Host:localhost Port:53}, want nil configuration for invalid suffix
+    config_dns_resolver_ptoss2_tdd_test.go:84: ValidateAndSetDefaults("tcp://localhost:53#resolver") error = <nil>, wantErr = true
+--- FAIL: TestConfig_PTOSS2_TDD_V01_DNSResolverSuffix/fragment_after_port (0.00s)
+    config_dns_resolver_ptoss2_tdd_test.go:84: ValidateAndSetDefaults("tcp://localhost:53 ") error = <nil>, wantErr = true
+--- FAIL: TestConfig_PTOSS2_TDD_V01_DNSResolverSuffix/space_after_port (0.00s)
+--- FAIL: TestConfig_PTOSS2_TDD_V01_DNSResolverSuffix (0.00s)
+FAIL
+FAIL	github.com/TwiN/gatus/v5/client	0.260s
+
+V01 GREEN
+Inicio: 2026-11-01T13:43:16.392782-03:00
+Fim: 2026-11-01T13:43:18.959007-03:00
+Revisao atual equivalente: 06dfe312399316da57e25c2bbf1862960ffe78c1
+Revisao registrada originalmente: 0265f25803958653005b170d83a5b6808683d279
+Pacote: ./client; filtro: ^TestConfig_PTOSS2_TDD_V01_DNSResolverSuffix$
+Opcoes: -mod=readonly -count=1 -timeout=2m -json
+Contagens: funcoes 1 PASS/0 FAIL; subtestes 9 PASS/0 FAIL; SKIP 0; exit 0.
+Saida original:
+=== RUN   TestConfig_PTOSS2_TDD_V01_DNSResolverSuffix
+=== PAUSE TestConfig_PTOSS2_TDD_V01_DNSResolverSuffix
+=== CONT  TestConfig_PTOSS2_TDD_V01_DNSResolverSuffix
+=== RUN   TestConfig_PTOSS2_TDD_V01_DNSResolverSuffix/letters_after_port
+=== PAUSE TestConfig_PTOSS2_TDD_V01_DNSResolverSuffix/letters_after_port
+=== RUN   TestConfig_PTOSS2_TDD_V01_DNSResolverSuffix/path_after_port
+=== PAUSE TestConfig_PTOSS2_TDD_V01_DNSResolverSuffix/path_after_port
+=== RUN   TestConfig_PTOSS2_TDD_V01_DNSResolverSuffix/query_after_port
+=== PAUSE TestConfig_PTOSS2_TDD_V01_DNSResolverSuffix/query_after_port
+=== RUN   TestConfig_PTOSS2_TDD_V01_DNSResolverSuffix/fragment_after_port
+=== PAUSE TestConfig_PTOSS2_TDD_V01_DNSResolverSuffix/fragment_after_port
+=== RUN   TestConfig_PTOSS2_TDD_V01_DNSResolverSuffix/space_after_port
+=== PAUSE TestConfig_PTOSS2_TDD_V01_DNSResolverSuffix/space_after_port
+=== RUN   TestConfig_PTOSS2_TDD_V01_DNSResolverSuffix/valid_tcp_hostname
+=== PAUSE TestConfig_PTOSS2_TDD_V01_DNSResolverSuffix/valid_tcp_hostname
+=== RUN   TestConfig_PTOSS2_TDD_V01_DNSResolverSuffix/valid_udp_ipv4
+=== PAUSE TestConfig_PTOSS2_TDD_V01_DNSResolverSuffix/valid_udp_ipv4
+=== RUN   TestConfig_PTOSS2_TDD_V01_DNSResolverSuffix/valid_minimum_port
+=== PAUSE TestConfig_PTOSS2_TDD_V01_DNSResolverSuffix/valid_minimum_port
+=== RUN   TestConfig_PTOSS2_TDD_V01_DNSResolverSuffix/valid_maximum_port
+=== PAUSE TestConfig_PTOSS2_TDD_V01_DNSResolverSuffix/valid_maximum_port
+=== CONT  TestConfig_PTOSS2_TDD_V01_DNSResolverSuffix/letters_after_port
+=== CONT  TestConfig_PTOSS2_TDD_V01_DNSResolverSuffix/valid_tcp_hostname
+--- PASS: TestConfig_PTOSS2_TDD_V01_DNSResolverSuffix/letters_after_port (0.00s)
+=== CONT  TestConfig_PTOSS2_TDD_V01_DNSResolverSuffix/path_after_port
+--- PASS: TestConfig_PTOSS2_TDD_V01_DNSResolverSuffix/path_after_port (0.00s)
+=== CONT  TestConfig_PTOSS2_TDD_V01_DNSResolverSuffix/valid_maximum_port
+=== CONT  TestConfig_PTOSS2_TDD_V01_DNSResolverSuffix/valid_minimum_port
+=== CONT  TestConfig_PTOSS2_TDD_V01_DNSResolverSuffix/valid_udp_ipv4
+--- PASS: TestConfig_PTOSS2_TDD_V01_DNSResolverSuffix/valid_udp_ipv4 (0.00s)
+=== CONT  TestConfig_PTOSS2_TDD_V01_DNSResolverSuffix/fragment_after_port
+--- PASS: TestConfig_PTOSS2_TDD_V01_DNSResolverSuffix/valid_maximum_port (0.00s)
+--- PASS: TestConfig_PTOSS2_TDD_V01_DNSResolverSuffix/valid_minimum_port (0.00s)
+=== CONT  TestConfig_PTOSS2_TDD_V01_DNSResolverSuffix/space_after_port
+--- PASS: TestConfig_PTOSS2_TDD_V01_DNSResolverSuffix/fragment_after_port (0.00s)
+--- PASS: TestConfig_PTOSS2_TDD_V01_DNSResolverSuffix/valid_tcp_hostname (0.00s)
+=== CONT  TestConfig_PTOSS2_TDD_V01_DNSResolverSuffix/query_after_port
+--- PASS: TestConfig_PTOSS2_TDD_V01_DNSResolverSuffix/space_after_port (0.00s)
+--- PASS: TestConfig_PTOSS2_TDD_V01_DNSResolverSuffix/query_after_port (0.00s)
+--- PASS: TestConfig_PTOSS2_TDD_V01_DNSResolverSuffix (0.00s)
+PASS
+ok  	github.com/TwiN/gatus/v5/client	0.175s
+
+V02 RED
+Inicio: 2026-11-01T13:53:26.153415-03:00
+Fim: 2026-11-01T13:53:28.614179-03:00
+Revisao atual equivalente: b40b15fd580c94bf5bae80e435f15145be6eb2c9
+Revisao registrada originalmente: 3ace572ec18a4529a07ea1bfe12492d342b531eb
+Pacote: ./client; filtro: ^TestConfig_PTOSS2_TDD_V02_DNSResolverNetwork$
+Opcoes: -mod=readonly -count=1 -timeout=2m -json
+Contagens: funcoes 0 PASS/1 FAIL; subtestes 6 PASS/4 FAIL; SKIP 0; exit 1.
+Saida original:
+=== RUN   TestConfig_PTOSS2_TDD_V02_DNSResolverNetwork
+=== PAUSE TestConfig_PTOSS2_TDD_V02_DNSResolverNetwork
+=== CONT  TestConfig_PTOSS2_TDD_V02_DNSResolverNetwork
+=== RUN   TestConfig_PTOSS2_TDD_V02_DNSResolverNetwork/tcp
+=== PAUSE TestConfig_PTOSS2_TDD_V02_DNSResolverNetwork/tcp
+=== RUN   TestConfig_PTOSS2_TDD_V02_DNSResolverNetwork/tcp4
+=== PAUSE TestConfig_PTOSS2_TDD_V02_DNSResolverNetwork/tcp4
+=== RUN   TestConfig_PTOSS2_TDD_V02_DNSResolverNetwork/tcp6
+=== PAUSE TestConfig_PTOSS2_TDD_V02_DNSResolverNetwork/tcp6
+=== RUN   TestConfig_PTOSS2_TDD_V02_DNSResolverNetwork/udp
+=== PAUSE TestConfig_PTOSS2_TDD_V02_DNSResolverNetwork/udp
+=== RUN   TestConfig_PTOSS2_TDD_V02_DNSResolverNetwork/udp4
+=== PAUSE TestConfig_PTOSS2_TDD_V02_DNSResolverNetwork/udp4
+=== RUN   TestConfig_PTOSS2_TDD_V02_DNSResolverNetwork/udp6
+=== PAUSE TestConfig_PTOSS2_TDD_V02_DNSResolverNetwork/udp6
+=== RUN   TestConfig_PTOSS2_TDD_V02_DNSResolverNetwork/http
+=== PAUSE TestConfig_PTOSS2_TDD_V02_DNSResolverNetwork/http
+=== RUN   TestConfig_PTOSS2_TDD_V02_DNSResolverNetwork/ip
+=== PAUSE TestConfig_PTOSS2_TDD_V02_DNSResolverNetwork/ip
+=== RUN   TestConfig_PTOSS2_TDD_V02_DNSResolverNetwork/unix
+=== PAUSE TestConfig_PTOSS2_TDD_V02_DNSResolverNetwork/unix
+=== RUN   TestConfig_PTOSS2_TDD_V02_DNSResolverNetwork/tcp7
+=== PAUSE TestConfig_PTOSS2_TDD_V02_DNSResolverNetwork/tcp7
+=== CONT  TestConfig_PTOSS2_TDD_V02_DNSResolverNetwork/tcp
+=== CONT  TestConfig_PTOSS2_TDD_V02_DNSResolverNetwork/udp6
+=== CONT  TestConfig_PTOSS2_TDD_V02_DNSResolverNetwork/unix
+--- PASS: TestConfig_PTOSS2_TDD_V02_DNSResolverNetwork/tcp (0.00s)
+=== CONT  TestConfig_PTOSS2_TDD_V02_DNSResolverNetwork/udp4
+--- PASS: TestConfig_PTOSS2_TDD_V02_DNSResolverNetwork/udp4 (0.00s)
+=== CONT  TestConfig_PTOSS2_TDD_V02_DNSResolverNetwork/http
+--- PASS: TestConfig_PTOSS2_TDD_V02_DNSResolverNetwork/udp6 (0.00s)
+=== CONT  TestConfig_PTOSS2_TDD_V02_DNSResolverNetwork/tcp4
+=== CONT  TestConfig_PTOSS2_TDD_V02_DNSResolverNetwork/tcp6
+=== CONT  TestConfig_PTOSS2_TDD_V02_DNSResolverNetwork/udp
+--- PASS: TestConfig_PTOSS2_TDD_V02_DNSResolverNetwork/tcp4 (0.00s)
+=== CONT  TestConfig_PTOSS2_TDD_V02_DNSResolverNetwork/tcp7
+    config_dns_resolver_ptoss2_tdd_test.go:123: parseDNSResolver("tcp7://localhost:53") error = nil, want rejection of incompatible network "tcp7"
+    config_dns_resolver_ptoss2_tdd_test.go:123: parseDNSResolver("http://localhost:53") error = nil, want rejection of incompatible network "http"
+    config_dns_resolver_ptoss2_tdd_test.go:123: parseDNSResolver("unix://localhost:53") error = nil, want rejection of incompatible network "unix"
+    config_dns_resolver_ptoss2_tdd_test.go:126: parseDNSResolver("http://localhost:53") = {Protocol:http Host:localhost Port:53}, want nil configuration for incompatible network
+    config_dns_resolver_ptoss2_tdd_test.go:126: parseDNSResolver("unix://localhost:53") = {Protocol:unix Host:localhost Port:53}, want nil configuration for incompatible network
+=== CONT  TestConfig_PTOSS2_TDD_V02_DNSResolverNetwork/ip
+    config_dns_resolver_ptoss2_tdd_test.go:142: ValidateAndSetDefaults("unix://localhost:53") error = <nil>, wantErr = true
+    config_dns_resolver_ptoss2_tdd_test.go:126: parseDNSResolver("tcp7://localhost:53") = {Protocol:tcp7 Host:localhost Port:53}, want nil configuration for incompatible network
+    config_dns_resolver_ptoss2_tdd_test.go:142: ValidateAndSetDefaults("http://localhost:53") error = <nil>, wantErr = true
+--- PASS: TestConfig_PTOSS2_TDD_V02_DNSResolverNetwork/udp (0.00s)
+--- PASS: TestConfig_PTOSS2_TDD_V02_DNSResolverNetwork/tcp6 (0.00s)
+--- FAIL: TestConfig_PTOSS2_TDD_V02_DNSResolverNetwork/unix (0.00s)
+    config_dns_resolver_ptoss2_tdd_test.go:123: parseDNSResolver("ip://localhost:53") error = nil, want rejection of incompatible network "ip"
+    config_dns_resolver_ptoss2_tdd_test.go:126: parseDNSResolver("ip://localhost:53") = {Protocol:ip Host:localhost Port:53}, want nil configuration for incompatible network
+--- FAIL: TestConfig_PTOSS2_TDD_V02_DNSResolverNetwork/http (0.00s)
+    config_dns_resolver_ptoss2_tdd_test.go:142: ValidateAndSetDefaults("ip://localhost:53") error = <nil>, wantErr = true
+--- FAIL: TestConfig_PTOSS2_TDD_V02_DNSResolverNetwork/ip (0.00s)
+    config_dns_resolver_ptoss2_tdd_test.go:142: ValidateAndSetDefaults("tcp7://localhost:53") error = <nil>, wantErr = true
+--- FAIL: TestConfig_PTOSS2_TDD_V02_DNSResolverNetwork/tcp7 (0.00s)
+--- FAIL: TestConfig_PTOSS2_TDD_V02_DNSResolverNetwork (0.00s)
+FAIL
+FAIL	github.com/TwiN/gatus/v5/client	0.256s
+
+V02 GREEN
+Inicio: 2026-11-01T13:59:39.310055-03:00
+Fim: 2026-11-01T13:59:41.921138-03:00
+Revisao atual equivalente: 8699f019380eff29f0043b349390bd1678f8d435
+Revisao registrada originalmente: f32e14ff3137af92542640278572cd61ab3b8f00
+Pacote: ./client; filtro: ^TestConfig_PTOSS2_TDD_V02_DNSResolverNetwork$
+Opcoes: -mod=readonly -count=1 -timeout=2m -json
+Contagens: funcoes 1 PASS/0 FAIL; subtestes 10 PASS/0 FAIL; SKIP 0; exit 0.
+Saida original:
+=== RUN   TestConfig_PTOSS2_TDD_V02_DNSResolverNetwork
+=== PAUSE TestConfig_PTOSS2_TDD_V02_DNSResolverNetwork
+=== CONT  TestConfig_PTOSS2_TDD_V02_DNSResolverNetwork
+=== RUN   TestConfig_PTOSS2_TDD_V02_DNSResolverNetwork/tcp
+=== PAUSE TestConfig_PTOSS2_TDD_V02_DNSResolverNetwork/tcp
+=== RUN   TestConfig_PTOSS2_TDD_V02_DNSResolverNetwork/tcp4
+=== PAUSE TestConfig_PTOSS2_TDD_V02_DNSResolverNetwork/tcp4
+=== RUN   TestConfig_PTOSS2_TDD_V02_DNSResolverNetwork/tcp6
+=== PAUSE TestConfig_PTOSS2_TDD_V02_DNSResolverNetwork/tcp6
+=== RUN   TestConfig_PTOSS2_TDD_V02_DNSResolverNetwork/udp
+=== PAUSE TestConfig_PTOSS2_TDD_V02_DNSResolverNetwork/udp
+=== RUN   TestConfig_PTOSS2_TDD_V02_DNSResolverNetwork/udp4
+=== PAUSE TestConfig_PTOSS2_TDD_V02_DNSResolverNetwork/udp4
+=== RUN   TestConfig_PTOSS2_TDD_V02_DNSResolverNetwork/udp6
+=== PAUSE TestConfig_PTOSS2_TDD_V02_DNSResolverNetwork/udp6
+=== RUN   TestConfig_PTOSS2_TDD_V02_DNSResolverNetwork/http
+=== PAUSE TestConfig_PTOSS2_TDD_V02_DNSResolverNetwork/http
+=== RUN   TestConfig_PTOSS2_TDD_V02_DNSResolverNetwork/ip
+=== PAUSE TestConfig_PTOSS2_TDD_V02_DNSResolverNetwork/ip
+=== RUN   TestConfig_PTOSS2_TDD_V02_DNSResolverNetwork/unix
+=== PAUSE TestConfig_PTOSS2_TDD_V02_DNSResolverNetwork/unix
+=== RUN   TestConfig_PTOSS2_TDD_V02_DNSResolverNetwork/tcp7
+=== PAUSE TestConfig_PTOSS2_TDD_V02_DNSResolverNetwork/tcp7
+=== CONT  TestConfig_PTOSS2_TDD_V02_DNSResolverNetwork/tcp
+=== CONT  TestConfig_PTOSS2_TDD_V02_DNSResolverNetwork/udp6
+=== CONT  TestConfig_PTOSS2_TDD_V02_DNSResolverNetwork/tcp4
+=== CONT  TestConfig_PTOSS2_TDD_V02_DNSResolverNetwork/unix
+=== CONT  TestConfig_PTOSS2_TDD_V02_DNSResolverNetwork/tcp7
+--- PASS: TestConfig_PTOSS2_TDD_V02_DNSResolverNetwork/tcp (0.00s)
+=== CONT  TestConfig_PTOSS2_TDD_V02_DNSResolverNetwork/http
+--- PASS: TestConfig_PTOSS2_TDD_V02_DNSResolverNetwork/tcp7 (0.00s)
+=== CONT  TestConfig_PTOSS2_TDD_V02_DNSResolverNetwork/ip
+=== CONT  TestConfig_PTOSS2_TDD_V02_DNSResolverNetwork/udp4
+--- PASS: TestConfig_PTOSS2_TDD_V02_DNSResolverNetwork/http (0.00s)
+=== CONT  TestConfig_PTOSS2_TDD_V02_DNSResolverNetwork/udp
+=== CONT  TestConfig_PTOSS2_TDD_V02_DNSResolverNetwork/tcp6
+--- PASS: TestConfig_PTOSS2_TDD_V02_DNSResolverNetwork/unix (0.00s)
+--- PASS: TestConfig_PTOSS2_TDD_V02_DNSResolverNetwork/udp6 (0.00s)
+--- PASS: TestConfig_PTOSS2_TDD_V02_DNSResolverNetwork/tcp4 (0.00s)
+--- PASS: TestConfig_PTOSS2_TDD_V02_DNSResolverNetwork/ip (0.00s)
+--- PASS: TestConfig_PTOSS2_TDD_V02_DNSResolverNetwork/udp (0.00s)
+--- PASS: TestConfig_PTOSS2_TDD_V02_DNSResolverNetwork/udp4 (0.00s)
+--- PASS: TestConfig_PTOSS2_TDD_V02_DNSResolverNetwork/tcp6 (0.00s)
+--- PASS: TestConfig_PTOSS2_TDD_V02_DNSResolverNetwork (0.00s)
+PASS
+ok  	github.com/TwiN/gatus/v5/client	0.235s
+
+REGRESSAO FINAL COM COBERTURA
+Inicio: 2026-11-01T14:00:54.339682-03:00
+Fim: 2026-11-01T14:00:56.016427-03:00
+Revisao atual equivalente: 8699f019380eff29f0043b349390bd1678f8d435
+Revisao registrada originalmente: f32e14ff3137af92542640278572cd61ab3b8f00
+Pacote: ./client; filtro: ^TestConfig_
+Opcoes: -mod=readonly -count=1 -timeout=2m -json -covermode=atomic
+Contagens: funcoes 10 PASS/0 FAIL; subtestes 52 PASS/0 FAIL; SKIP 0; exit 0.
+Saida original:
+=== RUN   TestConfig_PTOSS2_TDD_V01_DNSResolverSuffix
+=== PAUSE TestConfig_PTOSS2_TDD_V01_DNSResolverSuffix
+=== RUN   TestConfig_PTOSS2_TDD_V02_DNSResolverNetwork
+=== PAUSE TestConfig_PTOSS2_TDD_V02_DNSResolverNetwork
+=== RUN   TestConfig_PTOSS2_F1_BlackBox
+=== PAUSE TestConfig_PTOSS2_F1_BlackBox
+=== RUN   TestConfig_PTOSS2_F1_EmptyOverrideUsesDefaultResolver
+=== PAUSE TestConfig_PTOSS2_F1_EmptyOverrideUsesDefaultResolver
+=== RUN   TestConfig_PTOSS2_F1_WhiteBox
+=== PAUSE TestConfig_PTOSS2_F1_WhiteBox
+=== RUN   TestConfig_getHTTPClient
+--- PASS: TestConfig_getHTTPClient (0.00s)
+=== RUN   TestConfig_getHTTPClient_withCookieJar
+--- PASS: TestConfig_getHTTPClient_withCookieJar (0.00s)
+=== RUN   TestConfig_ValidateAndSetDefaults_withCustomDNSResolver
+=== RUN   TestConfig_ValidateAndSetDefaults_withCustomDNSResolver/with-valid-resolver
+--- PASS: TestConfig_ValidateAndSetDefaults_withCustomDNSResolver/with-valid-resolver (0.00s)
+=== RUN   TestConfig_ValidateAndSetDefaults_withCustomDNSResolver/with-invalid-resolver-port
+--- PASS: TestConfig_ValidateAndSetDefaults_withCustomDNSResolver/with-invalid-resolver-port (0.00s)
+=== RUN   TestConfig_ValidateAndSetDefaults_withCustomDNSResolver/with-invalid-resolver-format
+--- PASS: TestConfig_ValidateAndSetDefaults_withCustomDNSResolver/with-invalid-resolver-format (0.00s)
+--- PASS: TestConfig_ValidateAndSetDefaults_withCustomDNSResolver (0.00s)
+=== RUN   TestConfig_getHTTPClient_withCustomProxyURL
+--- PASS: TestConfig_getHTTPClient_withCustomProxyURL (0.00s)
+=== RUN   TestConfig_TlsIsValid
+=== RUN   TestConfig_TlsIsValid/good-tls-config
+--- PASS: TestConfig_TlsIsValid/good-tls-config (0.00s)
+=== RUN   TestConfig_TlsIsValid/missing-certificate-file
+--- PASS: TestConfig_TlsIsValid/missing-certificate-file (0.00s)
+=== RUN   TestConfig_TlsIsValid/bad-certificate-file
+--- PASS: TestConfig_TlsIsValid/bad-certificate-file (0.00s)
+=== RUN   TestConfig_TlsIsValid/no-certificate-file
+--- PASS: TestConfig_TlsIsValid/no-certificate-file (0.00s)
+=== RUN   TestConfig_TlsIsValid/missing-private-key-file
+--- PASS: TestConfig_TlsIsValid/missing-private-key-file (0.00s)
+=== RUN   TestConfig_TlsIsValid/no-private-key-file
+--- PASS: TestConfig_TlsIsValid/no-private-key-file (0.00s)
+=== RUN   TestConfig_TlsIsValid/bad-private-key-file
+--- PASS: TestConfig_TlsIsValid/bad-private-key-file (0.00s)
+=== RUN   TestConfig_TlsIsValid/bad-certificate-and-private-key-file
+--- PASS: TestConfig_TlsIsValid/bad-certificate-and-private-key-file (0.00s)
+--- PASS: TestConfig_TlsIsValid (0.00s)
+=== CONT  TestConfig_PTOSS2_TDD_V01_DNSResolverSuffix
+=== RUN   TestConfig_PTOSS2_TDD_V01_DNSResolverSuffix/letters_after_port
+=== PAUSE TestConfig_PTOSS2_TDD_V01_DNSResolverSuffix/letters_after_port
+=== CONT  TestConfig_PTOSS2_F1_EmptyOverrideUsesDefaultResolver
+--- PASS: TestConfig_PTOSS2_F1_EmptyOverrideUsesDefaultResolver (0.00s)
+=== RUN   TestConfig_PTOSS2_TDD_V01_DNSResolverSuffix/path_after_port
+=== PAUSE TestConfig_PTOSS2_TDD_V01_DNSResolverSuffix/path_after_port
+=== CONT  TestConfig_PTOSS2_F1_BlackBox
+=== RUN   TestConfig_PTOSS2_F1_BlackBox/CP01_documented_TCP_resolver_is_parsed
+=== PAUSE TestConfig_PTOSS2_F1_BlackBox/CP01_documented_TCP_resolver_is_parsed
+=== RUN   TestConfig_PTOSS2_TDD_V01_DNSResolverSuffix/query_after_port
+=== CONT  TestConfig_PTOSS2_F1_WhiteBox
+=== RUN   TestConfig_PTOSS2_F1_WhiteBox/CB01_unrecognized_format_returns_format_error
+=== CONT  TestConfig_PTOSS2_TDD_V02_DNSResolverNetwork
+=== PAUSE TestConfig_PTOSS2_F1_WhiteBox/CB01_unrecognized_format_returns_format_error
+=== RUN   TestConfig_PTOSS2_TDD_V02_DNSResolverNetwork/tcp
+=== RUN   TestConfig_PTOSS2_F1_WhiteBox/CB02_empty_port_preserves_conversion_syntax_error
+=== PAUSE TestConfig_PTOSS2_F1_WhiteBox/CB02_empty_port_preserves_conversion_syntax_error
+=== PAUSE TestConfig_PTOSS2_TDD_V02_DNSResolverNetwork/tcp
+=== RUN   TestConfig_PTOSS2_F1_WhiteBox/CB03_overflowing_port_preserves_conversion_range_error
+=== PAUSE TestConfig_PTOSS2_TDD_V01_DNSResolverSuffix/query_after_port
+=== PAUSE TestConfig_PTOSS2_F1_WhiteBox/CB03_overflowing_port_preserves_conversion_range_error
+=== RUN   TestConfig_PTOSS2_TDD_V02_DNSResolverNetwork/tcp4
+=== PAUSE TestConfig_PTOSS2_TDD_V02_DNSResolverNetwork/tcp4
+=== RUN   TestConfig_PTOSS2_F1_BlackBox/CP02_UDP_resolver_is_parsed
+=== PAUSE TestConfig_PTOSS2_F1_BlackBox/CP02_UDP_resolver_is_parsed
+=== RUN   TestConfig_PTOSS2_TDD_V01_DNSResolverSuffix/fragment_after_port
+=== PAUSE TestConfig_PTOSS2_TDD_V01_DNSResolverSuffix/fragment_after_port
+=== RUN   TestConfig_PTOSS2_TDD_V02_DNSResolverNetwork/tcp6
+=== RUN   TestConfig_PTOSS2_TDD_V01_DNSResolverSuffix/space_after_port
+=== PAUSE TestConfig_PTOSS2_TDD_V02_DNSResolverNetwork/tcp6
+=== RUN   TestConfig_PTOSS2_F1_WhiteBox/CB04_port_zero_returns_port_error
+=== PAUSE TestConfig_PTOSS2_TDD_V01_DNSResolverSuffix/space_after_port
+=== RUN   TestConfig_PTOSS2_TDD_V02_DNSResolverNetwork/udp
+=== RUN   TestConfig_PTOSS2_TDD_V01_DNSResolverSuffix/valid_tcp_hostname
+=== PAUSE TestConfig_PTOSS2_F1_WhiteBox/CB04_port_zero_returns_port_error
+=== PAUSE TestConfig_PTOSS2_TDD_V01_DNSResolverSuffix/valid_tcp_hostname
+=== PAUSE TestConfig_PTOSS2_TDD_V02_DNSResolverNetwork/udp
+=== RUN   TestConfig_PTOSS2_F1_WhiteBox/CB05_port_above_maximum_returns_port_error
+=== RUN   TestConfig_PTOSS2_F1_BlackBox/CP03_hostname_is_preserved_without_resolution
+=== PAUSE TestConfig_PTOSS2_F1_WhiteBox/CB05_port_above_maximum_returns_port_error
+=== RUN   TestConfig_PTOSS2_TDD_V01_DNSResolverSuffix/valid_udp_ipv4
+=== CONT  TestConfig_PTOSS2_F1_WhiteBox/CB02_empty_port_preserves_conversion_syntax_error
+=== PAUSE TestConfig_PTOSS2_F1_BlackBox/CP03_hostname_is_preserved_without_resolution
+=== RUN   TestConfig_PTOSS2_TDD_V02_DNSResolverNetwork/udp4
+=== PAUSE TestConfig_PTOSS2_TDD_V01_DNSResolverSuffix/valid_udp_ipv4
+=== CONT  TestConfig_PTOSS2_F1_WhiteBox/CB01_unrecognized_format_returns_format_error
+=== PAUSE TestConfig_PTOSS2_TDD_V02_DNSResolverNetwork/udp4
+=== RUN   TestConfig_PTOSS2_TDD_V02_DNSResolverNetwork/udp6
+=== RUN   TestConfig_PTOSS2_F1_BlackBox/CP04_port_zero_is_rejected
+=== PAUSE TestConfig_PTOSS2_TDD_V02_DNSResolverNetwork/udp6
+=== RUN   TestConfig_PTOSS2_TDD_V02_DNSResolverNetwork/http
+=== PAUSE TestConfig_PTOSS2_F1_BlackBox/CP04_port_zero_is_rejected
+=== PAUSE TestConfig_PTOSS2_TDD_V02_DNSResolverNetwork/http
+=== RUN   TestConfig_PTOSS2_F1_BlackBox/CP05_minimum_port_is_accepted
+--- PASS: TestConfig_PTOSS2_F1_WhiteBox/CB01_unrecognized_format_returns_format_error (0.00s)
+=== RUN   TestConfig_PTOSS2_TDD_V02_DNSResolverNetwork/ip
+=== PAUSE TestConfig_PTOSS2_TDD_V02_DNSResolverNetwork/ip
+=== RUN   TestConfig_PTOSS2_TDD_V02_DNSResolverNetwork/unix
+=== PAUSE TestConfig_PTOSS2_TDD_V02_DNSResolverNetwork/unix
+=== PAUSE TestConfig_PTOSS2_F1_BlackBox/CP05_minimum_port_is_accepted
+--- PASS: TestConfig_PTOSS2_F1_WhiteBox/CB02_empty_port_preserves_conversion_syntax_error (0.00s)
+=== CONT  TestConfig_PTOSS2_F1_WhiteBox/CB05_port_above_maximum_returns_port_error
+--- PASS: TestConfig_PTOSS2_F1_WhiteBox/CB05_port_above_maximum_returns_port_error (0.00s)
+=== CONT  TestConfig_PTOSS2_F1_WhiteBox/CB04_port_zero_returns_port_error
+=== CONT  TestConfig_PTOSS2_F1_WhiteBox/CB03_overflowing_port_preserves_conversion_range_error
+--- PASS: TestConfig_PTOSS2_F1_WhiteBox/CB04_port_zero_returns_port_error (0.00s)
+=== RUN   TestConfig_PTOSS2_TDD_V01_DNSResolverSuffix/valid_minimum_port
+=== PAUSE TestConfig_PTOSS2_TDD_V01_DNSResolverSuffix/valid_minimum_port
+=== RUN   TestConfig_PTOSS2_TDD_V02_DNSResolverNetwork/tcp7
+--- PASS: TestConfig_PTOSS2_F1_WhiteBox/CB03_overflowing_port_preserves_conversion_range_error (0.00s)
+=== RUN   TestConfig_PTOSS2_TDD_V01_DNSResolverSuffix/valid_maximum_port
+--- PASS: TestConfig_PTOSS2_F1_WhiteBox (0.00s)
+=== PAUSE TestConfig_PTOSS2_TDD_V01_DNSResolverSuffix/valid_maximum_port
+=== PAUSE TestConfig_PTOSS2_TDD_V02_DNSResolverNetwork/tcp7
+=== CONT  TestConfig_PTOSS2_TDD_V01_DNSResolverSuffix/space_after_port
+=== CONT  TestConfig_PTOSS2_TDD_V01_DNSResolverSuffix/valid_tcp_hostname
+=== CONT  TestConfig_PTOSS2_TDD_V01_DNSResolverSuffix/query_after_port
+=== CONT  TestConfig_PTOSS2_TDD_V01_DNSResolverSuffix/path_after_port
+=== RUN   TestConfig_PTOSS2_F1_BlackBox/CP06_port_just_above_minimum_is_accepted
+=== CONT  TestConfig_PTOSS2_TDD_V01_DNSResolverSuffix/valid_udp_ipv4
+=== PAUSE TestConfig_PTOSS2_F1_BlackBox/CP06_port_just_above_minimum_is_accepted
+=== CONT  TestConfig_PTOSS2_TDD_V01_DNSResolverSuffix/fragment_after_port
+=== CONT  TestConfig_PTOSS2_TDD_V02_DNSResolverNetwork/tcp
+=== RUN   TestConfig_PTOSS2_F1_BlackBox/CP07_port_just_below_maximum_is_accepted
+=== PAUSE TestConfig_PTOSS2_F1_BlackBox/CP07_port_just_below_maximum_is_accepted
+=== RUN   TestConfig_PTOSS2_F1_BlackBox/CP08_maximum_port_is_accepted
+=== PAUSE TestConfig_PTOSS2_F1_BlackBox/CP08_maximum_port_is_accepted
+=== CONT  TestConfig_PTOSS2_TDD_V01_DNSResolverSuffix/valid_maximum_port
+=== RUN   TestConfig_PTOSS2_F1_BlackBox/CP09_port_above_maximum_is_rejected
+=== CONT  TestConfig_PTOSS2_TDD_V02_DNSResolverNetwork/tcp7
+=== PAUSE TestConfig_PTOSS2_F1_BlackBox/CP09_port_above_maximum_is_rejected
+=== CONT  TestConfig_PTOSS2_TDD_V02_DNSResolverNetwork/http
+=== CONT  TestConfig_PTOSS2_TDD_V02_DNSResolverNetwork/udp4
+=== CONT  TestConfig_PTOSS2_TDD_V02_DNSResolverNetwork/udp
+=== CONT  TestConfig_PTOSS2_TDD_V02_DNSResolverNetwork/tcp6
+=== RUN   TestConfig_PTOSS2_F1_BlackBox/CP10_missing_protocol_separator_is_rejected
+--- PASS: TestConfig_PTOSS2_TDD_V01_DNSResolverSuffix/space_after_port (0.00s)
+--- PASS: TestConfig_PTOSS2_TDD_V01_DNSResolverSuffix/query_after_port (0.00s)
+--- PASS: TestConfig_PTOSS2_TDD_V01_DNSResolverSuffix/path_after_port (0.00s)
+--- PASS: TestConfig_PTOSS2_TDD_V01_DNSResolverSuffix/valid_tcp_hostname (0.00s)
+--- PASS: TestConfig_PTOSS2_TDD_V01_DNSResolverSuffix/valid_udp_ipv4 (0.00s)
+--- PASS: TestConfig_PTOSS2_TDD_V01_DNSResolverSuffix/fragment_after_port (0.00s)
+=== CONT  TestConfig_PTOSS2_TDD_V02_DNSResolverNetwork/tcp4
+--- PASS: TestConfig_PTOSS2_TDD_V01_DNSResolverSuffix/valid_maximum_port (0.00s)
+=== CONT  TestConfig_PTOSS2_TDD_V01_DNSResolverSuffix/valid_minimum_port
+=== PAUSE TestConfig_PTOSS2_F1_BlackBox/CP10_missing_protocol_separator_is_rejected
+=== CONT  TestConfig_PTOSS2_TDD_V02_DNSResolverNetwork/unix
+=== CONT  TestConfig_PTOSS2_TDD_V01_DNSResolverSuffix/letters_after_port
+=== CONT  TestConfig_PTOSS2_TDD_V02_DNSResolverNetwork/ip
+--- PASS: TestConfig_PTOSS2_TDD_V02_DNSResolverNetwork/tcp (0.00s)
+--- PASS: TestConfig_PTOSS2_TDD_V01_DNSResolverSuffix/letters_after_port (0.00s)
+=== RUN   TestConfig_PTOSS2_F1_BlackBox/CP11_missing_protocol_is_rejected
+=== PAUSE TestConfig_PTOSS2_F1_BlackBox/CP11_missing_protocol_is_rejected
+=== CONT  TestConfig_PTOSS2_TDD_V02_DNSResolverNetwork/udp6
+=== RUN   TestConfig_PTOSS2_F1_BlackBox/CP12_missing_host_is_rejected
+=== PAUSE TestConfig_PTOSS2_F1_BlackBox/CP12_missing_host_is_rejected
+--- PASS: TestConfig_PTOSS2_TDD_V02_DNSResolverNetwork/tcp7 (0.00s)
+=== RUN   TestConfig_PTOSS2_F1_BlackBox/CP13_missing_port_and_separator_are_rejected
+--- PASS: TestConfig_PTOSS2_TDD_V01_DNSResolverSuffix/valid_minimum_port (0.00s)
+=== PAUSE TestConfig_PTOSS2_F1_BlackBox/CP13_missing_port_and_separator_are_rejected
+--- PASS: TestConfig_PTOSS2_TDD_V02_DNSResolverNetwork/udp4 (0.00s)
+--- PASS: TestConfig_PTOSS2_TDD_V01_DNSResolverSuffix (0.00s)
+=== RUN   TestConfig_PTOSS2_F1_BlackBox/CP14_empty_port_is_rejected
+--- PASS: TestConfig_PTOSS2_TDD_V02_DNSResolverNetwork/udp (0.00s)
+=== PAUSE TestConfig_PTOSS2_F1_BlackBox/CP14_empty_port_is_rejected
+=== RUN   TestConfig_PTOSS2_F1_BlackBox/CP15_alphabetic_port_is_rejected
+=== PAUSE TestConfig_PTOSS2_F1_BlackBox/CP15_alphabetic_port_is_rejected
+--- PASS: TestConfig_PTOSS2_TDD_V02_DNSResolverNetwork/tcp6 (0.00s)
+=== RUN   TestConfig_PTOSS2_F1_BlackBox/CP16_negative_port_is_rejected
+--- PASS: TestConfig_PTOSS2_TDD_V02_DNSResolverNetwork/udp6 (0.00s)
+=== PAUSE TestConfig_PTOSS2_F1_BlackBox/CP16_negative_port_is_rejected
+=== RUN   TestConfig_PTOSS2_F1_BlackBox/CP17_empty_string_is_rejected_by_parser
+--- PASS: TestConfig_PTOSS2_TDD_V02_DNSResolverNetwork/unix (0.00s)
+--- PASS: TestConfig_PTOSS2_TDD_V02_DNSResolverNetwork/ip (0.00s)
+=== PAUSE TestConfig_PTOSS2_F1_BlackBox/CP17_empty_string_is_rejected_by_parser
+--- PASS: TestConfig_PTOSS2_TDD_V02_DNSResolverNetwork/http (0.00s)
+=== CONT  TestConfig_PTOSS2_F1_BlackBox/CP07_port_just_below_maximum_is_accepted
+--- PASS: TestConfig_PTOSS2_TDD_V02_DNSResolverNetwork/tcp4 (0.00s)
+=== CONT  TestConfig_PTOSS2_F1_BlackBox/CP01_documented_TCP_resolver_is_parsed
+--- PASS: TestConfig_PTOSS2_TDD_V02_DNSResolverNetwork (0.00s)
+=== CONT  TestConfig_PTOSS2_F1_BlackBox/CP08_maximum_port_is_accepted
+--- PASS: TestConfig_PTOSS2_F1_BlackBox/CP07_port_just_below_maximum_is_accepted (0.00s)
+=== CONT  TestConfig_PTOSS2_F1_BlackBox/CP11_missing_protocol_is_rejected
+--- PASS: TestConfig_PTOSS2_F1_BlackBox/CP08_maximum_port_is_accepted (0.00s)
+=== CONT  TestConfig_PTOSS2_F1_BlackBox/CP12_missing_host_is_rejected
+--- PASS: TestConfig_PTOSS2_F1_BlackBox/CP01_documented_TCP_resolver_is_parsed (0.00s)
+=== CONT  TestConfig_PTOSS2_F1_BlackBox/CP10_missing_protocol_separator_is_rejected
+--- PASS: TestConfig_PTOSS2_F1_BlackBox/CP11_missing_protocol_is_rejected (0.00s)
+=== CONT  TestConfig_PTOSS2_F1_BlackBox/CP09_port_above_maximum_is_rejected
+=== CONT  TestConfig_PTOSS2_F1_BlackBox/CP16_negative_port_is_rejected
+--- PASS: TestConfig_PTOSS2_F1_BlackBox/CP12_missing_host_is_rejected (0.00s)
+=== CONT  TestConfig_PTOSS2_F1_BlackBox/CP15_alphabetic_port_is_rejected
+=== CONT  TestConfig_PTOSS2_F1_BlackBox/CP06_port_just_above_minimum_is_accepted
+=== CONT  TestConfig_PTOSS2_F1_BlackBox/CP04_port_zero_is_rejected
+=== CONT  TestConfig_PTOSS2_F1_BlackBox/CP05_minimum_port_is_accepted
+=== CONT  TestConfig_PTOSS2_F1_BlackBox/CP14_empty_port_is_rejected
+=== CONT  TestConfig_PTOSS2_F1_BlackBox/CP03_hostname_is_preserved_without_resolution
+=== CONT  TestConfig_PTOSS2_F1_BlackBox/CP02_UDP_resolver_is_parsed
+=== CONT  TestConfig_PTOSS2_F1_BlackBox/CP13_missing_port_and_separator_are_rejected
+=== CONT  TestConfig_PTOSS2_F1_BlackBox/CP17_empty_string_is_rejected_by_parser
+--- PASS: TestConfig_PTOSS2_F1_BlackBox/CP10_missing_protocol_separator_is_rejected (0.00s)
+--- PASS: TestConfig_PTOSS2_F1_BlackBox/CP03_hostname_is_preserved_without_resolution (0.00s)
+--- PASS: TestConfig_PTOSS2_F1_BlackBox/CP13_missing_port_and_separator_are_rejected (0.00s)
+--- PASS: TestConfig_PTOSS2_F1_BlackBox/CP09_port_above_maximum_is_rejected (0.00s)
+--- PASS: TestConfig_PTOSS2_F1_BlackBox/CP04_port_zero_is_rejected (0.00s)
+--- PASS: TestConfig_PTOSS2_F1_BlackBox/CP05_minimum_port_is_accepted (0.00s)
+--- PASS: TestConfig_PTOSS2_F1_BlackBox/CP17_empty_string_is_rejected_by_parser (0.00s)
+--- PASS: TestConfig_PTOSS2_F1_BlackBox/CP15_alphabetic_port_is_rejected (0.00s)
+--- PASS: TestConfig_PTOSS2_F1_BlackBox/CP02_UDP_resolver_is_parsed (0.00s)
+--- PASS: TestConfig_PTOSS2_F1_BlackBox/CP14_empty_port_is_rejected (0.00s)
+--- PASS: TestConfig_PTOSS2_F1_BlackBox/CP06_port_just_above_minimum_is_accepted (0.00s)
+--- PASS: TestConfig_PTOSS2_F1_BlackBox/CP16_negative_port_is_rejected (0.00s)
+--- PASS: TestConfig_PTOSS2_F1_BlackBox (0.00s)
+PASS
+coverage: 11.4% of statements
+ok  	github.com/TwiN/gatus/v5/client	0.211s	coverage: 11.4% of statements
