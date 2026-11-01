@@ -89,3 +89,61 @@ func TestConfig_PTOSS2_TDD_V01_DNSResolverSuffix(t *testing.T) {
 		})
 	}
 }
+
+// V02 accepts only the TCP/UDP networks supported by the resolver contract.
+func TestConfig_PTOSS2_TDD_V02_DNSResolverNetwork(t *testing.T) {
+	t.Parallel()
+
+	tests := []struct {
+		network string
+		wantErr bool
+	}{
+		{network: "tcp"},
+		{network: "tcp4"},
+		{network: "tcp6"},
+		{network: "udp"},
+		{network: "udp4"},
+		{network: "udp6"},
+		{network: "http", wantErr: true},
+		{network: "ip", wantErr: true},
+		{network: "unix", wantErr: true},
+		{network: "tcp7", wantErr: true},
+	}
+
+	for _, tt := range tests {
+		t.Run(tt.network, func(t *testing.T) {
+			t.Parallel()
+			resolver := tt.network + "://localhost:53"
+			cfg := &Config{DNSResolver: resolver}
+
+			got, err := cfg.parseDNSResolver()
+
+			if tt.wantErr {
+				if err == nil {
+					t.Errorf("parseDNSResolver(%q) error = nil, want rejection of incompatible network %q", resolver, tt.network)
+				}
+				if got != nil {
+					t.Errorf("parseDNSResolver(%q) = %+v, want nil configuration for incompatible network", resolver, *got)
+				}
+			} else {
+				if err != nil {
+					t.Fatalf("parseDNSResolver(%q) returned unexpected error: %v", resolver, err)
+				}
+				if got == nil {
+					t.Fatal("parseDNSResolver returned nil configuration without an error")
+				}
+				want := DNSResolverConfig{Protocol: tt.network, Host: "localhost", Port: "53"}
+				if *got != want {
+					t.Errorf("parseDNSResolver(%q) = %+v, want %+v", resolver, *got, want)
+				}
+			}
+
+			if err := cfg.ValidateAndSetDefaults(); (err != nil) != tt.wantErr {
+				t.Errorf("ValidateAndSetDefaults(%q) error = %v, wantErr = %v", resolver, err, tt.wantErr)
+			}
+			if cfg.DNSResolver != resolver {
+				t.Errorf("DNSResolver changed to %q, want unchanged %q", cfg.DNSResolver, resolver)
+			}
+		})
+	}
+}
