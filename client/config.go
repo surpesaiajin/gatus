@@ -153,7 +153,7 @@ func (c *Config) HasCustomDNSResolver() bool {
 
 // parseDNSResolver parses the DNS resolver into the DNSResolverConfig struct
 func (c *Config) parseDNSResolver() (*DNSResolverConfig, error) {
-	re := regexp.MustCompile(`^(?P<proto>(.*))://(?P<host>[A-Za-z0-9\-\.]+):(?P<port>[0-9]+)?$`)
+	re := regexp.MustCompile(`^(?P<proto>(tcp|udp)[46]?)://(?P<host>[A-Za-z0-9\-\.]+):(?P<port>[0-9]+)?$`)
 	matches := re.FindStringSubmatch(c.DNSResolver)
 	if len(matches) == 0 {
 		return nil, ErrInvalidDNSResolver
