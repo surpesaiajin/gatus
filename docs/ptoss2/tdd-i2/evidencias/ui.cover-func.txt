@@ -1,0 +1,3 @@
+github.com/TwiN/gatus/v5/config/endpoint/ui/ui.go:45:	ValidateAndSetDefaults	100.0%
+github.com/TwiN/gatus/v5/config/endpoint/ui/ui.go:66:	GetDefaultConfig	100.0%
+total:							(statements)		100.0%

@@ -1,0 +1,135 @@
+Reproducao posterior; nao e evidencia de execucao durante o desenvolvimento.
+Data: 2026-11-02T12:52:43.1941068-03:00
+Revisao: 14c3db446f45b3af91088a8f203be87d34003986
+go version go1.27.3 windows/amd64
+
+Algorithm Hash                                                             Path                 
+--------- ----                                                             ----                 
+SHA256    D400ED50B4301CDAE6C69E51BCDE1B40FA6E5F0FE22DCD736DBCE95D5DF9A12D D:\Testes_software...
+SHA256    C910C15925479B984D88D1DDD654E01B4BF26C76E1A34DD3EAC5AFFCA6C200C4 D:\Testes_software...
+
+
+
+00-antes: go test -count=1 -v -run . -coverprofile=coverage.out .
+=== RUN   TestValidateAndSetDefaults
+=== RUN   TestValidateAndSetDefaults/with-valid-config
+=== RUN   TestValidateAndSetDefaults/with-invalid-threshold-length
+=== RUN   TestValidateAndSetDefaults/with-invalid-thresholds-order
+=== RUN   TestValidateAndSetDefaults/with-no-badge-configured
+--- PASS: TestValidateAndSetDefaults (0.00s)
+    --- PASS: TestValidateAndSetDefaults/with-valid-config (0.00s)
+    --- PASS: TestValidateAndSetDefaults/with-invalid-threshold-length (0.00s)
+    --- PASS: TestValidateAndSetDefaults/with-invalid-thresholds-order (0.00s)
+    --- PASS: TestValidateAndSetDefaults/with-no-badge-configured (0.00s)
+PASS
+coverage: 100.0% of statements
+ok  	ptoss2badge	0.513s	coverage: 100.0% of statements
+
+Exit: 0; esperado: 0
+
+Algorithm Hash                                                             Path                 
+--------- ----                                                             ----                 
+SHA256    D400ED50B4301CDAE6C69E51BCDE1B40FA6E5F0FE22DCD736DBCE95D5DF9A12D D:\Testes_software...
+SHA256    1ED2D1B7BD53752476B2487B6B50AA0277E3940AF006532A00A69E90881C0B23 D:\Testes_software...
+SHA256    C910C15925479B984D88D1DDD654E01B4BF26C76E1A34DD3EAC5AFFCA6C200C4 D:\Testes_software...
+
+
+
+01-caixa-preta: go test -count=1 -v -run . -coverprofile=coverage.out .
+=== RUN   TestBadgePTOSS2BlackBox
+=== RUN   TestBadgePTOSS2BlackBox/CP01_absent_badge_defaults
+=== RUN   TestBadgePTOSS2BlackBox/CP02_five_ascending
+=== RUN   TestBadgePTOSS2BlackBox/CP03_four_values
+=== RUN   TestBadgePTOSS2BlackBox/CP04_six_values
+=== RUN   TestBadgePTOSS2BlackBox/CP05_unordered
+=== RUN   TestBadgePTOSS2BlackBox/CP06_zero
+=== RUN   TestBadgePTOSS2BlackBox/CP07_equal
+--- PASS: TestBadgePTOSS2BlackBox (0.00s)
+    --- PASS: TestBadgePTOSS2BlackBox/CP01_absent_badge_defaults (0.00s)
+    --- PASS: TestBadgePTOSS2BlackBox/CP02_five_ascending (0.00s)
+    --- PASS: TestBadgePTOSS2BlackBox/CP03_four_values (0.00s)
+    --- PASS: TestBadgePTOSS2BlackBox/CP04_six_values (0.00s)
+    --- PASS: TestBadgePTOSS2BlackBox/CP05_unordered (0.00s)
+    --- PASS: TestBadgePTOSS2BlackBox/CP06_zero (0.00s)
+    --- PASS: TestBadgePTOSS2BlackBox/CP07_equal (0.00s)
+=== RUN   TestValidateAndSetDefaults
+=== RUN   TestValidateAndSetDefaults/with-valid-config
+=== RUN   TestValidateAndSetDefaults/with-invalid-threshold-length
+=== RUN   TestValidateAndSetDefaults/with-invalid-thresholds-order
+=== RUN   TestValidateAndSetDefaults/with-no-badge-configured
+--- PASS: TestValidateAndSetDefaults (0.00s)
+    --- PASS: TestValidateAndSetDefaults/with-valid-config (0.00s)
+    --- PASS: TestValidateAndSetDefaults/with-invalid-threshold-length (0.00s)
+    --- PASS: TestValidateAndSetDefaults/with-invalid-thresholds-order (0.00s)
+    --- PASS: TestValidateAndSetDefaults/with-no-badge-configured (0.00s)
+PASS
+coverage: 100.0% of statements
+ok  	ptoss2badge	0.473s	coverage: 100.0% of statements
+
+Exit: 0; esperado: 0
+
+Algorithm Hash                                                             Path                 
+--------- ----                                                             ----                 
+SHA256    D400ED50B4301CDAE6C69E51BCDE1B40FA6E5F0FE22DCD736DBCE95D5DF9A12D D:\Testes_software...
+SHA256    1ED2D1B7BD53752476B2487B6B50AA0277E3940AF006532A00A69E90881C0B23 D:\Testes_software...
+SHA256    AB26F3D838758180F2D40F3DD2AF347CBDCAB14C4BB6B8C900C33B56E13AB510 D:\Testes_software...
+SHA256    C910C15925479B984D88D1DDD654E01B4BF26C76E1A34DD3EAC5AFFCA6C200C4 D:\Testes_software...
+
+
+
+02-caixa-preta-branca: go test -count=1 -v -run . -coverprofile=coverage.out .
+=== RUN   TestBadgePTOSS2BlackBox
+=== RUN   TestBadgePTOSS2BlackBox/CP01_absent_badge_defaults
+=== RUN   TestBadgePTOSS2BlackBox/CP02_five_ascending
+=== RUN   TestBadgePTOSS2BlackBox/CP03_four_values
+=== RUN   TestBadgePTOSS2BlackBox/CP04_six_values
+=== RUN   TestBadgePTOSS2BlackBox/CP05_unordered
+=== RUN   TestBadgePTOSS2BlackBox/CP06_zero
+=== RUN   TestBadgePTOSS2BlackBox/CP07_equal
+--- PASS: TestBadgePTOSS2BlackBox (0.00s)
+    --- PASS: TestBadgePTOSS2BlackBox/CP01_absent_badge_defaults (0.00s)
+    --- PASS: TestBadgePTOSS2BlackBox/CP02_five_ascending (0.00s)
+    --- PASS: TestBadgePTOSS2BlackBox/CP03_four_values (0.00s)
+    --- PASS: TestBadgePTOSS2BlackBox/CP04_six_values (0.00s)
+    --- PASS: TestBadgePTOSS2BlackBox/CP05_unordered (0.00s)
+    --- PASS: TestBadgePTOSS2BlackBox/CP06_zero (0.00s)
+    --- PASS: TestBadgePTOSS2BlackBox/CP07_equal (0.00s)
+=== RUN   TestBadgePTOSS2WhiteBox
+=== RUN   TestBadgePTOSS2WhiteBox/CB01_nil_slice
+=== RUN   TestBadgePTOSS2WhiteBox/CB02_empty_slice
+=== RUN   TestBadgePTOSS2WhiteBox/CB03_inversion_i4
+=== RUN   TestBadgePTOSS2WhiteBox/CB04_inversion_i2
+=== RUN   TestBadgePTOSS2WhiteBox/CB05_inversion_i1
+=== RUN   TestBadgePTOSS2WhiteBox/CB06_equality_inside_list
+--- PASS: TestBadgePTOSS2WhiteBox (0.00s)
+    --- PASS: TestBadgePTOSS2WhiteBox/CB01_nil_slice (0.00s)
+    --- PASS: TestBadgePTOSS2WhiteBox/CB02_empty_slice (0.00s)
+    --- PASS: TestBadgePTOSS2WhiteBox/CB03_inversion_i4 (0.00s)
+    --- PASS: TestBadgePTOSS2WhiteBox/CB04_inversion_i2 (0.00s)
+    --- PASS: TestBadgePTOSS2WhiteBox/CB05_inversion_i1 (0.00s)
+    --- PASS: TestBadgePTOSS2WhiteBox/CB06_equality_inside_list (0.00s)
+=== RUN   TestValidateAndSetDefaults
+=== RUN   TestValidateAndSetDefaults/with-valid-config
+=== RUN   TestValidateAndSetDefaults/with-invalid-threshold-length
+=== RUN   TestValidateAndSetDefaults/with-invalid-thresholds-order
+=== RUN   TestValidateAndSetDefaults/with-no-badge-configured
+--- PASS: TestValidateAndSetDefaults (0.00s)
+    --- PASS: TestValidateAndSetDefaults/with-valid-config (0.00s)
+    --- PASS: TestValidateAndSetDefaults/with-invalid-threshold-length (0.00s)
+    --- PASS: TestValidateAndSetDefaults/with-invalid-thresholds-order (0.00s)
+    --- PASS: TestValidateAndSetDefaults/with-no-badge-configured (0.00s)
+PASS
+coverage: 100.0% of statements
+ok  	ptoss2badge	0.477s	coverage: 100.0% of statements
+
+Exit: 0; esperado: 0
+
+Algorithm Hash                                                             Path                 
+--------- ----                                                             ----                 
+SHA256    D400ED50B4301CDAE6C69E51BCDE1B40FA6E5F0FE22DCD736DBCE95D5DF9A12D D:\Testes_software...
+SHA256    1ED2D1B7BD53752476B2487B6B50AA0277E3940AF006532A00A69E90881C0B23 D:\Testes_software...
+SHA256    9163FCB47CB409B1B6991744521550FD766F919142D0D3213F3898B76BB60244 D:\Testes_software...
+
+
+
+

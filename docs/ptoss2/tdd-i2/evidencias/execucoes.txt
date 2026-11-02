@@ -1,0 +1,403 @@
+Reproducao posterior; nao e evidencia de execucao durante o desenvolvimento.
+Data: 2026-11-02T12:52:43.1941068-03:00
+Revisao: 14c3db446f45b3af91088a8f203be87d34003986
+go version go1.27.3 windows/amd64
+
+03-tdd1-red: go test -count=1 -v -run ^TestBadgePTOSS2TDD1$ -coverprofile=coverage.out .
+=== RUN   TestBadgePTOSS2TDD1
+=== RUN   TestBadgePTOSS2TDD1/missing_response_time_returns_configuration_error
+    ui_badge_ptoss2_tdd1_test.go:9: validation panicked instead of returning configuration error: runtime error: invalid memory address or nil pointer dereference
+=== RUN   TestBadgePTOSS2TDD1/absent_badge_still_defaults
+=== RUN   TestBadgePTOSS2TDD1/present_empty_response_time_is_invalid
+--- FAIL: TestBadgePTOSS2TDD1 (0.00s)
+    --- FAIL: TestBadgePTOSS2TDD1/missing_response_time_returns_configuration_error (0.00s)
+    --- PASS: TestBadgePTOSS2TDD1/absent_badge_still_defaults (0.00s)
+    --- PASS: TestBadgePTOSS2TDD1/present_empty_response_time_is_invalid (0.00s)
+FAIL
+coverage: 66.7% of statements
+FAIL	ptoss2badge	0.480s
+FAIL
+
+Exit: 1; esperado: 1
+
+Algorithm Hash                                                             Path                 
+--------- ----                                                             ----                 
+SHA256    5F9227407B1E163C7956571A3FA998081698FFA7EE959830BB3B37E00A4B1253 D:\Testes_software...
+SHA256    1ED2D1B7BD53752476B2487B6B50AA0277E3940AF006532A00A69E90881C0B23 D:\Testes_software...
+SHA256    9163FCB47CB409B1B6991744521550FD766F919142D0D3213F3898B76BB60244 D:\Testes_software...
+SHA256    AB26F3D838758180F2D40F3DD2AF347CBDCAB14C4BB6B8C900C33B56E13AB510 D:\Testes_software...
+SHA256    C910C15925479B984D88D1DDD654E01B4BF26C76E1A34DD3EAC5AFFCA6C200C4 D:\Testes_software...
+
+
+
+04-tdd1-green: go test -count=1 -v -run . -coverprofile=coverage.out .
+=== RUN   TestBadgePTOSS2BlackBox
+=== RUN   TestBadgePTOSS2BlackBox/CP01_absent_badge_defaults
+=== RUN   TestBadgePTOSS2BlackBox/CP02_five_ascending
+=== RUN   TestBadgePTOSS2BlackBox/CP03_four_values
+=== RUN   TestBadgePTOSS2BlackBox/CP04_six_values
+=== RUN   TestBadgePTOSS2BlackBox/CP05_unordered
+=== RUN   TestBadgePTOSS2BlackBox/CP06_zero
+=== RUN   TestBadgePTOSS2BlackBox/CP07_equal
+--- PASS: TestBadgePTOSS2BlackBox (0.00s)
+    --- PASS: TestBadgePTOSS2BlackBox/CP01_absent_badge_defaults (0.00s)
+    --- PASS: TestBadgePTOSS2BlackBox/CP02_five_ascending (0.00s)
+    --- PASS: TestBadgePTOSS2BlackBox/CP03_four_values (0.00s)
+    --- PASS: TestBadgePTOSS2BlackBox/CP04_six_values (0.00s)
+    --- PASS: TestBadgePTOSS2BlackBox/CP05_unordered (0.00s)
+    --- PASS: TestBadgePTOSS2BlackBox/CP06_zero (0.00s)
+    --- PASS: TestBadgePTOSS2BlackBox/CP07_equal (0.00s)
+=== RUN   TestBadgePTOSS2TDD1
+=== RUN   TestBadgePTOSS2TDD1/missing_response_time_returns_configuration_error
+=== RUN   TestBadgePTOSS2TDD1/absent_badge_still_defaults
+=== RUN   TestBadgePTOSS2TDD1/present_empty_response_time_is_invalid
+--- PASS: TestBadgePTOSS2TDD1 (0.00s)
+    --- PASS: TestBadgePTOSS2TDD1/missing_response_time_returns_configuration_error (0.00s)
+    --- PASS: TestBadgePTOSS2TDD1/absent_badge_still_defaults (0.00s)
+    --- PASS: TestBadgePTOSS2TDD1/present_empty_response_time_is_invalid (0.00s)
+=== RUN   TestBadgePTOSS2WhiteBox
+=== RUN   TestBadgePTOSS2WhiteBox/CB01_nil_slice
+=== RUN   TestBadgePTOSS2WhiteBox/CB02_empty_slice
+=== RUN   TestBadgePTOSS2WhiteBox/CB03_inversion_i4
+=== RUN   TestBadgePTOSS2WhiteBox/CB04_inversion_i2
+=== RUN   TestBadgePTOSS2WhiteBox/CB05_inversion_i1
+=== RUN   TestBadgePTOSS2WhiteBox/CB06_equality_inside_list
+--- PASS: TestBadgePTOSS2WhiteBox (0.00s)
+    --- PASS: TestBadgePTOSS2WhiteBox/CB01_nil_slice (0.00s)
+    --- PASS: TestBadgePTOSS2WhiteBox/CB02_empty_slice (0.00s)
+    --- PASS: TestBadgePTOSS2WhiteBox/CB03_inversion_i4 (0.00s)
+    --- PASS: TestBadgePTOSS2WhiteBox/CB04_inversion_i2 (0.00s)
+    --- PASS: TestBadgePTOSS2WhiteBox/CB05_inversion_i1 (0.00s)
+    --- PASS: TestBadgePTOSS2WhiteBox/CB06_equality_inside_list (0.00s)
+=== RUN   TestValidateAndSetDefaults
+=== RUN   TestValidateAndSetDefaults/with-valid-config
+=== RUN   TestValidateAndSetDefaults/with-invalid-threshold-length
+=== RUN   TestValidateAndSetDefaults/with-invalid-thresholds-order
+=== RUN   TestValidateAndSetDefaults/with-no-badge-configured
+--- PASS: TestValidateAndSetDefaults (0.00s)
+    --- PASS: TestValidateAndSetDefaults/with-valid-config (0.00s)
+    --- PASS: TestValidateAndSetDefaults/with-invalid-threshold-length (0.00s)
+    --- PASS: TestValidateAndSetDefaults/with-invalid-thresholds-order (0.00s)
+    --- PASS: TestValidateAndSetDefaults/with-no-badge-configured (0.00s)
+PASS
+coverage: 100.0% of statements
+ok  	ptoss2badge	0.512s	coverage: 100.0% of statements
+
+Exit: 0; esperado: 0
+
+Algorithm Hash                                                             Path                 
+--------- ----                                                             ----                 
+SHA256    5F9227407B1E163C7956571A3FA998081698FFA7EE959830BB3B37E00A4B1253 D:\Testes_software...
+SHA256    1ED2D1B7BD53752476B2487B6B50AA0277E3940AF006532A00A69E90881C0B23 D:\Testes_software...
+SHA256    EA1F82218985871DFBAE26406B53B4AE0CB46C237740F1DC19DDB4ED91CEB20F D:\Testes_software...
+
+
+
+05-tdd2-red: go test -count=1 -v -run ^TestBadgePTOSS2TDD2$ -coverprofile=coverage.out .
+=== RUN   TestBadgePTOSS2TDD2
+=== RUN   TestBadgePTOSS2TDD2/negative_boundary
+    ui_badge_ptoss2_tdd2_test.go:23: error = <nil>; want invalid response time badge configuration: expected parameter 'response-time' to have 5 ascending numerical values
+=== RUN   TestBadgePTOSS2TDD2/all_negative
+    ui_badge_ptoss2_tdd2_test.go:23: error = <nil>; want invalid response time badge configuration: expected parameter 'response-time' to have 5 ascending numerical values
+=== RUN   TestBadgePTOSS2TDD2/equal_negative
+    ui_badge_ptoss2_tdd2_test.go:23: error = <nil>; want invalid response time badge configuration: expected parameter 'response-time' to have 5 ascending numerical values
+=== RUN   TestBadgePTOSS2TDD2/zero_boundary
+=== RUN   TestBadgePTOSS2TDD2/all_zero
+=== RUN   TestBadgePTOSS2TDD2/equal_positive
+=== RUN   TestBadgePTOSS2TDD2/four_values
+=== RUN   TestBadgePTOSS2TDD2/six_values
+=== RUN   TestBadgePTOSS2TDD2/unordered
+--- FAIL: TestBadgePTOSS2TDD2 (0.00s)
+    --- FAIL: TestBadgePTOSS2TDD2/negative_boundary (0.00s)
+    --- FAIL: TestBadgePTOSS2TDD2/all_negative (0.00s)
+    --- FAIL: TestBadgePTOSS2TDD2/equal_negative (0.00s)
+    --- PASS: TestBadgePTOSS2TDD2/zero_boundary (0.00s)
+    --- PASS: TestBadgePTOSS2TDD2/all_zero (0.00s)
+    --- PASS: TestBadgePTOSS2TDD2/equal_positive (0.00s)
+    --- PASS: TestBadgePTOSS2TDD2/four_values (0.00s)
+    --- PASS: TestBadgePTOSS2TDD2/six_values (0.00s)
+    --- PASS: TestBadgePTOSS2TDD2/unordered (0.00s)
+FAIL
+coverage: 77.8% of statements
+FAIL	ptoss2badge	0.516s
+FAIL
+
+Exit: 1; esperado: 1
+
+Algorithm Hash                                                             Path                 
+--------- ----                                                             ----                 
+SHA256    E6B674FF1BB99274A18BC5DF8FD345B2C8FE067C7526E01F2BE68B63862C7254 D:\Testes_software...
+SHA256    1ED2D1B7BD53752476B2487B6B50AA0277E3940AF006532A00A69E90881C0B23 D:\Testes_software...
+SHA256    9163FCB47CB409B1B6991744521550FD766F919142D0D3213F3898B76BB60244 D:\Testes_software...
+SHA256    EA1F82218985871DFBAE26406B53B4AE0CB46C237740F1DC19DDB4ED91CEB20F D:\Testes_software...
+SHA256    AB26F3D838758180F2D40F3DD2AF347CBDCAB14C4BB6B8C900C33B56E13AB510 D:\Testes_software...
+SHA256    C910C15925479B984D88D1DDD654E01B4BF26C76E1A34DD3EAC5AFFCA6C200C4 D:\Testes_software...
+
+
+
+06-tdd2-green: go test -count=1 -v -run . -coverprofile=coverage.out .
+=== RUN   TestBadgePTOSS2BlackBox
+=== RUN   TestBadgePTOSS2BlackBox/CP01_absent_badge_defaults
+=== RUN   TestBadgePTOSS2BlackBox/CP02_five_ascending
+=== RUN   TestBadgePTOSS2BlackBox/CP03_four_values
+=== RUN   TestBadgePTOSS2BlackBox/CP04_six_values
+=== RUN   TestBadgePTOSS2BlackBox/CP05_unordered
+=== RUN   TestBadgePTOSS2BlackBox/CP06_zero
+=== RUN   TestBadgePTOSS2BlackBox/CP07_equal
+--- PASS: TestBadgePTOSS2BlackBox (0.00s)
+    --- PASS: TestBadgePTOSS2BlackBox/CP01_absent_badge_defaults (0.00s)
+    --- PASS: TestBadgePTOSS2BlackBox/CP02_five_ascending (0.00s)
+    --- PASS: TestBadgePTOSS2BlackBox/CP03_four_values (0.00s)
+    --- PASS: TestBadgePTOSS2BlackBox/CP04_six_values (0.00s)
+    --- PASS: TestBadgePTOSS2BlackBox/CP05_unordered (0.00s)
+    --- PASS: TestBadgePTOSS2BlackBox/CP06_zero (0.00s)
+    --- PASS: TestBadgePTOSS2BlackBox/CP07_equal (0.00s)
+=== RUN   TestBadgePTOSS2TDD1
+=== RUN   TestBadgePTOSS2TDD1/missing_response_time_returns_configuration_error
+=== RUN   TestBadgePTOSS2TDD1/absent_badge_still_defaults
+=== RUN   TestBadgePTOSS2TDD1/present_empty_response_time_is_invalid
+--- PASS: TestBadgePTOSS2TDD1 (0.00s)
+    --- PASS: TestBadgePTOSS2TDD1/missing_response_time_returns_configuration_error (0.00s)
+    --- PASS: TestBadgePTOSS2TDD1/absent_badge_still_defaults (0.00s)
+    --- PASS: TestBadgePTOSS2TDD1/present_empty_response_time_is_invalid (0.00s)
+=== RUN   TestBadgePTOSS2TDD2
+=== RUN   TestBadgePTOSS2TDD2/negative_boundary
+=== RUN   TestBadgePTOSS2TDD2/all_negative
+=== RUN   TestBadgePTOSS2TDD2/equal_negative
+=== RUN   TestBadgePTOSS2TDD2/zero_boundary
+=== RUN   TestBadgePTOSS2TDD2/all_zero
+=== RUN   TestBadgePTOSS2TDD2/equal_positive
+=== RUN   TestBadgePTOSS2TDD2/four_values
+=== RUN   TestBadgePTOSS2TDD2/six_values
+=== RUN   TestBadgePTOSS2TDD2/unordered
+--- PASS: TestBadgePTOSS2TDD2 (0.00s)
+    --- PASS: TestBadgePTOSS2TDD2/negative_boundary (0.00s)
+    --- PASS: TestBadgePTOSS2TDD2/all_negative (0.00s)
+    --- PASS: TestBadgePTOSS2TDD2/equal_negative (0.00s)
+    --- PASS: TestBadgePTOSS2TDD2/zero_boundary (0.00s)
+    --- PASS: TestBadgePTOSS2TDD2/all_zero (0.00s)
+    --- PASS: TestBadgePTOSS2TDD2/equal_positive (0.00s)
+    --- PASS: TestBadgePTOSS2TDD2/four_values (0.00s)
+    --- PASS: TestBadgePTOSS2TDD2/six_values (0.00s)
+    --- PASS: TestBadgePTOSS2TDD2/unordered (0.00s)
+=== RUN   TestBadgePTOSS2WhiteBox
+=== RUN   TestBadgePTOSS2WhiteBox/CB01_nil_slice
+=== RUN   TestBadgePTOSS2WhiteBox/CB02_empty_slice
+=== RUN   TestBadgePTOSS2WhiteBox/CB03_inversion_i4
+=== RUN   TestBadgePTOSS2WhiteBox/CB04_inversion_i2
+=== RUN   TestBadgePTOSS2WhiteBox/CB05_inversion_i1
+=== RUN   TestBadgePTOSS2WhiteBox/CB06_equality_inside_list
+--- PASS: TestBadgePTOSS2WhiteBox (0.00s)
+    --- PASS: TestBadgePTOSS2WhiteBox/CB01_nil_slice (0.00s)
+    --- PASS: TestBadgePTOSS2WhiteBox/CB02_empty_slice (0.00s)
+    --- PASS: TestBadgePTOSS2WhiteBox/CB03_inversion_i4 (0.00s)
+    --- PASS: TestBadgePTOSS2WhiteBox/CB04_inversion_i2 (0.00s)
+    --- PASS: TestBadgePTOSS2WhiteBox/CB05_inversion_i1 (0.00s)
+    --- PASS: TestBadgePTOSS2WhiteBox/CB06_equality_inside_list (0.00s)
+=== RUN   TestValidateAndSetDefaults
+=== RUN   TestValidateAndSetDefaults/with-valid-config
+=== RUN   TestValidateAndSetDefaults/with-invalid-threshold-length
+=== RUN   TestValidateAndSetDefaults/with-invalid-thresholds-order
+=== RUN   TestValidateAndSetDefaults/with-no-badge-configured
+--- PASS: TestValidateAndSetDefaults (0.00s)
+    --- PASS: TestValidateAndSetDefaults/with-valid-config (0.00s)
+    --- PASS: TestValidateAndSetDefaults/with-invalid-threshold-length (0.00s)
+    --- PASS: TestValidateAndSetDefaults/with-invalid-thresholds-order (0.00s)
+    --- PASS: TestValidateAndSetDefaults/with-no-badge-configured (0.00s)
+PASS
+coverage: 100.0% of statements
+ok  	ptoss2badge	0.521s	coverage: 100.0% of statements
+
+Exit: 0; esperado: 0
+
+
+VALIDACAO ADICIONAL: ui-atual.txt
+=== RUN   TestBadgePTOSS2BlackBox
+=== RUN   TestBadgePTOSS2BlackBox/CP01_absent_badge_defaults
+=== RUN   TestBadgePTOSS2BlackBox/CP02_five_ascending
+=== RUN   TestBadgePTOSS2BlackBox/CP03_four_values
+=== RUN   TestBadgePTOSS2BlackBox/CP04_six_values
+=== RUN   TestBadgePTOSS2BlackBox/CP05_unordered
+=== RUN   TestBadgePTOSS2BlackBox/CP06_zero
+=== RUN   TestBadgePTOSS2BlackBox/CP07_equal
+--- PASS: TestBadgePTOSS2BlackBox (0.00s)
+    --- PASS: TestBadgePTOSS2BlackBox/CP01_absent_badge_defaults (0.00s)
+    --- PASS: TestBadgePTOSS2BlackBox/CP02_five_ascending (0.00s)
+    --- PASS: TestBadgePTOSS2BlackBox/CP03_four_values (0.00s)
+    --- PASS: TestBadgePTOSS2BlackBox/CP04_six_values (0.00s)
+    --- PASS: TestBadgePTOSS2BlackBox/CP05_unordered (0.00s)
+    --- PASS: TestBadgePTOSS2BlackBox/CP06_zero (0.00s)
+    --- PASS: TestBadgePTOSS2BlackBox/CP07_equal (0.00s)
+=== RUN   TestBadgePTOSS2TDD1
+=== RUN   TestBadgePTOSS2TDD1/missing_response_time_returns_configuration_error
+=== RUN   TestBadgePTOSS2TDD1/absent_badge_still_defaults
+=== RUN   TestBadgePTOSS2TDD1/present_empty_response_time_is_invalid
+--- PASS: TestBadgePTOSS2TDD1 (0.00s)
+    --- PASS: TestBadgePTOSS2TDD1/missing_response_time_returns_configuration_error (0.00s)
+    --- PASS: TestBadgePTOSS2TDD1/absent_badge_still_defaults (0.00s)
+    --- PASS: TestBadgePTOSS2TDD1/present_empty_response_time_is_invalid (0.00s)
+=== RUN   TestBadgePTOSS2TDD2
+=== RUN   TestBadgePTOSS2TDD2/negative_boundary
+=== RUN   TestBadgePTOSS2TDD2/all_negative
+=== RUN   TestBadgePTOSS2TDD2/equal_negative
+=== RUN   TestBadgePTOSS2TDD2/zero_boundary
+=== RUN   TestBadgePTOSS2TDD2/all_zero
+=== RUN   TestBadgePTOSS2TDD2/equal_positive
+=== RUN   TestBadgePTOSS2TDD2/four_values
+=== RUN   TestBadgePTOSS2TDD2/six_values
+=== RUN   TestBadgePTOSS2TDD2/unordered
+--- PASS: TestBadgePTOSS2TDD2 (0.00s)
+    --- PASS: TestBadgePTOSS2TDD2/negative_boundary (0.00s)
+    --- PASS: TestBadgePTOSS2TDD2/all_negative (0.00s)
+    --- PASS: TestBadgePTOSS2TDD2/equal_negative (0.00s)
+    --- PASS: TestBadgePTOSS2TDD2/zero_boundary (0.00s)
+    --- PASS: TestBadgePTOSS2TDD2/all_zero (0.00s)
+    --- PASS: TestBadgePTOSS2TDD2/equal_positive (0.00s)
+    --- PASS: TestBadgePTOSS2TDD2/four_values (0.00s)
+    --- PASS: TestBadgePTOSS2TDD2/six_values (0.00s)
+    --- PASS: TestBadgePTOSS2TDD2/unordered (0.00s)
+=== RUN   TestBadgePTOSS2WhiteBox
+=== RUN   TestBadgePTOSS2WhiteBox/CB01_nil_slice
+=== RUN   TestBadgePTOSS2WhiteBox/CB02_empty_slice
+=== RUN   TestBadgePTOSS2WhiteBox/CB03_inversion_i4
+=== RUN   TestBadgePTOSS2WhiteBox/CB04_inversion_i2
+=== RUN   TestBadgePTOSS2WhiteBox/CB05_inversion_i1
+=== RUN   TestBadgePTOSS2WhiteBox/CB06_equality_inside_list
+--- PASS: TestBadgePTOSS2WhiteBox (0.00s)
+    --- PASS: TestBadgePTOSS2WhiteBox/CB01_nil_slice (0.00s)
+    --- PASS: TestBadgePTOSS2WhiteBox/CB02_empty_slice (0.00s)
+    --- PASS: TestBadgePTOSS2WhiteBox/CB03_inversion_i4 (0.00s)
+    --- PASS: TestBadgePTOSS2WhiteBox/CB04_inversion_i2 (0.00s)
+    --- PASS: TestBadgePTOSS2WhiteBox/CB05_inversion_i1 (0.00s)
+    --- PASS: TestBadgePTOSS2WhiteBox/CB06_equality_inside_list (0.00s)
+=== RUN   TestValidateAndSetDefaults
+=== RUN   TestValidateAndSetDefaults/with-valid-config
+=== RUN   TestValidateAndSetDefaults/with-invalid-threshold-length
+=== RUN   TestValidateAndSetDefaults/with-invalid-thresholds-order
+=== RUN   TestValidateAndSetDefaults/with-no-badge-configured
+--- PASS: TestValidateAndSetDefaults (0.00s)
+    --- PASS: TestValidateAndSetDefaults/with-valid-config (0.00s)
+    --- PASS: TestValidateAndSetDefaults/with-invalid-threshold-length (0.00s)
+    --- PASS: TestValidateAndSetDefaults/with-invalid-thresholds-order (0.00s)
+    --- PASS: TestValidateAndSetDefaults/with-no-badge-configured (0.00s)
+PASS
+coverage: 100.0% of statements
+ok  	github.com/TwiN/gatus/v5/config/endpoint/ui	0.499s	coverage: 100.0% of statements
+
+VALIDACAO ADICIONAL: regressao-endpoint.txt
+go: downloading golang.org/x/crypto v0.55.0
+go: downloading github.com/miekg/dns v1.1.72
+go: downloading github.com/TwiN/logr v0.3.1
+go: downloading gopkg.in/yaml.v3 v3.0.1
+go: downloading github.com/TwiN/gocache/v2 v2.4.0
+go: downloading github.com/TwiN/whois v1.3.0
+go: downloading github.com/gorilla/websocket v1.5.3
+go: downloading github.com/ishidawataru/sctp v0.0.0-20251114114122-19ddcbc6aae2
+go: downloading github.com/prometheus-community/pro-bing v0.8.0
+go: downloading google.golang.org/api v0.280.0
+go: downloading google.golang.org/grpc v1.84.0
+go: downloading golang.org/x/oauth2 v0.36.0
+go: downloading github.com/registrobr/rdap v1.1.8
+# github.com/TwiN/gatus/v5/config/endpoint
+alerting\alert\alert.go:11:2: mkdir C:\Users\berna\go\pkg\mod\cache\download\github.com\!twi!n: Acesso negado.
+# github.com/TwiN/gatus/v5/config/endpoint
+alerting\alert\alert.go:12:2: mkdir C:\Users\berna\go\pkg\mod\cache\download\gopkg.in: Acesso negado.
+# github.com/TwiN/gatus/v5/config/endpoint
+config\tunneling\sshtunnel\sshtunnel.go:9:2: mkdir C:\Users\berna\go\pkg\mod\cache\download\golang.org\x\crypto: Acesso negado.
+# github.com/TwiN/gatus/v5/config/endpoint
+client\client.go:21:2: mkdir C:\Users\berna\go\pkg\mod\cache\download\github.com\!twi!n: Acesso negado.
+# github.com/TwiN/gatus/v5/config/endpoint
+client\client.go:23:2: mkdir C:\Users\berna\go\pkg\mod\cache\download\github.com\!twi!n: Acesso negado.
+# github.com/TwiN/gatus/v5/config/endpoint
+client\client.go:24:2: mkdir C:\Users\berna\go\pkg\mod\cache\download\github.com\gorilla: Acesso negado.
+# github.com/TwiN/gatus/v5/config/endpoint
+client\client.go:25:2: mkdir C:\Users\berna\go\pkg\mod\cache\download\github.com\ishidawataru: Acesso negado.
+# github.com/TwiN/gatus/v5/config/endpoint
+client\client.go:26:2: mkdir C:\Users\berna\go\pkg\mod\cache\download\github.com\miekg: Acesso negado.
+# github.com/TwiN/gatus/v5/config/endpoint
+client\client.go:27:2: mkdir C:\Users\berna\go\pkg\mod\cache\download\github.com\prometheus-community: Acesso negado.
+# github.com/TwiN/gatus/v5/config/endpoint
+client\client.go:28:2: mkdir C:\Users\berna\go\pkg\mod\cache\download\github.com\registrobr: Acesso negado.
+# github.com/TwiN/gatus/v5/config/endpoint
+client\client.go:29:2: mkdir C:\Users\berna\go\pkg\mod\cache\download\github.com\registrobr: Acesso negado.
+# github.com/TwiN/gatus/v5/config/endpoint
+client\config.go:18:2: open C:\Users\berna\go\pkg\mod\cache\download\golang.org\x\oauth2\@v\v0.36.0.lock: Acesso negado.
+# github.com/TwiN/gatus/v5/config/endpoint
+client\config.go:19:2: open C:\Users\berna\go\pkg\mod\cache\download\golang.org\x\oauth2\@v\v0.36.0.lock: Acesso negado.
+# github.com/TwiN/gatus/v5/config/endpoint
+client\config.go:20:2: mkdir C:\Users\berna\go\pkg\mod\cache\download\google.golang.org: Acesso negado.
+# github.com/TwiN/gatus/v5/config/endpoint
+client\grpc.go:10:2: mkdir C:\Users\berna\go\pkg\mod\cache\download\google.golang.org: Acesso negado.
+# github.com/TwiN/gatus/v5/config/endpoint
+client\grpc.go:11:2: mkdir C:\Users\berna\go\pkg\mod\cache\download\google.golang.org: Acesso negado.
+# github.com/TwiN/gatus/v5/config/endpoint
+client\grpc.go:12:2: mkdir C:\Users\berna\go\pkg\mod\cache\download\google.golang.org: Acesso negado.
+# github.com/TwiN/gatus/v5/config/endpoint
+client\grpc.go:13:2: mkdir C:\Users\berna\go\pkg\mod\cache\download\google.golang.org: Acesso negado.
+FAIL	github.com/TwiN/gatus/v5/config/endpoint [setup failed]
+# github.com/TwiN/gatus/v5/config/endpoint/dns
+client\client.go:26:2: mkdir C:\Users\berna\go\pkg\mod\cache\download\github.com\miekg: Acesso negado.
+FAIL	github.com/TwiN/gatus/v5/config/endpoint/dns [setup failed]
+?   	github.com/TwiN/gatus/v5/config/endpoint/heartbeat	[no test files]
+ok  	github.com/TwiN/gatus/v5/config/endpoint/ssh	0.405s
+ok  	github.com/TwiN/gatus/v5/config/endpoint/ui	0.405s
+FAIL
+
+VALIDACAO ADICIONAL: regressao-endpoint-cache-local.txt
+go: downloading golang.org/x/crypto v0.55.0
+go: downloading github.com/miekg/dns v1.1.72
+go: downloading github.com/TwiN/logr v0.3.1
+go: downloading gopkg.in/yaml.v3 v3.0.1
+go: downloading github.com/TwiN/gocache/v2 v2.4.0
+go: downloading github.com/TwiN/whois v1.3.0
+go: downloading github.com/ishidawataru/sctp v0.0.0-20251114114122-19ddcbc6aae2
+go: downloading github.com/gorilla/websocket v1.5.3
+go: downloading github.com/prometheus-community/pro-bing v0.8.0
+go: downloading github.com/registrobr/rdap v1.1.8
+go: downloading golang.org/x/oauth2 v0.36.0
+go: downloading google.golang.org/api v0.280.0
+go: downloading google.golang.org/grpc v1.84.0
+# github.com/TwiN/gatus/v5/config/endpoint
+alerting\alert\alert.go:11:2: github.com/TwiN/logr@v0.3.1: Get "https://proxy.golang.org/github.com/%21twi%21n/logr/@v/v0.3.1.zip": dial tcp: lookup proxy.golang.org: no such host
+FAIL	github.com/TwiN/gatus/v5/config/endpoint [setup failed]
+FAIL	github.com/TwiN/gatus/v5/config/endpoint/dns [setup failed]
+# github.com/TwiN/gatus/v5/config/endpoint
+alerting\alert\alert.go:12:2: gopkg.in/yaml.v3@v3.0.1: Get "https://proxy.golang.org/gopkg.in/yaml.v3/@v/v3.0.1.zip": dial tcp: lookup proxy.golang.org: no such host
+# github.com/TwiN/gatus/v5/config/endpoint
+config\tunneling\sshtunnel\sshtunnel.go:9:2: golang.org/x/crypto@v0.55.0: Get "https://proxy.golang.org/golang.org/x/crypto/@v/v0.55.0.zip": dial tcp: lookup proxy.golang.org: no such host
+# github.com/TwiN/gatus/v5/config/endpoint
+client\client.go:21:2: github.com/TwiN/gocache/v2@v2.4.0: Get "https://proxy.golang.org/github.com/%21twi%21n/gocache/v2/@v/v2.4.0.zip": dial tcp: lookup proxy.golang.org: no such host
+# github.com/TwiN/gatus/v5/config/endpoint
+client\client.go:23:2: github.com/TwiN/whois@v1.3.0: Get "https://proxy.golang.org/github.com/%21twi%21n/whois/@v/v1.3.0.zip": dial tcp: lookup proxy.golang.org: no such host
+# github.com/TwiN/gatus/v5/config/endpoint
+client\client.go:24:2: github.com/gorilla/websocket@v1.5.3: Get "https://proxy.golang.org/github.com/gorilla/websocket/@v/v1.5.3.zip": dial tcp: lookup proxy.golang.org: no such host
+# github.com/TwiN/gatus/v5/config/endpoint
+client\client.go:25:2: github.com/ishidawataru/sctp@v0.0.0-20251114114122-19ddcbc6aae2: Get "https://proxy.golang.org/github.com/ishidawataru/sctp/@v/v0.0.0-20251114114122-19ddcbc6aae2.zip": dial tcp: lookup proxy.golang.org: no such host
+# github.com/TwiN/gatus/v5/config/endpoint
+client\client.go:26:2: github.com/miekg/dns@v1.1.72: Get "https://proxy.golang.org/github.com/miekg/dns/@v/v1.1.72.zip": dial tcp: lookup proxy.golang.org: no such host
+# github.com/TwiN/gatus/v5/config/endpoint
+client\client.go:27:2: github.com/prometheus-community/pro-bing@v0.8.0: Get "https://proxy.golang.org/github.com/prometheus-community/pro-bing/@v/v0.8.0.zip": dial tcp: lookup proxy.golang.org: no such host
+# github.com/TwiN/gatus/v5/config/endpoint
+client\client.go:28:2: github.com/registrobr/rdap@v1.1.8: Get "https://proxy.golang.org/github.com/registrobr/rdap/@v/v1.1.8.zip": dial tcp: lookup proxy.golang.org: no such host
+# github.com/TwiN/gatus/v5/config/endpoint
+client\client.go:29:2: github.com/registrobr/rdap@v1.1.8: Get "https://proxy.golang.org/github.com/registrobr/rdap/@v/v1.1.8.zip": dial tcp: lookup proxy.golang.org: no such host
+# github.com/TwiN/gatus/v5/config/endpoint
+client\config.go:18:2: golang.org/x/oauth2@v0.36.0: Get "https://proxy.golang.org/golang.org/x/oauth2/@v/v0.36.0.zip": dial tcp: lookup proxy.golang.org: no such host
+# github.com/TwiN/gatus/v5/config/endpoint
+client\config.go:19:2: golang.org/x/oauth2@v0.36.0: Get "https://proxy.golang.org/golang.org/x/oauth2/@v/v0.36.0.zip": dial tcp: lookup proxy.golang.org: no such host
+# github.com/TwiN/gatus/v5/config/endpoint
+client\config.go:20:2: google.golang.org/api@v0.280.0: Get "https://proxy.golang.org/google.golang.org/api/@v/v0.280.0.zip": dial tcp: lookup proxy.golang.org: no such host
+# github.com/TwiN/gatus/v5/config/endpoint
+client\grpc.go:10:2: google.golang.org/grpc@v1.84.0: Get "https://proxy.golang.org/google.golang.org/grpc/@v/v1.84.0.zip": dial tcp: lookup proxy.golang.org: no such host
+# github.com/TwiN/gatus/v5/config/endpoint
+client\grpc.go:11:2: google.golang.org/grpc@v1.84.0: Get "https://proxy.golang.org/google.golang.org/grpc/@v/v1.84.0.zip": dial tcp: lookup proxy.golang.org: no such host
+# github.com/TwiN/gatus/v5/config/endpoint
+client\grpc.go:12:2: google.golang.org/grpc@v1.84.0: Get "https://proxy.golang.org/google.golang.org/grpc/@v/v1.84.0.zip": dial tcp: lookup proxy.golang.org: no such host
+# github.com/TwiN/gatus/v5/config/endpoint
+client\grpc.go:13:2: google.golang.org/grpc@v1.84.0: Get "https://proxy.golang.org/google.golang.org/grpc/@v/v1.84.0.zip": dial tcp: lookup proxy.golang.org: no such host
+# github.com/TwiN/gatus/v5/config/endpoint/dns
+client\client.go:26:2: github.com/miekg/dns@v1.1.72: Get "https://proxy.golang.org/github.com/miekg/dns/@v/v1.1.72.zip": dial tcp: lookup proxy.golang.org: no such host
+?   	github.com/TwiN/gatus/v5/config/endpoint/heartbeat	[no test files]
+ok  	github.com/TwiN/gatus/v5/config/endpoint/ssh	0.390s
+ok  	github.com/TwiN/gatus/v5/config/endpoint/ui	0.390s
+FAIL
