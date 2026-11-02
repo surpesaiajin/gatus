@@ -44,7 +44,11 @@ var (
 // ValidateAndSetDefaults validates the UI configuration and sets the default values
 func (config *Config) ValidateAndSetDefaults() error {
 	if config.Badge != nil {
-		if len(config.Badge.ResponseTime.Thresholds) != 5 {
+		if config.Badge.ResponseTime == nil || len(config.Badge.ResponseTime.Thresholds) != 5 {
+			return ErrInvalidBadgeResponseTimeConfig
+		}
+		// Ordered thresholds are nonnegative exactly when their minimum is.
+		if config.Badge.ResponseTime.Thresholds[0] < 0 {
 			return ErrInvalidBadgeResponseTimeConfig
 		}
 		for i := 4; i > 0; i-- {
