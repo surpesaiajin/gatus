@@ -134,6 +134,9 @@ func (c *Config) ValidateAndSetDefaults() error {
 			return err
 		}
 	}
+	if c.HasOAuth2Config() && c.HasIAPConfig() {
+		return ErrInvalidClientOAuth2AndIAPConfig
+	}
 	if c.HasOAuth2Config() && !c.OAuth2Config.isValid() {
 		return ErrInvalidClientOAuth2Config
 	}
