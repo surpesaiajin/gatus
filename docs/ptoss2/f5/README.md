@@ -87,4 +87,4 @@ go tool cover -func=client.cover.out
 
 ## Apoio de IA
 
-Testes, medições e este texto foram produzidos com o Claude Code (Anthropic, modelo Claude Opus 5.5) a partir das orientações da equipe, sob revisão de gccintra.
+Planejamento das alterações, escolha dos casos e revisão: gccintra. Implementação dos testes, execuções e rascunho deste texto com apoio do Claude Code (Anthropic, Claude Opus 5.5), conferidos por gccintra.
