@@ -30,6 +30,8 @@ var (
 	ErrInvalidClientIAPConfig    = errors.New("invalid Identity-Aware-Proxy configuration: must define all fields for Google Identity-Aware-Proxy programmatic authentication (audience)")
 	ErrInvalidClientTLSConfig    = errors.New("invalid TLS configuration: certificate-file and private-key-file must be specified")
 
+	ErrInvalidClientOAuth2AndIAPConfig = errors.New("invalid client configuration: oauth2 and identity-aware-proxy cannot be used at the same time")
+
 	defaultConfig = Config{
 		Insecure:       false,
 		IgnoreRedirect: false,
