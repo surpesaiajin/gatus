@@ -13,6 +13,9 @@ var (
 
 	// ErrDNSWithInvalidQueryType is the error with which gatus will panic if a dns is configured with invalid query type
 	ErrDNSWithInvalidQueryType = errors.New("invalid query type in the DNS configuration")
+
+	// ErrDNSWithInvalidQueryName is the error with which gatus will panic if a dns is configured with invalid query name
+	ErrDNSWithInvalidQueryName = errors.New("invalid query name in the DNS configuration")
 )
 
 // Config for an Endpoint of type DNS
