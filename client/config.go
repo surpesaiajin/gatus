@@ -4,6 +4,7 @@ import (
 	"context"
 	"crypto/tls"
 	"errors"
+	"fmt"
 	"net"
 	"net/http"
 	"net/http/cookiejar"
@@ -133,6 +134,11 @@ func (c *Config) ValidateAndSetDefaults() error {
 		// Validate the DNS resolver now to make sure it will not return an error later.
 		if _, err := c.parseDNSResolver(); err != nil {
 			return err
+		}
+	}
+	if c.ProxyURL != "" {
+		if _, err := url.Parse(c.ProxyURL); err != nil {
+			return fmt.Errorf("%w: %w", ErrInvalidClientProxyURL, err)
 		}
 	}
 	if c.HasOAuth2Config() && c.HasIAPConfig() {
