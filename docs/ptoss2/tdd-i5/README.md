@@ -80,4 +80,4 @@ A F5 mostrou (CP12–CP14) que `isValid` verifica só presença: espaços, scope
 
 ## Apoio de IA
 
-Testes, implementação, E2E e texto produzidos com o Claude Code (Anthropic, modelo Claude Opus 5.5), sob revisão de gccintra.
+Planejamento das alterações, decisões de comportamento e revisão: gccintra. Implementação, execuções, teste E2E e rascunho deste texto com apoio do Claude Code (Anthropic, Claude Opus 5.5), conferidos por gccintra.
