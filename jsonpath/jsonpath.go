@@ -1,6 +1,7 @@
 package jsonpath
 
 import (
+	"bytes"
 	"encoding/json"
 	"fmt"
 	"strconv"
@@ -14,7 +15,9 @@ import (
 // single or double quotes between brackets (i.e. data["name.with.dots"]), because an unquoted
 // dot is always treated as a key separator.
 func Eval(path string, b []byte) (string, int, error) {
-	if len(path) == 0 && !(len(b) != 0 && b[0] == '[' && b[len(b)-1] == ']') {
+	// CICLO 1: Remove espaços e quebras de linha antes de verificar se é um array JSON com caminho vazio
+	trimmedB := bytes.TrimSpace(b)
+	if len(path) == 0 && !(len(trimmedB) != 0 && trimmedB[0] == '[' && trimmedB[len(trimmedB)-1] == ']') {
 		// if there's no path AND the value is not a JSON array, then there's nothing to walk
 		return string(b), len(b), nil
 	}
@@ -73,6 +76,13 @@ func walk(path string, object interface{}) (string, int, error) {
 			return "", 0, fmt.Errorf("couldn't walk through '%s', because '%s' was a string instead of an object", keys[1], currentKey)
 		}
 		return value, len(value), nil
+	case float64, int, bool:
+		// CICLO 2: Rejeita a continuação do caminho se o tipo extraído for primitivo (número, booleano, etc.)
+		if len(keys) > 1 {
+			return "", 0, fmt.Errorf("couldn't walk through '%s', because '%s' was a primitive type instead of an object", keys[1], currentKey)
+		}
+		newValue := fmt.Sprintf("%v", value)
+		return newValue, len(newValue), nil
 	case []interface{}:
 		return fmt.Sprintf("%v", value), len(value), nil
 	case interface{}:
