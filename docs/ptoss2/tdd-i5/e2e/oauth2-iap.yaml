@@ -1,0 +1,15 @@
+web:
+  port: 18080
+endpoints:
+  - name: api-oauth2-e-iap
+    url: "http://127.0.0.1:18081/api"
+    client:
+      oauth2:
+        token-url: "http://127.0.0.1:18081/token"
+        client-id: "gatus-client"
+        client-secret: "gatus-secret"
+        scopes: ["monitoring.read"]
+      identity-aware-proxy:
+        audience: "gatus.apps.googleusercontent.com"
+    conditions:
+      - "[STATUS] == 200"
