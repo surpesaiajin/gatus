@@ -87,4 +87,4 @@ go tool cover -func=client.cover.out
 
 ## Apoio de IA
 
-Planejamento das alterações, escolha dos casos e revisão: gccintra. Implementação dos testes, execuções e rascunho deste texto com apoio do Claude Code (Anthropic, Claude Opus 5.5), conferidos por gccintra.
+Planejamento das alterações e revisão: gccintra. Implementação dos testes, execuções e rascunho deste texto com apoio do Claude Code (Anthropic, Claude Opus 5.5), conferidos por gccintra.
