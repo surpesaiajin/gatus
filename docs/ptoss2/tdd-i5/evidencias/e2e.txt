@@ -1,0 +1,47 @@
+PTOSS-2 I5 — E2E (02/11/2026, UTC-03). gatus-base = 6f5cc480 (antes de V01); gatus-tdd = 9fdce838 (depois de V02).
+Mock OAuth2/API: python3 mock_oauth2.py 18081. Cada binário observado por 6 s.
+
+== gatus-base-oauth2-iap
+2026/11/02 11:35:52 [config.LoadConfiguration] Reading configuration from configFile=oauth2-iap.yaml
+2026/11/02 11:35:52 [controller.Handle] Listening on 0.0.0.0:18080
+2026/11/02 11:35:52 [client.getHTTPClient] Error: Both Identity-Aware-Proxy and Oauth2 configuration are present.
+2026/11/02 11:35:52 [watchdog.executeEndpoint] Monitored group=; endpoint=api-oauth2-e-iap; key=_api-oauth2-e-iap; success=false; errors=0; duration=5ms
+
+== gatus-base-proxy-invalida
+2026/11/02 11:35:57 [config.LoadConfiguration] Reading configuration from configFile=proxy-invalida.yaml
+2026/11/02 11:35:57 [controller.Handle] Listening on 0.0.0.0:18080
+2026/11/02 11:35:57 [watchdog.executeEndpoint] Monitored group=ptoss2-i5; endpoint=api-com-oauth2; key=ptoss2-i5_api-com-oauth2; success=true; errors=0; duration=6ms
+2026/11/02 11:35:57 [watchdog.executeEndpoint] Monitored group=ptoss2-i5; endpoint=api-sem-oauth2; key=ptoss2-i5_api-sem-oauth2; success=false; errors=0; duration=1ms
+2026/11/02 11:35:57 [watchdog.executeEndpoint] Monitored group=ptoss2-i5; endpoint=api-oauth2-segredo-errado; key=ptoss2-i5_api-oauth2-segredo-errado; success=false; errors=1; duration=2ms
+2026/11/02 11:35:57 [client.getHTTPClient] THIS SHOULD NOT HAPPEN. Silently ignoring custom proxy due to error: parse "://": missing protocol scheme
+2026/11/02 11:35:57 [watchdog.executeEndpoint] Monitored group=ptoss2-i5; endpoint=proxy-socks5-valido; key=ptoss2-i5_proxy-socks5-valido; success=true; errors=0; duration=1ms
+2026/11/02 11:36:02 [watchdog.executeEndpoint] Monitored group=ptoss2-i5; endpoint=api-com-oauth2; key=ptoss2-i5_api-com-oauth2; success=true; errors=0; duration=3ms
+2026/11/02 11:36:02 [watchdog.executeEndpoint] Monitored group=ptoss2-i5; endpoint=api-sem-oauth2; key=ptoss2-i5_api-sem-oauth2; success=false; errors=0; duration=2ms
+2026/11/02 11:36:02 [watchdog.executeEndpoint] Monitored group=ptoss2-i5; endpoint=api-oauth2-segredo-errado; key=ptoss2-i5_api-oauth2-segredo-errado; success=false; errors=1; duration=3ms
+
+== gatus-tdd-oauth2-iap
+2026/11/02 11:36:04 [config.LoadConfiguration] Reading configuration from configFile=oauth2-iap.yaml
+panic: error parsing config: invalid endpoint _api-oauth2-e-iap: invalid client configuration: oauth2 and identity-aware-proxy cannot be used at the same time
+
+== gatus-tdd-proxy-invalida
+2026/11/02 11:36:05 [config.LoadConfiguration] Reading configuration from configFile=proxy-invalida.yaml
+panic: error parsing config: invalid endpoint ptoss2-i5_proxy-socks5-valido: invalid proxy-url: parse "://": missing protocol scheme
+
+== gatus-tdd-valid
+2026/11/02 11:36:12 [config.LoadConfiguration] Reading configuration from configFile=valid.yaml
+2026/11/02 11:36:12 [controller.Handle] Listening on 0.0.0.0:18080
+2026/11/02 11:36:12 [watchdog.executeEndpoint] Monitored group=ptoss2-i5; endpoint=api-com-oauth2; key=ptoss2-i5_api-com-oauth2; success=true; errors=0; duration=11ms
+2026/11/02 11:36:12 [watchdog.executeEndpoint] Monitored group=ptoss2-i5; endpoint=api-sem-oauth2; key=ptoss2-i5_api-sem-oauth2; success=false; errors=0; duration=1ms
+2026/11/02 11:36:12 [watchdog.executeEndpoint] Monitored group=ptoss2-i5; endpoint=api-oauth2-segredo-errado; key=ptoss2-i5_api-oauth2-segredo-errado; success=false; errors=1; duration=2ms
+2026/11/02 11:36:13 [watchdog.executeEndpoint] Monitored group=ptoss2-i5; endpoint=proxy-socks5-valido; key=ptoss2-i5_proxy-socks5-valido; success=false; errors=1; duration=0s
+2026/11/02 11:36:17 [watchdog.executeEndpoint] Monitored group=ptoss2-i5; endpoint=api-com-oauth2; key=ptoss2-i5_api-com-oauth2; success=true; errors=0; duration=1ms
+2026/11/02 11:36:17 [watchdog.executeEndpoint] Monitored group=ptoss2-i5; endpoint=api-oauth2-segredo-errado; key=ptoss2-i5_api-oauth2-segredo-errado; success=false; errors=1; duration=4ms
+2026/11/02 11:36:22 [watchdog.executeEndpoint] Monitored group=ptoss2-i5; endpoint=api-com-oauth2; key=ptoss2-i5_api-com-oauth2; success=true; errors=0; duration=2ms
+2026/11/02 11:36:32 [watchdog.executeEndpoint] Monitored group=ptoss2-i5; endpoint=api-com-oauth2; key=ptoss2-i5_api-com-oauth2; success=true; errors=0; duration=6ms
+
+== Playwright (dashboard http://127.0.0.1:18080, gatus-tdd + valid.yaml) — /api/v1/endpoints/statuses
+api-com-oauth2: success=true status=200 (x4) — Healthy
+api-oauth2-segredo-errado: success=false, oauth2: "invalid_client" (x4) — Unhealthy
+api-sem-oauth2: success=false status=401 (x4) — Unhealthy
+proxy-socks5-valido: success=false, proxyconnect tcp: dial tcp 127.0.0.1:1: connection refused (x4) — config aceita, proxy SOCKS usado
+Screenshot: e2e-dashboard-oauth2.png

@@ -1,0 +1,41 @@
+web:
+  port: 18080
+endpoints:
+  - name: api-com-oauth2
+    group: ptoss2-i5
+    url: "http://127.0.0.1:18081/api"
+    interval: 5s
+    client:
+      oauth2:
+        token-url: "http://127.0.0.1:18081/token"
+        client-id: "gatus-client"
+        client-secret: "gatus-secret"
+        scopes: ["monitoring.read"]
+    conditions:
+      - "[STATUS] == 200"
+  - name: api-sem-oauth2
+    group: ptoss2-i5
+    url: "http://127.0.0.1:18081/api"
+    interval: 5s
+    conditions:
+      - "[STATUS] == 200"
+  - name: api-oauth2-segredo-errado
+    group: ptoss2-i5
+    url: "http://127.0.0.1:18081/api"
+    interval: 5s
+    client:
+      oauth2:
+        token-url: "http://127.0.0.1:18081/token"
+        client-id: "gatus-client"
+        client-secret: "segredo-errado"
+        scopes: ["monitoring.read"]
+    conditions:
+      - "[STATUS] == 200"
+  - name: proxy-socks5-valido
+    group: ptoss2-i5
+    url: "http://127.0.0.1:18081/api"
+    interval: 5s
+    client:
+      proxy-url: "socks5://127.0.0.1:1"
+    conditions:
+      - "[CONNECTED] == true"

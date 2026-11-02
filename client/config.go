@@ -4,6 +4,7 @@ import (
 	"context"
 	"crypto/tls"
 	"errors"
+	"fmt"
 	"net"
 	"net/http"
 	"net/http/cookiejar"
@@ -29,6 +30,9 @@ var (
 	ErrInvalidClientOAuth2Config = errors.New("invalid oauth2 configuration: must define all fields for client credentials flow (token-url, client-id, client-secret, scopes)")
 	ErrInvalidClientIAPConfig    = errors.New("invalid Identity-Aware-Proxy configuration: must define all fields for Google Identity-Aware-Proxy programmatic authentication (audience)")
 	ErrInvalidClientTLSConfig    = errors.New("invalid TLS configuration: certificate-file and private-key-file must be specified")
+
+	ErrInvalidClientOAuth2AndIAPConfig = errors.New("invalid client configuration: oauth2 and identity-aware-proxy cannot be used at the same time")
+	ErrInvalidClientProxyURL           = errors.New("invalid proxy-url")
 
 	defaultConfig = Config{
 		Insecure:       false,
@@ -131,6 +135,14 @@ func (c *Config) ValidateAndSetDefaults() error {
 		if _, err := c.parseDNSResolver(); err != nil {
 			return err
 		}
+	}
+	if c.ProxyURL != "" {
+		if _, err := url.Parse(c.ProxyURL); err != nil {
+			return fmt.Errorf("%w: %w", ErrInvalidClientProxyURL, err)
+		}
+	}
+	if c.HasOAuth2Config() && c.HasIAPConfig() {
+		return ErrInvalidClientOAuth2AndIAPConfig
 	}
 	if c.HasOAuth2Config() && !c.OAuth2Config.isValid() {
 		return ErrInvalidClientOAuth2Config

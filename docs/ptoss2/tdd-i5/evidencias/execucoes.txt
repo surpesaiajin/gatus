@@ -1,0 +1,213 @@
+$ date: 02/11/2026 11:31:41 -0300
+$ go test -mod=readonly -count=1 -timeout=2m -v -run '^TestConfig_PTOSS2_TDD_V01_OAuth2AndIAPConflict$' ./client
+=== RUN   TestConfig_PTOSS2_TDD_V01_OAuth2AndIAPConflict
+=== PAUSE TestConfig_PTOSS2_TDD_V01_OAuth2AndIAPConflict
+=== CONT  TestConfig_PTOSS2_TDD_V01_OAuth2AndIAPConflict
+=== RUN   TestConfig_PTOSS2_TDD_V01_OAuth2AndIAPConflict/both_valid_are_rejected
+=== PAUSE TestConfig_PTOSS2_TDD_V01_OAuth2AndIAPConflict/both_valid_are_rejected
+=== RUN   TestConfig_PTOSS2_TDD_V01_OAuth2AndIAPConflict/invalid_oauth2_with_valid_iap_reports_conflict
+=== PAUSE TestConfig_PTOSS2_TDD_V01_OAuth2AndIAPConflict/invalid_oauth2_with_valid_iap_reports_conflict
+=== RUN   TestConfig_PTOSS2_TDD_V01_OAuth2AndIAPConflict/valid_oauth2_with_invalid_iap_reports_conflict
+=== PAUSE TestConfig_PTOSS2_TDD_V01_OAuth2AndIAPConflict/valid_oauth2_with_invalid_iap_reports_conflict
+=== RUN   TestConfig_PTOSS2_TDD_V01_OAuth2AndIAPConflict/control_only_valid_oauth2_is_accepted
+=== PAUSE TestConfig_PTOSS2_TDD_V01_OAuth2AndIAPConflict/control_only_valid_oauth2_is_accepted
+=== RUN   TestConfig_PTOSS2_TDD_V01_OAuth2AndIAPConflict/control_only_valid_iap_is_accepted
+=== PAUSE TestConfig_PTOSS2_TDD_V01_OAuth2AndIAPConflict/control_only_valid_iap_is_accepted
+=== RUN   TestConfig_PTOSS2_TDD_V01_OAuth2AndIAPConflict/control_no_authentication_is_accepted
+=== PAUSE TestConfig_PTOSS2_TDD_V01_OAuth2AndIAPConflict/control_no_authentication_is_accepted
+=== RUN   TestConfig_PTOSS2_TDD_V01_OAuth2AndIAPConflict/control_only_invalid_oauth2_keeps_oauth2_error
+=== PAUSE TestConfig_PTOSS2_TDD_V01_OAuth2AndIAPConflict/control_only_invalid_oauth2_keeps_oauth2_error
+=== RUN   TestConfig_PTOSS2_TDD_V01_OAuth2AndIAPConflict/control_only_invalid_iap_keeps_iap_error
+=== PAUSE TestConfig_PTOSS2_TDD_V01_OAuth2AndIAPConflict/control_only_invalid_iap_keeps_iap_error
+=== CONT  TestConfig_PTOSS2_TDD_V01_OAuth2AndIAPConflict/both_valid_are_rejected
+=== CONT  TestConfig_PTOSS2_TDD_V01_OAuth2AndIAPConflict/control_only_valid_iap_is_accepted
+=== CONT  TestConfig_PTOSS2_TDD_V01_OAuth2AndIAPConflict/control_no_authentication_is_accepted
+=== CONT  TestConfig_PTOSS2_TDD_V01_OAuth2AndIAPConflict/valid_oauth2_with_invalid_iap_reports_conflict
+=== CONT  TestConfig_PTOSS2_TDD_V01_OAuth2AndIAPConflict/control_only_invalid_oauth2_keeps_oauth2_error
+=== CONT  TestConfig_PTOSS2_TDD_V01_OAuth2AndIAPConflict/invalid_oauth2_with_valid_iap_reports_conflict
+=== NAME  TestConfig_PTOSS2_TDD_V01_OAuth2AndIAPConflict/both_valid_are_rejected
+    config_client_ptoss2_tdd_test.go:82: ValidateAndSetDefaults() error = <nil>, want invalid client configuration: oauth2 and identity-aware-proxy cannot be used at the same time
+=== CONT  TestConfig_PTOSS2_TDD_V01_OAuth2AndIAPConflict/control_only_valid_oauth2_is_accepted
+=== NAME  TestConfig_PTOSS2_TDD_V01_OAuth2AndIAPConflict/valid_oauth2_with_invalid_iap_reports_conflict
+    config_client_ptoss2_tdd_test.go:82: ValidateAndSetDefaults() error = invalid Identity-Aware-Proxy configuration: must define all fields for Google Identity-Aware-Proxy programmatic authentication (audience), want invalid client configuration: oauth2 and identity-aware-proxy cannot be used at the same time
+=== NAME  TestConfig_PTOSS2_TDD_V01_OAuth2AndIAPConflict/invalid_oauth2_with_valid_iap_reports_conflict
+    config_client_ptoss2_tdd_test.go:82: ValidateAndSetDefaults() error = invalid oauth2 configuration: must define all fields for client credentials flow (token-url, client-id, client-secret, scopes), want invalid client configuration: oauth2 and identity-aware-proxy cannot be used at the same time
+=== CONT  TestConfig_PTOSS2_TDD_V01_OAuth2AndIAPConflict/control_only_invalid_iap_keeps_iap_error
+--- FAIL: TestConfig_PTOSS2_TDD_V01_OAuth2AndIAPConflict (0.00s)
+    --- PASS: TestConfig_PTOSS2_TDD_V01_OAuth2AndIAPConflict/control_only_valid_iap_is_accepted (0.00s)
+    --- PASS: TestConfig_PTOSS2_TDD_V01_OAuth2AndIAPConflict/control_no_authentication_is_accepted (0.00s)
+    --- PASS: TestConfig_PTOSS2_TDD_V01_OAuth2AndIAPConflict/control_only_invalid_oauth2_keeps_oauth2_error (0.00s)
+    --- FAIL: TestConfig_PTOSS2_TDD_V01_OAuth2AndIAPConflict/both_valid_are_rejected (0.00s)
+    --- PASS: TestConfig_PTOSS2_TDD_V01_OAuth2AndIAPConflict/control_only_valid_oauth2_is_accepted (0.00s)
+    --- FAIL: TestConfig_PTOSS2_TDD_V01_OAuth2AndIAPConflict/valid_oauth2_with_invalid_iap_reports_conflict (0.00s)
+    --- FAIL: TestConfig_PTOSS2_TDD_V01_OAuth2AndIAPConflict/invalid_oauth2_with_valid_iap_reports_conflict (0.00s)
+    --- PASS: TestConfig_PTOSS2_TDD_V01_OAuth2AndIAPConflict/control_only_invalid_iap_keeps_iap_error (0.00s)
+FAIL
+FAIL	github.com/TwiN/gatus/v5/client	0.458s
+FAIL
+exit 1
+
+$ date: 02/11/2026 11:31:54 -0300
+$ go test -mod=readonly -count=1 -timeout=2m -v -run '^TestConfig_PTOSS2_TDD_V01_OAuth2AndIAPConflict$' ./client
+=== RUN   TestConfig_PTOSS2_TDD_V01_OAuth2AndIAPConflict
+=== PAUSE TestConfig_PTOSS2_TDD_V01_OAuth2AndIAPConflict
+=== CONT  TestConfig_PTOSS2_TDD_V01_OAuth2AndIAPConflict
+=== RUN   TestConfig_PTOSS2_TDD_V01_OAuth2AndIAPConflict/both_valid_are_rejected
+=== PAUSE TestConfig_PTOSS2_TDD_V01_OAuth2AndIAPConflict/both_valid_are_rejected
+=== RUN   TestConfig_PTOSS2_TDD_V01_OAuth2AndIAPConflict/invalid_oauth2_with_valid_iap_reports_conflict
+=== PAUSE TestConfig_PTOSS2_TDD_V01_OAuth2AndIAPConflict/invalid_oauth2_with_valid_iap_reports_conflict
+=== RUN   TestConfig_PTOSS2_TDD_V01_OAuth2AndIAPConflict/valid_oauth2_with_invalid_iap_reports_conflict
+=== PAUSE TestConfig_PTOSS2_TDD_V01_OAuth2AndIAPConflict/valid_oauth2_with_invalid_iap_reports_conflict
+=== RUN   TestConfig_PTOSS2_TDD_V01_OAuth2AndIAPConflict/control_only_valid_oauth2_is_accepted
+=== PAUSE TestConfig_PTOSS2_TDD_V01_OAuth2AndIAPConflict/control_only_valid_oauth2_is_accepted
+=== RUN   TestConfig_PTOSS2_TDD_V01_OAuth2AndIAPConflict/control_only_valid_iap_is_accepted
+=== PAUSE TestConfig_PTOSS2_TDD_V01_OAuth2AndIAPConflict/control_only_valid_iap_is_accepted
+=== RUN   TestConfig_PTOSS2_TDD_V01_OAuth2AndIAPConflict/control_no_authentication_is_accepted
+=== PAUSE TestConfig_PTOSS2_TDD_V01_OAuth2AndIAPConflict/control_no_authentication_is_accepted
+=== RUN   TestConfig_PTOSS2_TDD_V01_OAuth2AndIAPConflict/control_only_invalid_oauth2_keeps_oauth2_error
+=== PAUSE TestConfig_PTOSS2_TDD_V01_OAuth2AndIAPConflict/control_only_invalid_oauth2_keeps_oauth2_error
+=== RUN   TestConfig_PTOSS2_TDD_V01_OAuth2AndIAPConflict/control_only_invalid_iap_keeps_iap_error
+=== PAUSE TestConfig_PTOSS2_TDD_V01_OAuth2AndIAPConflict/control_only_invalid_iap_keeps_iap_error
+=== CONT  TestConfig_PTOSS2_TDD_V01_OAuth2AndIAPConflict/both_valid_are_rejected
+=== CONT  TestConfig_PTOSS2_TDD_V01_OAuth2AndIAPConflict/control_only_valid_iap_is_accepted
+=== CONT  TestConfig_PTOSS2_TDD_V01_OAuth2AndIAPConflict/control_only_invalid_iap_keeps_iap_error
+=== CONT  TestConfig_PTOSS2_TDD_V01_OAuth2AndIAPConflict/invalid_oauth2_with_valid_iap_reports_conflict
+=== CONT  TestConfig_PTOSS2_TDD_V01_OAuth2AndIAPConflict/control_only_invalid_oauth2_keeps_oauth2_error
+=== CONT  TestConfig_PTOSS2_TDD_V01_OAuth2AndIAPConflict/control_no_authentication_is_accepted
+=== CONT  TestConfig_PTOSS2_TDD_V01_OAuth2AndIAPConflict/control_only_valid_oauth2_is_accepted
+=== CONT  TestConfig_PTOSS2_TDD_V01_OAuth2AndIAPConflict/valid_oauth2_with_invalid_iap_reports_conflict
+--- PASS: TestConfig_PTOSS2_TDD_V01_OAuth2AndIAPConflict (0.00s)
+    --- PASS: TestConfig_PTOSS2_TDD_V01_OAuth2AndIAPConflict/both_valid_are_rejected (0.00s)
+    --- PASS: TestConfig_PTOSS2_TDD_V01_OAuth2AndIAPConflict/control_only_invalid_iap_keeps_iap_error (0.00s)
+    --- PASS: TestConfig_PTOSS2_TDD_V01_OAuth2AndIAPConflict/invalid_oauth2_with_valid_iap_reports_conflict (0.00s)
+    --- PASS: TestConfig_PTOSS2_TDD_V01_OAuth2AndIAPConflict/control_only_invalid_oauth2_keeps_oauth2_error (0.00s)
+    --- PASS: TestConfig_PTOSS2_TDD_V01_OAuth2AndIAPConflict/control_no_authentication_is_accepted (0.00s)
+    --- PASS: TestConfig_PTOSS2_TDD_V01_OAuth2AndIAPConflict/control_only_valid_iap_is_accepted (0.00s)
+    --- PASS: TestConfig_PTOSS2_TDD_V01_OAuth2AndIAPConflict/control_only_valid_oauth2_is_accepted (0.00s)
+    --- PASS: TestConfig_PTOSS2_TDD_V01_OAuth2AndIAPConflict/valid_oauth2_with_invalid_iap_reports_conflict (0.00s)
+PASS
+ok  	github.com/TwiN/gatus/v5/client	0.766s
+exit 0
+
+$ date: 02/11/2026 11:32:18 -0300
+$ go test -mod=readonly -count=1 -timeout=2m -v -run '^TestConfig_PTOSS2_TDD_V02_ProxyURL$' ./client
+=== RUN   TestConfig_PTOSS2_TDD_V02_ProxyURL
+=== PAUSE TestConfig_PTOSS2_TDD_V02_ProxyURL
+=== CONT  TestConfig_PTOSS2_TDD_V02_ProxyURL
+=== RUN   TestConfig_PTOSS2_TDD_V02_ProxyURL/missing_scheme_is_rejected
+=== PAUSE TestConfig_PTOSS2_TDD_V02_ProxyURL/missing_scheme_is_rejected
+=== RUN   TestConfig_PTOSS2_TDD_V02_ProxyURL/unclosed_ipv6_bracket_is_rejected
+=== PAUSE TestConfig_PTOSS2_TDD_V02_ProxyURL/unclosed_ipv6_bracket_is_rejected
+=== RUN   TestConfig_PTOSS2_TDD_V02_ProxyURL/non_numeric_port_is_rejected
+=== PAUSE TestConfig_PTOSS2_TDD_V02_ProxyURL/non_numeric_port_is_rejected
+=== RUN   TestConfig_PTOSS2_TDD_V02_ProxyURL/invalid_escape_is_rejected
+=== PAUSE TestConfig_PTOSS2_TDD_V02_ProxyURL/invalid_escape_is_rejected
+=== RUN   TestConfig_PTOSS2_TDD_V02_ProxyURL/control_empty_proxy_is_accepted
+=== PAUSE TestConfig_PTOSS2_TDD_V02_ProxyURL/control_empty_proxy_is_accepted
+=== RUN   TestConfig_PTOSS2_TDD_V02_ProxyURL/control_http_proxy_is_accepted
+=== PAUSE TestConfig_PTOSS2_TDD_V02_ProxyURL/control_http_proxy_is_accepted
+=== RUN   TestConfig_PTOSS2_TDD_V02_ProxyURL/control_https_proxy_is_accepted
+=== PAUSE TestConfig_PTOSS2_TDD_V02_ProxyURL/control_https_proxy_is_accepted
+=== RUN   TestConfig_PTOSS2_TDD_V02_ProxyURL/control_socks5_proxy_is_accepted
+=== PAUSE TestConfig_PTOSS2_TDD_V02_ProxyURL/control_socks5_proxy_is_accepted
+=== RUN   TestConfig_PTOSS2_TDD_V02_ProxyURL/control_socks5h_proxy_with_credentials_is_accepted
+=== PAUSE TestConfig_PTOSS2_TDD_V02_ProxyURL/control_socks5h_proxy_with_credentials_is_accepted
+=== CONT  TestConfig_PTOSS2_TDD_V02_ProxyURL/missing_scheme_is_rejected
+=== CONT  TestConfig_PTOSS2_TDD_V02_ProxyURL/control_http_proxy_is_accepted
+=== CONT  TestConfig_PTOSS2_TDD_V02_ProxyURL/control_https_proxy_is_accepted
+=== CONT  TestConfig_PTOSS2_TDD_V02_ProxyURL/control_socks5h_proxy_with_credentials_is_accepted
+=== CONT  TestConfig_PTOSS2_TDD_V02_ProxyURL/invalid_escape_is_rejected
+=== CONT  TestConfig_PTOSS2_TDD_V02_ProxyURL/control_socks5_proxy_is_accepted
+=== NAME  TestConfig_PTOSS2_TDD_V02_ProxyURL/missing_scheme_is_rejected
+    config_client_ptoss2_tdd_test.go:122: ValidateAndSetDefaults() with proxy "://" error = <nil>, want invalid proxy-url
+=== CONT  TestConfig_PTOSS2_TDD_V02_ProxyURL/control_empty_proxy_is_accepted
+=== CONT  TestConfig_PTOSS2_TDD_V02_ProxyURL/unclosed_ipv6_bracket_is_rejected
+=== NAME  TestConfig_PTOSS2_TDD_V02_ProxyURL/invalid_escape_is_rejected
+    config_client_ptoss2_tdd_test.go:122: ValidateAndSetDefaults() with proxy "http://%zz" error = <nil>, want invalid proxy-url
+=== NAME  TestConfig_PTOSS2_TDD_V02_ProxyURL/unclosed_ipv6_bracket_is_rejected
+    config_client_ptoss2_tdd_test.go:122: ValidateAndSetDefaults() with proxy "http://[::1" error = <nil>, want invalid proxy-url
+=== CONT  TestConfig_PTOSS2_TDD_V02_ProxyURL/non_numeric_port_is_rejected
+    config_client_ptoss2_tdd_test.go:122: ValidateAndSetDefaults() with proxy "http://proxy.local:abc" error = <nil>, want invalid proxy-url
+--- FAIL: TestConfig_PTOSS2_TDD_V02_ProxyURL (0.00s)
+    --- PASS: TestConfig_PTOSS2_TDD_V02_ProxyURL/control_http_proxy_is_accepted (0.00s)
+    --- PASS: TestConfig_PTOSS2_TDD_V02_ProxyURL/control_https_proxy_is_accepted (0.00s)
+    --- PASS: TestConfig_PTOSS2_TDD_V02_ProxyURL/control_socks5h_proxy_with_credentials_is_accepted (0.00s)
+    --- PASS: TestConfig_PTOSS2_TDD_V02_ProxyURL/control_socks5_proxy_is_accepted (0.00s)
+    --- FAIL: TestConfig_PTOSS2_TDD_V02_ProxyURL/missing_scheme_is_rejected (0.00s)
+    --- PASS: TestConfig_PTOSS2_TDD_V02_ProxyURL/control_empty_proxy_is_accepted (0.00s)
+    --- FAIL: TestConfig_PTOSS2_TDD_V02_ProxyURL/invalid_escape_is_rejected (0.00s)
+    --- FAIL: TestConfig_PTOSS2_TDD_V02_ProxyURL/unclosed_ipv6_bracket_is_rejected (0.00s)
+    --- FAIL: TestConfig_PTOSS2_TDD_V02_ProxyURL/non_numeric_port_is_rejected (0.00s)
+FAIL
+FAIL	github.com/TwiN/gatus/v5/client	0.462s
+FAIL
+exit 1
+
+$ date: 02/11/2026 11:32:32 -0300
+$ go test -mod=readonly -count=1 -timeout=2m -v -run '^TestConfig_PTOSS2_TDD_V02_ProxyURL$' ./client
+=== RUN   TestConfig_PTOSS2_TDD_V02_ProxyURL
+=== PAUSE TestConfig_PTOSS2_TDD_V02_ProxyURL
+=== CONT  TestConfig_PTOSS2_TDD_V02_ProxyURL
+=== RUN   TestConfig_PTOSS2_TDD_V02_ProxyURL/missing_scheme_is_rejected
+=== PAUSE TestConfig_PTOSS2_TDD_V02_ProxyURL/missing_scheme_is_rejected
+=== RUN   TestConfig_PTOSS2_TDD_V02_ProxyURL/unclosed_ipv6_bracket_is_rejected
+=== PAUSE TestConfig_PTOSS2_TDD_V02_ProxyURL/unclosed_ipv6_bracket_is_rejected
+=== RUN   TestConfig_PTOSS2_TDD_V02_ProxyURL/non_numeric_port_is_rejected
+=== PAUSE TestConfig_PTOSS2_TDD_V02_ProxyURL/non_numeric_port_is_rejected
+=== RUN   TestConfig_PTOSS2_TDD_V02_ProxyURL/invalid_escape_is_rejected
+=== PAUSE TestConfig_PTOSS2_TDD_V02_ProxyURL/invalid_escape_is_rejected
+=== RUN   TestConfig_PTOSS2_TDD_V02_ProxyURL/control_empty_proxy_is_accepted
+=== PAUSE TestConfig_PTOSS2_TDD_V02_ProxyURL/control_empty_proxy_is_accepted
+=== RUN   TestConfig_PTOSS2_TDD_V02_ProxyURL/control_http_proxy_is_accepted
+=== PAUSE TestConfig_PTOSS2_TDD_V02_ProxyURL/control_http_proxy_is_accepted
+=== RUN   TestConfig_PTOSS2_TDD_V02_ProxyURL/control_https_proxy_is_accepted
+=== PAUSE TestConfig_PTOSS2_TDD_V02_ProxyURL/control_https_proxy_is_accepted
+=== RUN   TestConfig_PTOSS2_TDD_V02_ProxyURL/control_socks5_proxy_is_accepted
+=== PAUSE TestConfig_PTOSS2_TDD_V02_ProxyURL/control_socks5_proxy_is_accepted
+=== RUN   TestConfig_PTOSS2_TDD_V02_ProxyURL/control_socks5h_proxy_with_credentials_is_accepted
+=== PAUSE TestConfig_PTOSS2_TDD_V02_ProxyURL/control_socks5h_proxy_with_credentials_is_accepted
+=== CONT  TestConfig_PTOSS2_TDD_V02_ProxyURL/missing_scheme_is_rejected
+=== CONT  TestConfig_PTOSS2_TDD_V02_ProxyURL/control_empty_proxy_is_accepted
+=== CONT  TestConfig_PTOSS2_TDD_V02_ProxyURL/invalid_escape_is_rejected
+=== CONT  TestConfig_PTOSS2_TDD_V02_ProxyURL/control_http_proxy_is_accepted
+=== CONT  TestConfig_PTOSS2_TDD_V02_ProxyURL/control_https_proxy_is_accepted
+=== CONT  TestConfig_PTOSS2_TDD_V02_ProxyURL/control_socks5h_proxy_with_credentials_is_accepted
+=== CONT  TestConfig_PTOSS2_TDD_V02_ProxyURL/non_numeric_port_is_rejected
+=== CONT  TestConfig_PTOSS2_TDD_V02_ProxyURL/control_socks5_proxy_is_accepted
+=== CONT  TestConfig_PTOSS2_TDD_V02_ProxyURL/unclosed_ipv6_bracket_is_rejected
+--- PASS: TestConfig_PTOSS2_TDD_V02_ProxyURL (0.00s)
+    --- PASS: TestConfig_PTOSS2_TDD_V02_ProxyURL/missing_scheme_is_rejected (0.00s)
+    --- PASS: TestConfig_PTOSS2_TDD_V02_ProxyURL/control_empty_proxy_is_accepted (0.00s)
+    --- PASS: TestConfig_PTOSS2_TDD_V02_ProxyURL/control_http_proxy_is_accepted (0.00s)
+    --- PASS: TestConfig_PTOSS2_TDD_V02_ProxyURL/control_https_proxy_is_accepted (0.00s)
+    --- PASS: TestConfig_PTOSS2_TDD_V02_ProxyURL/control_socks5h_proxy_with_credentials_is_accepted (0.00s)
+    --- PASS: TestConfig_PTOSS2_TDD_V02_ProxyURL/control_socks5_proxy_is_accepted (0.00s)
+    --- PASS: TestConfig_PTOSS2_TDD_V02_ProxyURL/invalid_escape_is_rejected (0.00s)
+    --- PASS: TestConfig_PTOSS2_TDD_V02_ProxyURL/unclosed_ipv6_bracket_is_rejected (0.00s)
+    --- PASS: TestConfig_PTOSS2_TDD_V02_ProxyURL/non_numeric_port_is_rejected (0.00s)
+PASS
+ok  	github.com/TwiN/gatus/v5/client	0.478s
+exit 0
+
+== Regressão final (9fdce838)
+$ date: 02/11/2026 11:34:29 -0300
+$ go test -mod=readonly -count=1 -timeout=2m -v -covermode=atomic -coverprofile=client.cover.out -run '^TestConfig_' ./client
+--- PASS: TestConfig_getHTTPClient (0.00s)
+--- PASS: TestConfig_getHTTPClient_withCookieJar (0.00s)
+--- PASS: TestConfig_ValidateAndSetDefaults_withCustomDNSResolver (0.00s)
+--- PASS: TestConfig_getHTTPClient_withCustomProxyURL (0.00s)
+--- PASS: TestConfig_TlsIsValid (0.02s)
+--- PASS: TestConfig_PTOSS2_F1_WhiteBox (0.00s)
+--- PASS: TestConfig_PTOSS2_F5_OAuth2WhiteBoxCaller (0.00s)
+--- PASS: TestConfig_PTOSS2_F5_OAuth2WhiteBox (0.00s)
+--- PASS: TestConfig_PTOSS2_F5_OAuth2BlackBoxPresenceOnly (0.00s)
+--- PASS: TestConfig_PTOSS2_F5_OAuth2BlackBox (0.00s)
+--- PASS: TestConfig_PTOSS2_F1_EmptyOverrideUsesDefaultResolver (0.00s)
+--- PASS: TestConfig_PTOSS2_TDD_V01_OAuth2AndIAPConflict (0.03s)
+--- PASS: TestConfig_PTOSS2_TDD_V02_DNSResolverNetwork (0.00s)
+--- PASS: TestConfig_PTOSS2_TDD_V02_ProxyURL (0.00s)
+--- PASS: TestConfig_PTOSS2_F1_BlackBox (0.00s)
+--- PASS: TestConfig_PTOSS2_TDD_V01_DNSResolverSuffix (0.00s)
+coverage: 14.2% of statements
+ok  	github.com/TwiN/gatus/v5/client	0.740s	coverage: 14.2% of statements
+exit 0
