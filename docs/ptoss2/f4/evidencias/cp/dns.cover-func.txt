@@ -1,0 +1,2 @@
+github.com/TwiN/gatus/v5/config/endpoint/dns/dns.go:27:	ValidateAndSetDefault	100.0%
+total:							(statements)		100.0%

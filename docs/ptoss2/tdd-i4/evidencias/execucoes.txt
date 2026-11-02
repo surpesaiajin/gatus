@@ -1,0 +1,888 @@
+PTOSS-2 / I4 - registros de Red, Green e regressao dos ciclos V07 e V08 (dns.Config.ValidateAndSetDefault)
+Responsavel: leonardoabezerra. Go 1.27.0 linux/amd64 na imagem oficial golang:1.27.0 (Docker Desktop, host Windows 11).
+Horarios do host, UTC-03. Saidas integrais; cada bloco e uma execucao real, em ordem.
+Base: HEAD 0437dd85 com a parte 1 (F4) presente na arvore de trabalho, sem commits intermediarios; os hashes git identificam o conteudo executado.
+Reexecucao de 02/11/2026 com os identificadores V07/V08 da numeracao da equipe. A primeira execucao (12:24-12:27) usou os
+mesmos testes e produtos com os nomes V01/V02 e teve as mesmas contagens de PASS/FAIL.
+
+==============================================================================
+V07 RED - teste de tipos sem distincao de maiusculas, produto inalterado
+Inicio: 2026-11-02T14:04:11.503-03:00
+Fim: 2026-11-02T14:04:12.663-03:00
+Branch: ptoss2-dns-lookup; HEAD: 0437dd85d9663b97e5fc4afe7f6fe59f5590e014
+Estado de config/endpoint/dns (git status --porcelain):
+  ?? config/endpoint/dns/dns_ptoss2_tdd_test.go
+  ?? config/endpoint/dns/dns_ptoss2_test.go
+  ?? config/endpoint/dns/dns_ptoss2_whitebox_test.go
+Hash git (git hash-object) dos arquivos executados:
+  47a29bdc4682b1d3e46ce7611c00d95939fb399e  config/endpoint/dns/dns.go
+  68625f25b13af2d1b680f0a5ac2a8f07c676a5e8  config/endpoint/dns/dns_ptoss2_tdd_test.go
+  e88cec91360516421f99c60bd1961d133a38619f  config/endpoint/dns/dns_ptoss2_test.go
+  c85a82fb00b0f32ed3559533e6adf7363a95ee4e  config/endpoint/dns/dns_ptoss2_whitebox_test.go
+  57e96296c263f89676328ea7f584972a99310311  config/endpoint/dns/dns_test.go
+Comando: go test -mod=readonly -count=1 -v -run ^TestConfig_PTOSS2_TDD_V07_QueryTypeCase$ ./config/endpoint/dns
+Exit: 1
+Resumo: funcoes 0 PASS / 1 FAIL; subtestes 3 PASS / 4 FAIL; SKIP 0; exit 1
+Saida:
+=== RUN   TestConfig_PTOSS2_TDD_V07_QueryTypeCase
+=== PAUSE TestConfig_PTOSS2_TDD_V07_QueryTypeCase
+=== CONT  TestConfig_PTOSS2_TDD_V07_QueryTypeCase
+=== RUN   TestConfig_PTOSS2_TDD_V07_QueryTypeCase/lowercase_a
+=== PAUSE TestConfig_PTOSS2_TDD_V07_QueryTypeCase/lowercase_a
+=== RUN   TestConfig_PTOSS2_TDD_V07_QueryTypeCase/mixed_case_mx
+=== PAUSE TestConfig_PTOSS2_TDD_V07_QueryTypeCase/mixed_case_mx
+=== RUN   TestConfig_PTOSS2_TDD_V07_QueryTypeCase/lowercase_aaaa
+=== PAUSE TestConfig_PTOSS2_TDD_V07_QueryTypeCase/lowercase_aaaa
+=== RUN   TestConfig_PTOSS2_TDD_V07_QueryTypeCase/capitalized_cname
+=== PAUSE TestConfig_PTOSS2_TDD_V07_QueryTypeCase/capitalized_cname
+=== RUN   TestConfig_PTOSS2_TDD_V07_QueryTypeCase/uppercase_a_is_kept
+=== PAUSE TestConfig_PTOSS2_TDD_V07_QueryTypeCase/uppercase_a_is_kept
+=== RUN   TestConfig_PTOSS2_TDD_V07_QueryTypeCase/unknown_lowercase_type_is_rejected
+=== PAUSE TestConfig_PTOSS2_TDD_V07_QueryTypeCase/unknown_lowercase_type_is_rejected
+=== RUN   TestConfig_PTOSS2_TDD_V07_QueryTypeCase/unknown_mixed_case_type_is_rejected
+=== PAUSE TestConfig_PTOSS2_TDD_V07_QueryTypeCase/unknown_mixed_case_type_is_rejected
+=== CONT  TestConfig_PTOSS2_TDD_V07_QueryTypeCase/lowercase_a
+    dns_ptoss2_tdd_test.go:64: ValidateAndSetDefault(type "a") error = invalid query type in the DNS configuration, want <nil>
+=== CONT  TestConfig_PTOSS2_TDD_V07_QueryTypeCase/unknown_mixed_case_type_is_rejected
+=== CONT  TestConfig_PTOSS2_TDD_V07_QueryTypeCase/unknown_lowercase_type_is_rejected
+=== CONT  TestConfig_PTOSS2_TDD_V07_QueryTypeCase/uppercase_a_is_kept
+=== CONT  TestConfig_PTOSS2_TDD_V07_QueryTypeCase/capitalized_cname
+    dns_ptoss2_tdd_test.go:64: ValidateAndSetDefault(type "Cname") error = invalid query type in the DNS configuration, want <nil>
+=== CONT  TestConfig_PTOSS2_TDD_V07_QueryTypeCase/lowercase_aaaa
+    dns_ptoss2_tdd_test.go:64: ValidateAndSetDefault(type "aaaa") error = invalid query type in the DNS configuration, want <nil>
+=== CONT  TestConfig_PTOSS2_TDD_V07_QueryTypeCase/mixed_case_mx
+    dns_ptoss2_tdd_test.go:64: ValidateAndSetDefault(type "mX") error = invalid query type in the DNS configuration, want <nil>
+--- FAIL: TestConfig_PTOSS2_TDD_V07_QueryTypeCase (0.00s)
+    --- FAIL: TestConfig_PTOSS2_TDD_V07_QueryTypeCase/lowercase_a (0.00s)
+    --- PASS: TestConfig_PTOSS2_TDD_V07_QueryTypeCase/unknown_mixed_case_type_is_rejected (0.00s)
+    --- PASS: TestConfig_PTOSS2_TDD_V07_QueryTypeCase/unknown_lowercase_type_is_rejected (0.00s)
+    --- PASS: TestConfig_PTOSS2_TDD_V07_QueryTypeCase/uppercase_a_is_kept (0.00s)
+    --- FAIL: TestConfig_PTOSS2_TDD_V07_QueryTypeCase/capitalized_cname (0.00s)
+    --- FAIL: TestConfig_PTOSS2_TDD_V07_QueryTypeCase/lowercase_aaaa (0.00s)
+    --- FAIL: TestConfig_PTOSS2_TDD_V07_QueryTypeCase/mixed_case_mx (0.00s)
+FAIL
+FAIL	github.com/TwiN/gatus/v5/config/endpoint/dns	0.005s
+FAIL
+
+==============================================================================
+V07 GREEN - strings.ToUpper antes da consulta a dns.StringToType
+Inicio: 2026-11-02T14:04:12.934-03:00
+Fim: 2026-11-02T14:04:14.109-03:00
+Branch: ptoss2-dns-lookup; HEAD: 0437dd85d9663b97e5fc4afe7f6fe59f5590e014
+Estado de config/endpoint/dns (git status --porcelain):
+   M config/endpoint/dns/dns.go
+  ?? config/endpoint/dns/dns_ptoss2_tdd_test.go
+  ?? config/endpoint/dns/dns_ptoss2_test.go
+  ?? config/endpoint/dns/dns_ptoss2_whitebox_test.go
+Hash git (git hash-object) dos arquivos executados:
+  af16018e4f8e55cc3085f90a4f6292067e047fd0  config/endpoint/dns/dns.go
+  68625f25b13af2d1b680f0a5ac2a8f07c676a5e8  config/endpoint/dns/dns_ptoss2_tdd_test.go
+  e88cec91360516421f99c60bd1961d133a38619f  config/endpoint/dns/dns_ptoss2_test.go
+  c85a82fb00b0f32ed3559533e6adf7363a95ee4e  config/endpoint/dns/dns_ptoss2_whitebox_test.go
+  57e96296c263f89676328ea7f584972a99310311  config/endpoint/dns/dns_test.go
+Comando: go test -mod=readonly -count=1 -v -run ^TestConfig_PTOSS2_TDD_V07_QueryTypeCase$ ./config/endpoint/dns
+Exit: 0
+Resumo: funcoes 1 PASS / 0 FAIL; subtestes 7 PASS / 0 FAIL; SKIP 0; exit 0
+Saida:
+=== RUN   TestConfig_PTOSS2_TDD_V07_QueryTypeCase
+=== PAUSE TestConfig_PTOSS2_TDD_V07_QueryTypeCase
+=== CONT  TestConfig_PTOSS2_TDD_V07_QueryTypeCase
+=== RUN   TestConfig_PTOSS2_TDD_V07_QueryTypeCase/lowercase_a
+=== PAUSE TestConfig_PTOSS2_TDD_V07_QueryTypeCase/lowercase_a
+=== RUN   TestConfig_PTOSS2_TDD_V07_QueryTypeCase/mixed_case_mx
+=== PAUSE TestConfig_PTOSS2_TDD_V07_QueryTypeCase/mixed_case_mx
+=== RUN   TestConfig_PTOSS2_TDD_V07_QueryTypeCase/lowercase_aaaa
+=== PAUSE TestConfig_PTOSS2_TDD_V07_QueryTypeCase/lowercase_aaaa
+=== RUN   TestConfig_PTOSS2_TDD_V07_QueryTypeCase/capitalized_cname
+=== PAUSE TestConfig_PTOSS2_TDD_V07_QueryTypeCase/capitalized_cname
+=== RUN   TestConfig_PTOSS2_TDD_V07_QueryTypeCase/uppercase_a_is_kept
+=== PAUSE TestConfig_PTOSS2_TDD_V07_QueryTypeCase/uppercase_a_is_kept
+=== RUN   TestConfig_PTOSS2_TDD_V07_QueryTypeCase/unknown_lowercase_type_is_rejected
+=== PAUSE TestConfig_PTOSS2_TDD_V07_QueryTypeCase/unknown_lowercase_type_is_rejected
+=== RUN   TestConfig_PTOSS2_TDD_V07_QueryTypeCase/unknown_mixed_case_type_is_rejected
+=== PAUSE TestConfig_PTOSS2_TDD_V07_QueryTypeCase/unknown_mixed_case_type_is_rejected
+=== CONT  TestConfig_PTOSS2_TDD_V07_QueryTypeCase/lowercase_a
+=== CONT  TestConfig_PTOSS2_TDD_V07_QueryTypeCase/capitalized_cname
+=== CONT  TestConfig_PTOSS2_TDD_V07_QueryTypeCase/lowercase_aaaa
+=== CONT  TestConfig_PTOSS2_TDD_V07_QueryTypeCase/mixed_case_mx
+=== CONT  TestConfig_PTOSS2_TDD_V07_QueryTypeCase/unknown_mixed_case_type_is_rejected
+=== CONT  TestConfig_PTOSS2_TDD_V07_QueryTypeCase/unknown_lowercase_type_is_rejected
+=== CONT  TestConfig_PTOSS2_TDD_V07_QueryTypeCase/uppercase_a_is_kept
+--- PASS: TestConfig_PTOSS2_TDD_V07_QueryTypeCase (0.00s)
+    --- PASS: TestConfig_PTOSS2_TDD_V07_QueryTypeCase/lowercase_a (0.00s)
+    --- PASS: TestConfig_PTOSS2_TDD_V07_QueryTypeCase/capitalized_cname (0.00s)
+    --- PASS: TestConfig_PTOSS2_TDD_V07_QueryTypeCase/lowercase_aaaa (0.00s)
+    --- PASS: TestConfig_PTOSS2_TDD_V07_QueryTypeCase/mixed_case_mx (0.00s)
+    --- PASS: TestConfig_PTOSS2_TDD_V07_QueryTypeCase/unknown_mixed_case_type_is_rejected (0.00s)
+    --- PASS: TestConfig_PTOSS2_TDD_V07_QueryTypeCase/unknown_lowercase_type_is_rejected (0.00s)
+    --- PASS: TestConfig_PTOSS2_TDD_V07_QueryTypeCase/uppercase_a_is_kept (0.00s)
+PASS
+ok  	github.com/TwiN/gatus/v5/config/endpoint/dns	0.006s
+
+==============================================================================
+V07 GREEN - regressao do pacote dns (herdados + F4 + V07)
+Inicio: 2026-11-02T14:04:14.371-03:00
+Fim: 2026-11-02T14:04:15.448-03:00
+Branch: ptoss2-dns-lookup; HEAD: 0437dd85d9663b97e5fc4afe7f6fe59f5590e014
+Estado de config/endpoint/dns (git status --porcelain):
+   M config/endpoint/dns/dns.go
+  ?? config/endpoint/dns/dns_ptoss2_tdd_test.go
+  ?? config/endpoint/dns/dns_ptoss2_test.go
+  ?? config/endpoint/dns/dns_ptoss2_whitebox_test.go
+Hash git (git hash-object) dos arquivos executados:
+  af16018e4f8e55cc3085f90a4f6292067e047fd0  config/endpoint/dns/dns.go
+  68625f25b13af2d1b680f0a5ac2a8f07c676a5e8  config/endpoint/dns/dns_ptoss2_tdd_test.go
+  e88cec91360516421f99c60bd1961d133a38619f  config/endpoint/dns/dns_ptoss2_test.go
+  c85a82fb00b0f32ed3559533e6adf7363a95ee4e  config/endpoint/dns/dns_ptoss2_whitebox_test.go
+  57e96296c263f89676328ea7f584972a99310311  config/endpoint/dns/dns_test.go
+Comando: go test -mod=readonly -count=1 -v ./config/endpoint/dns
+Exit: 0
+Resumo: funcoes 5 PASS / 0 FAIL; subtestes 22 PASS / 0 FAIL; SKIP 0; exit 0
+Saida:
+=== RUN   TestConfig_PTOSS2_TDD_V07_QueryTypeCase
+=== PAUSE TestConfig_PTOSS2_TDD_V07_QueryTypeCase
+=== RUN   TestConfig_PTOSS2_F4_BlackBox
+=== PAUSE TestConfig_PTOSS2_F4_BlackBox
+=== RUN   TestConfig_PTOSS2_F4_WhiteBox
+=== PAUSE TestConfig_PTOSS2_F4_WhiteBox
+=== RUN   TestConfig_ValidateAndSetDefault
+--- PASS: TestConfig_ValidateAndSetDefault (0.00s)
+=== RUN   TestConfig_ValidateAndSetDefaultsWithInvalidDNSQueryType
+--- PASS: TestConfig_ValidateAndSetDefaultsWithInvalidDNSQueryType (0.00s)
+=== CONT  TestConfig_PTOSS2_TDD_V07_QueryTypeCase
+=== RUN   TestConfig_PTOSS2_TDD_V07_QueryTypeCase/lowercase_a
+=== CONT  TestConfig_PTOSS2_F4_WhiteBox
+=== RUN   TestConfig_PTOSS2_F4_WhiteBox/CB01_empty_name_is_reported_before_invalid_type
+=== PAUSE TestConfig_PTOSS2_F4_WhiteBox/CB01_empty_name_is_reported_before_invalid_type
+=== RUN   TestConfig_PTOSS2_F4_WhiteBox/CB02_relative_name_is_normalized_before_type_error
+=== PAUSE TestConfig_PTOSS2_F4_WhiteBox/CB02_relative_name_is_normalized_before_type_error
+=== RUN   TestConfig_PTOSS2_F4_WhiteBox/CB03_fqdn_with_invalid_type_keeps_name
+=== PAUSE TestConfig_PTOSS2_F4_WhiteBox/CB03_fqdn_with_invalid_type_keeps_name
+=== RUN   TestConfig_PTOSS2_F4_WhiteBox/CB04_meta_type_from_library_table_is_accepted
+=== CONT  TestConfig_PTOSS2_F4_BlackBox
+=== RUN   TestConfig_PTOSS2_F4_BlackBox/CP01_documented_A_query_is_normalized_to_fqdn
+=== PAUSE TestConfig_PTOSS2_F4_BlackBox/CP01_documented_A_query_is_normalized_to_fqdn
+=== PAUSE TestConfig_PTOSS2_F4_WhiteBox/CB04_meta_type_from_library_table_is_accepted
+=== CONT  TestConfig_PTOSS2_F4_WhiteBox/CB01_empty_name_is_reported_before_invalid_type
+=== CONT  TestConfig_PTOSS2_F4_WhiteBox/CB04_meta_type_from_library_table_is_accepted
+=== CONT  TestConfig_PTOSS2_F4_WhiteBox/CB03_fqdn_with_invalid_type_keeps_name
+=== CONT  TestConfig_PTOSS2_F4_WhiteBox/CB02_relative_name_is_normalized_before_type_error
+--- PASS: TestConfig_PTOSS2_F4_WhiteBox (0.00s)
+    --- PASS: TestConfig_PTOSS2_F4_WhiteBox/CB01_empty_name_is_reported_before_invalid_type (0.00s)
+    --- PASS: TestConfig_PTOSS2_F4_WhiteBox/CB04_meta_type_from_library_table_is_accepted (0.00s)
+    --- PASS: TestConfig_PTOSS2_F4_WhiteBox/CB03_fqdn_with_invalid_type_keeps_name (0.00s)
+    --- PASS: TestConfig_PTOSS2_F4_WhiteBox/CB02_relative_name_is_normalized_before_type_error (0.00s)
+=== RUN   TestConfig_PTOSS2_F4_BlackBox/CP02_fqdn_query_name_is_kept
+=== PAUSE TestConfig_PTOSS2_F4_BlackBox/CP02_fqdn_query_name_is_kept
+=== RUN   TestConfig_PTOSS2_F4_BlackBox/CP03_root_name_is_kept
+=== PAUSE TestConfig_PTOSS2_F4_BlackBox/CP03_root_name_is_kept
+=== RUN   TestConfig_PTOSS2_F4_BlackBox/CP04_single_character_name_is_normalized
+=== PAUSE TestConfig_PTOSS2_TDD_V07_QueryTypeCase/lowercase_a
+=== PAUSE TestConfig_PTOSS2_F4_BlackBox/CP04_single_character_name_is_normalized
+=== RUN   TestConfig_PTOSS2_F4_BlackBox/CP05_empty_query_name_is_rejected
+=== RUN   TestConfig_PTOSS2_TDD_V07_QueryTypeCase/mixed_case_mx
+=== PAUSE TestConfig_PTOSS2_TDD_V07_QueryTypeCase/mixed_case_mx
+=== RUN   TestConfig_PTOSS2_TDD_V07_QueryTypeCase/lowercase_aaaa
+=== PAUSE TestConfig_PTOSS2_TDD_V07_QueryTypeCase/lowercase_aaaa
+=== RUN   TestConfig_PTOSS2_TDD_V07_QueryTypeCase/capitalized_cname
+=== PAUSE TestConfig_PTOSS2_TDD_V07_QueryTypeCase/capitalized_cname
+=== RUN   TestConfig_PTOSS2_TDD_V07_QueryTypeCase/uppercase_a_is_kept
+=== PAUSE TestConfig_PTOSS2_TDD_V07_QueryTypeCase/uppercase_a_is_kept
+=== RUN   TestConfig_PTOSS2_TDD_V07_QueryTypeCase/unknown_lowercase_type_is_rejected
+=== PAUSE TestConfig_PTOSS2_TDD_V07_QueryTypeCase/unknown_lowercase_type_is_rejected
+=== RUN   TestConfig_PTOSS2_TDD_V07_QueryTypeCase/unknown_mixed_case_type_is_rejected
+=== PAUSE TestConfig_PTOSS2_TDD_V07_QueryTypeCase/unknown_mixed_case_type_is_rejected
+=== CONT  TestConfig_PTOSS2_TDD_V07_QueryTypeCase/lowercase_a
+=== CONT  TestConfig_PTOSS2_TDD_V07_QueryTypeCase/capitalized_cname
+=== CONT  TestConfig_PTOSS2_TDD_V07_QueryTypeCase/lowercase_aaaa
+=== CONT  TestConfig_PTOSS2_TDD_V07_QueryTypeCase/mixed_case_mx
+=== CONT  TestConfig_PTOSS2_TDD_V07_QueryTypeCase/unknown_mixed_case_type_is_rejected
+=== CONT  TestConfig_PTOSS2_TDD_V07_QueryTypeCase/uppercase_a_is_kept
+=== CONT  TestConfig_PTOSS2_TDD_V07_QueryTypeCase/unknown_lowercase_type_is_rejected
+--- PASS: TestConfig_PTOSS2_TDD_V07_QueryTypeCase (0.00s)
+    --- PASS: TestConfig_PTOSS2_TDD_V07_QueryTypeCase/lowercase_a (0.00s)
+    --- PASS: TestConfig_PTOSS2_TDD_V07_QueryTypeCase/capitalized_cname (0.00s)
+    --- PASS: TestConfig_PTOSS2_TDD_V07_QueryTypeCase/lowercase_aaaa (0.00s)
+    --- PASS: TestConfig_PTOSS2_TDD_V07_QueryTypeCase/mixed_case_mx (0.00s)
+    --- PASS: TestConfig_PTOSS2_TDD_V07_QueryTypeCase/unknown_mixed_case_type_is_rejected (0.00s)
+    --- PASS: TestConfig_PTOSS2_TDD_V07_QueryTypeCase/uppercase_a_is_kept (0.00s)
+    --- PASS: TestConfig_PTOSS2_TDD_V07_QueryTypeCase/unknown_lowercase_type_is_rejected (0.00s)
+=== PAUSE TestConfig_PTOSS2_F4_BlackBox/CP05_empty_query_name_is_rejected
+=== RUN   TestConfig_PTOSS2_F4_BlackBox/CP06_AAAA_query_is_accepted
+=== PAUSE TestConfig_PTOSS2_F4_BlackBox/CP06_AAAA_query_is_accepted
+=== RUN   TestConfig_PTOSS2_F4_BlackBox/CP07_documented_MX_query_is_accepted
+=== PAUSE TestConfig_PTOSS2_F4_BlackBox/CP07_documented_MX_query_is_accepted
+=== RUN   TestConfig_PTOSS2_F4_BlackBox/CP08_CNAME_query_is_accepted
+=== PAUSE TestConfig_PTOSS2_F4_BlackBox/CP08_CNAME_query_is_accepted
+=== RUN   TestConfig_PTOSS2_F4_BlackBox/CP09_empty_query_type_is_rejected
+=== PAUSE TestConfig_PTOSS2_F4_BlackBox/CP09_empty_query_type_is_rejected
+=== RUN   TestConfig_PTOSS2_F4_BlackBox/CP10_unknown_query_type_is_rejected
+=== PAUSE TestConfig_PTOSS2_F4_BlackBox/CP10_unknown_query_type_is_rejected
+=== RUN   TestConfig_PTOSS2_F4_BlackBox/CP11_type_one_letter_longer_than_AAAA_is_rejected
+=== PAUSE TestConfig_PTOSS2_F4_BlackBox/CP11_type_one_letter_longer_than_AAAA_is_rejected
+=== CONT  TestConfig_PTOSS2_F4_BlackBox/CP01_documented_A_query_is_normalized_to_fqdn
+=== CONT  TestConfig_PTOSS2_F4_BlackBox/CP11_type_one_letter_longer_than_AAAA_is_rejected
+=== CONT  TestConfig_PTOSS2_F4_BlackBox/CP10_unknown_query_type_is_rejected
+=== CONT  TestConfig_PTOSS2_F4_BlackBox/CP09_empty_query_type_is_rejected
+=== CONT  TestConfig_PTOSS2_F4_BlackBox/CP08_CNAME_query_is_accepted
+=== CONT  TestConfig_PTOSS2_F4_BlackBox/CP07_documented_MX_query_is_accepted
+=== CONT  TestConfig_PTOSS2_F4_BlackBox/CP06_AAAA_query_is_accepted
+=== CONT  TestConfig_PTOSS2_F4_BlackBox/CP05_empty_query_name_is_rejected
+=== CONT  TestConfig_PTOSS2_F4_BlackBox/CP04_single_character_name_is_normalized
+=== CONT  TestConfig_PTOSS2_F4_BlackBox/CP03_root_name_is_kept
+=== CONT  TestConfig_PTOSS2_F4_BlackBox/CP02_fqdn_query_name_is_kept
+--- PASS: TestConfig_PTOSS2_F4_BlackBox (0.00s)
+    --- PASS: TestConfig_PTOSS2_F4_BlackBox/CP01_documented_A_query_is_normalized_to_fqdn (0.00s)
+    --- PASS: TestConfig_PTOSS2_F4_BlackBox/CP11_type_one_letter_longer_than_AAAA_is_rejected (0.00s)
+    --- PASS: TestConfig_PTOSS2_F4_BlackBox/CP10_unknown_query_type_is_rejected (0.00s)
+    --- PASS: TestConfig_PTOSS2_F4_BlackBox/CP09_empty_query_type_is_rejected (0.00s)
+    --- PASS: TestConfig_PTOSS2_F4_BlackBox/CP08_CNAME_query_is_accepted (0.00s)
+    --- PASS: TestConfig_PTOSS2_F4_BlackBox/CP07_documented_MX_query_is_accepted (0.00s)
+    --- PASS: TestConfig_PTOSS2_F4_BlackBox/CP06_AAAA_query_is_accepted (0.00s)
+    --- PASS: TestConfig_PTOSS2_F4_BlackBox/CP05_empty_query_name_is_rejected (0.00s)
+    --- PASS: TestConfig_PTOSS2_F4_BlackBox/CP04_single_character_name_is_normalized (0.00s)
+    --- PASS: TestConfig_PTOSS2_F4_BlackBox/CP03_root_name_is_kept (0.00s)
+    --- PASS: TestConfig_PTOSS2_F4_BlackBox/CP02_fqdn_query_name_is_kept (0.00s)
+PASS
+ok  	github.com/TwiN/gatus/v5/config/endpoint/dns	0.006s
+
+==============================================================================
+V07 GREEN - regressao de ./config/... (pacotes de configuracao)
+Inicio: 2026-11-02T14:04:15.715-03:00
+Fim: 2026-11-02T14:04:35.812-03:00
+Branch: ptoss2-dns-lookup; HEAD: 0437dd85d9663b97e5fc4afe7f6fe59f5590e014
+Estado de config/endpoint/dns (git status --porcelain):
+   M config/endpoint/dns/dns.go
+  ?? config/endpoint/dns/dns_ptoss2_tdd_test.go
+  ?? config/endpoint/dns/dns_ptoss2_test.go
+  ?? config/endpoint/dns/dns_ptoss2_whitebox_test.go
+Hash git (git hash-object) dos arquivos executados:
+  af16018e4f8e55cc3085f90a4f6292067e047fd0  config/endpoint/dns/dns.go
+  68625f25b13af2d1b680f0a5ac2a8f07c676a5e8  config/endpoint/dns/dns_ptoss2_tdd_test.go
+  e88cec91360516421f99c60bd1961d133a38619f  config/endpoint/dns/dns_ptoss2_test.go
+  c85a82fb00b0f32ed3559533e6adf7363a95ee4e  config/endpoint/dns/dns_ptoss2_whitebox_test.go
+  57e96296c263f89676328ea7f584972a99310311  config/endpoint/dns/dns_test.go
+Comando: go test -mod=readonly -count=1 ./config/...
+Exit: 1
+Resumo: funcoes 0 PASS / 1 FAIL; subtestes 0 PASS / 0 FAIL; SKIP 0; exit 1
+Saida:
+ok  	github.com/TwiN/gatus/v5/config	0.028s
+ok  	github.com/TwiN/gatus/v5/config/announcement	0.025s
+ok  	github.com/TwiN/gatus/v5/config/connectivity	0.027s
+ok  	github.com/TwiN/gatus/v5/config/endpoint	3.104s
+ok  	github.com/TwiN/gatus/v5/config/endpoint/dns	0.029s
+?   	github.com/TwiN/gatus/v5/config/endpoint/heartbeat	[no test files]
+ok  	github.com/TwiN/gatus/v5/config/endpoint/ssh	0.027s
+ok  	github.com/TwiN/gatus/v5/config/endpoint/ui	0.027s
+ok  	github.com/TwiN/gatus/v5/config/gontext	0.026s
+ok  	github.com/TwiN/gatus/v5/config/key	0.026s
+ok  	github.com/TwiN/gatus/v5/config/maintenance	0.025s
+?   	github.com/TwiN/gatus/v5/config/remote	[no test files]
+--- FAIL: TestSuite_ExecuteWithAlwaysRunEndpoints (13.17s)
+    suite_test.go:327: expected 3 endpoint results, got 2
+    suite_test.go:333: expected second endpoint to be 'failing-endpoint', got 'cleanup-resource'
+    suite_test.go:336: expected failing-endpoint to fail
+panic: runtime error: index out of range [2] with length 2 [recovered, repanicked]
+
+goroutine 36 [running]:
+testing.tRunner.func1.2({0x15b7fc0, 0x3b143b89e0d8})
+	/usr/local/go/src/testing/testing.go:2123 +0x232
+testing.tRunner.func1()
+	/usr/local/go/src/testing/testing.go:2126 +0x329
+panic({0x15b7fc0?, 0x3b143b89e0d8?})
+	/usr/local/go/src/runtime/panic.go:859 +0x125
+github.com/TwiN/gatus/v5/config/suite.TestSuite_ExecuteWithAlwaysRunEndpoints(0x3b143bb2e908)
+	/src/config/suite/suite_test.go:338 +0x77d
+testing.tRunner(0x3b143bb2e908, 0x1607430)
+	/usr/local/go/src/testing/testing.go:2193 +0xea
+created by testing.(*T).Run in goroutine 1
+	/usr/local/go/src/testing/testing.go:2258 +0x4d4
+FAIL	github.com/TwiN/gatus/v5/config/suite	13.179s
+ok  	github.com/TwiN/gatus/v5/config/tunneling	0.028s
+ok  	github.com/TwiN/gatus/v5/config/tunneling/sshtunnel	0.036s
+ok  	github.com/TwiN/gatus/v5/config/ui	0.007s
+ok  	github.com/TwiN/gatus/v5/config/web	0.054s
+FAIL
+
+==============================================================================
+V08 RED - teste de sintaxe do nome; produto so declara ErrDNSWithInvalidQueryName (sem uso)
+Inicio: 2026-11-02T14:04:36.078-03:00
+Fim: 2026-11-02T14:04:37.418-03:00
+Branch: ptoss2-dns-lookup; HEAD: 0437dd85d9663b97e5fc4afe7f6fe59f5590e014
+Estado de config/endpoint/dns (git status --porcelain):
+   M config/endpoint/dns/dns.go
+  ?? config/endpoint/dns/dns_ptoss2_tdd_test.go
+  ?? config/endpoint/dns/dns_ptoss2_test.go
+  ?? config/endpoint/dns/dns_ptoss2_whitebox_test.go
+Hash git (git hash-object) dos arquivos executados:
+  946960290499eab4972083db1c8e26607f7800e2  config/endpoint/dns/dns.go
+  dc6dd040f7f027939d395435e3dac9a60485957d  config/endpoint/dns/dns_ptoss2_tdd_test.go
+  e88cec91360516421f99c60bd1961d133a38619f  config/endpoint/dns/dns_ptoss2_test.go
+  c85a82fb00b0f32ed3559533e6adf7363a95ee4e  config/endpoint/dns/dns_ptoss2_whitebox_test.go
+  57e96296c263f89676328ea7f584972a99310311  config/endpoint/dns/dns_test.go
+Comando: go test -mod=readonly -count=1 -v -run ^TestConfig_PTOSS2_TDD_V08_QueryNameSyntax$ ./config/endpoint/dns
+Exit: 1
+Resumo: funcoes 0 PASS / 1 FAIL; subtestes 6 PASS / 3 FAIL; SKIP 0; exit 1
+Saida:
+=== RUN   TestConfig_PTOSS2_TDD_V08_QueryNameSyntax
+=== PAUSE TestConfig_PTOSS2_TDD_V08_QueryNameSyntax
+=== CONT  TestConfig_PTOSS2_TDD_V08_QueryNameSyntax
+=== RUN   TestConfig_PTOSS2_TDD_V08_QueryNameSyntax/empty_label_between_dots
+=== PAUSE TestConfig_PTOSS2_TDD_V08_QueryNameSyntax/empty_label_between_dots
+=== RUN   TestConfig_PTOSS2_TDD_V08_QueryNameSyntax/label_with_64_characters
+=== PAUSE TestConfig_PTOSS2_TDD_V08_QueryNameSyntax/label_with_64_characters
+=== RUN   TestConfig_PTOSS2_TDD_V08_QueryNameSyntax/leading_dot
+=== PAUSE TestConfig_PTOSS2_TDD_V08_QueryNameSyntax/leading_dot
+=== RUN   TestConfig_PTOSS2_TDD_V08_QueryNameSyntax/label_with_63_characters_is_kept
+=== PAUSE TestConfig_PTOSS2_TDD_V08_QueryNameSyntax/label_with_63_characters_is_kept
+=== RUN   TestConfig_PTOSS2_TDD_V08_QueryNameSyntax/relative_name_is_kept
+=== PAUSE TestConfig_PTOSS2_TDD_V08_QueryNameSyntax/relative_name_is_kept
+=== RUN   TestConfig_PTOSS2_TDD_V08_QueryNameSyntax/fqdn_is_kept
+=== PAUSE TestConfig_PTOSS2_TDD_V08_QueryNameSyntax/fqdn_is_kept
+=== RUN   TestConfig_PTOSS2_TDD_V08_QueryNameSyntax/root_is_kept
+=== PAUSE TestConfig_PTOSS2_TDD_V08_QueryNameSyntax/root_is_kept
+=== RUN   TestConfig_PTOSS2_TDD_V08_QueryNameSyntax/service_name_with_underscores_is_kept
+=== PAUSE TestConfig_PTOSS2_TDD_V08_QueryNameSyntax/service_name_with_underscores_is_kept
+=== RUN   TestConfig_PTOSS2_TDD_V08_QueryNameSyntax/ipv4_name_for_ptr_is_kept
+=== PAUSE TestConfig_PTOSS2_TDD_V08_QueryNameSyntax/ipv4_name_for_ptr_is_kept
+=== CONT  TestConfig_PTOSS2_TDD_V08_QueryNameSyntax/empty_label_between_dots
+    dns_ptoss2_tdd_test.go:154: ValidateAndSetDefault(name "a..example") error = <nil>, want invalid query name in the DNS configuration
+=== CONT  TestConfig_PTOSS2_TDD_V08_QueryNameSyntax/ipv4_name_for_ptr_is_kept
+=== CONT  TestConfig_PTOSS2_TDD_V08_QueryNameSyntax/service_name_with_underscores_is_kept
+=== CONT  TestConfig_PTOSS2_TDD_V08_QueryNameSyntax/root_is_kept
+=== CONT  TestConfig_PTOSS2_TDD_V08_QueryNameSyntax/fqdn_is_kept
+=== CONT  TestConfig_PTOSS2_TDD_V08_QueryNameSyntax/relative_name_is_kept
+=== CONT  TestConfig_PTOSS2_TDD_V08_QueryNameSyntax/label_with_63_characters_is_kept
+=== CONT  TestConfig_PTOSS2_TDD_V08_QueryNameSyntax/leading_dot
+    dns_ptoss2_tdd_test.go:154: ValidateAndSetDefault(name ".example.com") error = <nil>, want invalid query name in the DNS configuration
+=== CONT  TestConfig_PTOSS2_TDD_V08_QueryNameSyntax/label_with_64_characters
+    dns_ptoss2_tdd_test.go:154: ValidateAndSetDefault(name "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.example.com") error = <nil>, want invalid query name in the DNS configuration
+--- FAIL: TestConfig_PTOSS2_TDD_V08_QueryNameSyntax (0.00s)
+    --- FAIL: TestConfig_PTOSS2_TDD_V08_QueryNameSyntax/empty_label_between_dots (0.00s)
+    --- PASS: TestConfig_PTOSS2_TDD_V08_QueryNameSyntax/ipv4_name_for_ptr_is_kept (0.00s)
+    --- PASS: TestConfig_PTOSS2_TDD_V08_QueryNameSyntax/service_name_with_underscores_is_kept (0.00s)
+    --- PASS: TestConfig_PTOSS2_TDD_V08_QueryNameSyntax/root_is_kept (0.00s)
+    --- PASS: TestConfig_PTOSS2_TDD_V08_QueryNameSyntax/fqdn_is_kept (0.00s)
+    --- PASS: TestConfig_PTOSS2_TDD_V08_QueryNameSyntax/relative_name_is_kept (0.00s)
+    --- PASS: TestConfig_PTOSS2_TDD_V08_QueryNameSyntax/label_with_63_characters_is_kept (0.00s)
+    --- FAIL: TestConfig_PTOSS2_TDD_V08_QueryNameSyntax/leading_dot (0.00s)
+    --- FAIL: TestConfig_PTOSS2_TDD_V08_QueryNameSyntax/label_with_64_characters (0.00s)
+FAIL
+FAIL	github.com/TwiN/gatus/v5/config/endpoint/dns	0.006s
+FAIL
+
+==============================================================================
+V08 GREEN - dns.IsDomainName apos a normalizacao do nome
+Inicio: 2026-11-02T14:04:37.686-03:00
+Fim: 2026-11-02T14:04:38.822-03:00
+Branch: ptoss2-dns-lookup; HEAD: 0437dd85d9663b97e5fc4afe7f6fe59f5590e014
+Estado de config/endpoint/dns (git status --porcelain):
+   M config/endpoint/dns/dns.go
+  ?? config/endpoint/dns/dns_ptoss2_tdd_test.go
+  ?? config/endpoint/dns/dns_ptoss2_test.go
+  ?? config/endpoint/dns/dns_ptoss2_whitebox_test.go
+Hash git (git hash-object) dos arquivos executados:
+  e91cb56e3f8b5e11e6e5d9251b9667d6684e4a20  config/endpoint/dns/dns.go
+  dc6dd040f7f027939d395435e3dac9a60485957d  config/endpoint/dns/dns_ptoss2_tdd_test.go
+  e88cec91360516421f99c60bd1961d133a38619f  config/endpoint/dns/dns_ptoss2_test.go
+  c85a82fb00b0f32ed3559533e6adf7363a95ee4e  config/endpoint/dns/dns_ptoss2_whitebox_test.go
+  57e96296c263f89676328ea7f584972a99310311  config/endpoint/dns/dns_test.go
+Comando: go test -mod=readonly -count=1 -v -run ^TestConfig_PTOSS2_TDD_V08_QueryNameSyntax$ ./config/endpoint/dns
+Exit: 0
+Resumo: funcoes 1 PASS / 0 FAIL; subtestes 9 PASS / 0 FAIL; SKIP 0; exit 0
+Saida:
+=== RUN   TestConfig_PTOSS2_TDD_V08_QueryNameSyntax
+=== PAUSE TestConfig_PTOSS2_TDD_V08_QueryNameSyntax
+=== CONT  TestConfig_PTOSS2_TDD_V08_QueryNameSyntax
+=== RUN   TestConfig_PTOSS2_TDD_V08_QueryNameSyntax/empty_label_between_dots
+=== PAUSE TestConfig_PTOSS2_TDD_V08_QueryNameSyntax/empty_label_between_dots
+=== RUN   TestConfig_PTOSS2_TDD_V08_QueryNameSyntax/label_with_64_characters
+=== PAUSE TestConfig_PTOSS2_TDD_V08_QueryNameSyntax/label_with_64_characters
+=== RUN   TestConfig_PTOSS2_TDD_V08_QueryNameSyntax/leading_dot
+=== PAUSE TestConfig_PTOSS2_TDD_V08_QueryNameSyntax/leading_dot
+=== RUN   TestConfig_PTOSS2_TDD_V08_QueryNameSyntax/label_with_63_characters_is_kept
+=== PAUSE TestConfig_PTOSS2_TDD_V08_QueryNameSyntax/label_with_63_characters_is_kept
+=== RUN   TestConfig_PTOSS2_TDD_V08_QueryNameSyntax/relative_name_is_kept
+=== PAUSE TestConfig_PTOSS2_TDD_V08_QueryNameSyntax/relative_name_is_kept
+=== RUN   TestConfig_PTOSS2_TDD_V08_QueryNameSyntax/fqdn_is_kept
+=== PAUSE TestConfig_PTOSS2_TDD_V08_QueryNameSyntax/fqdn_is_kept
+=== RUN   TestConfig_PTOSS2_TDD_V08_QueryNameSyntax/root_is_kept
+=== PAUSE TestConfig_PTOSS2_TDD_V08_QueryNameSyntax/root_is_kept
+=== RUN   TestConfig_PTOSS2_TDD_V08_QueryNameSyntax/service_name_with_underscores_is_kept
+=== PAUSE TestConfig_PTOSS2_TDD_V08_QueryNameSyntax/service_name_with_underscores_is_kept
+=== RUN   TestConfig_PTOSS2_TDD_V08_QueryNameSyntax/ipv4_name_for_ptr_is_kept
+=== PAUSE TestConfig_PTOSS2_TDD_V08_QueryNameSyntax/ipv4_name_for_ptr_is_kept
+=== CONT  TestConfig_PTOSS2_TDD_V08_QueryNameSyntax/empty_label_between_dots
+=== CONT  TestConfig_PTOSS2_TDD_V08_QueryNameSyntax/relative_name_is_kept
+=== CONT  TestConfig_PTOSS2_TDD_V08_QueryNameSyntax/label_with_63_characters_is_kept
+=== CONT  TestConfig_PTOSS2_TDD_V08_QueryNameSyntax/leading_dot
+=== CONT  TestConfig_PTOSS2_TDD_V08_QueryNameSyntax/fqdn_is_kept
+=== CONT  TestConfig_PTOSS2_TDD_V08_QueryNameSyntax/root_is_kept
+=== CONT  TestConfig_PTOSS2_TDD_V08_QueryNameSyntax/ipv4_name_for_ptr_is_kept
+=== CONT  TestConfig_PTOSS2_TDD_V08_QueryNameSyntax/label_with_64_characters
+=== CONT  TestConfig_PTOSS2_TDD_V08_QueryNameSyntax/service_name_with_underscores_is_kept
+--- PASS: TestConfig_PTOSS2_TDD_V08_QueryNameSyntax (0.00s)
+    --- PASS: TestConfig_PTOSS2_TDD_V08_QueryNameSyntax/empty_label_between_dots (0.00s)
+    --- PASS: TestConfig_PTOSS2_TDD_V08_QueryNameSyntax/relative_name_is_kept (0.00s)
+    --- PASS: TestConfig_PTOSS2_TDD_V08_QueryNameSyntax/label_with_63_characters_is_kept (0.00s)
+    --- PASS: TestConfig_PTOSS2_TDD_V08_QueryNameSyntax/leading_dot (0.00s)
+    --- PASS: TestConfig_PTOSS2_TDD_V08_QueryNameSyntax/fqdn_is_kept (0.00s)
+    --- PASS: TestConfig_PTOSS2_TDD_V08_QueryNameSyntax/root_is_kept (0.00s)
+    --- PASS: TestConfig_PTOSS2_TDD_V08_QueryNameSyntax/ipv4_name_for_ptr_is_kept (0.00s)
+    --- PASS: TestConfig_PTOSS2_TDD_V08_QueryNameSyntax/label_with_64_characters (0.00s)
+    --- PASS: TestConfig_PTOSS2_TDD_V08_QueryNameSyntax/service_name_with_underscores_is_kept (0.00s)
+PASS
+ok  	github.com/TwiN/gatus/v5/config/endpoint/dns	0.007s
+
+==============================================================================
+V08 GREEN - regressao do pacote dns (herdados + F4 + V07 + V08)
+Inicio: 2026-11-02T14:04:39.108-03:00
+Fim: 2026-11-02T14:04:40.239-03:00
+Branch: ptoss2-dns-lookup; HEAD: 0437dd85d9663b97e5fc4afe7f6fe59f5590e014
+Estado de config/endpoint/dns (git status --porcelain):
+   M config/endpoint/dns/dns.go
+  ?? config/endpoint/dns/dns_ptoss2_tdd_test.go
+  ?? config/endpoint/dns/dns_ptoss2_test.go
+  ?? config/endpoint/dns/dns_ptoss2_whitebox_test.go
+Hash git (git hash-object) dos arquivos executados:
+  e91cb56e3f8b5e11e6e5d9251b9667d6684e4a20  config/endpoint/dns/dns.go
+  dc6dd040f7f027939d395435e3dac9a60485957d  config/endpoint/dns/dns_ptoss2_tdd_test.go
+  e88cec91360516421f99c60bd1961d133a38619f  config/endpoint/dns/dns_ptoss2_test.go
+  c85a82fb00b0f32ed3559533e6adf7363a95ee4e  config/endpoint/dns/dns_ptoss2_whitebox_test.go
+  57e96296c263f89676328ea7f584972a99310311  config/endpoint/dns/dns_test.go
+Comando: go test -mod=readonly -count=1 -v ./config/endpoint/dns
+Exit: 0
+Resumo: funcoes 6 PASS / 0 FAIL; subtestes 31 PASS / 0 FAIL; SKIP 0; exit 0
+Saida:
+=== RUN   TestConfig_PTOSS2_TDD_V07_QueryTypeCase
+=== PAUSE TestConfig_PTOSS2_TDD_V07_QueryTypeCase
+=== RUN   TestConfig_PTOSS2_TDD_V08_QueryNameSyntax
+=== PAUSE TestConfig_PTOSS2_TDD_V08_QueryNameSyntax
+=== RUN   TestConfig_PTOSS2_F4_BlackBox
+=== PAUSE TestConfig_PTOSS2_F4_BlackBox
+=== RUN   TestConfig_PTOSS2_F4_WhiteBox
+=== PAUSE TestConfig_PTOSS2_F4_WhiteBox
+=== RUN   TestConfig_ValidateAndSetDefault
+--- PASS: TestConfig_ValidateAndSetDefault (0.00s)
+=== RUN   TestConfig_ValidateAndSetDefaultsWithInvalidDNSQueryType
+--- PASS: TestConfig_ValidateAndSetDefaultsWithInvalidDNSQueryType (0.00s)
+=== CONT  TestConfig_PTOSS2_TDD_V07_QueryTypeCase
+=== RUN   TestConfig_PTOSS2_TDD_V07_QueryTypeCase/lowercase_a
+=== PAUSE TestConfig_PTOSS2_TDD_V07_QueryTypeCase/lowercase_a
+=== RUN   TestConfig_PTOSS2_TDD_V07_QueryTypeCase/mixed_case_mx
+=== PAUSE TestConfig_PTOSS2_TDD_V07_QueryTypeCase/mixed_case_mx
+=== RUN   TestConfig_PTOSS2_TDD_V07_QueryTypeCase/lowercase_aaaa
+=== PAUSE TestConfig_PTOSS2_TDD_V07_QueryTypeCase/lowercase_aaaa
+=== RUN   TestConfig_PTOSS2_TDD_V07_QueryTypeCase/capitalized_cname
+=== PAUSE TestConfig_PTOSS2_TDD_V07_QueryTypeCase/capitalized_cname
+=== RUN   TestConfig_PTOSS2_TDD_V07_QueryTypeCase/uppercase_a_is_kept
+=== PAUSE TestConfig_PTOSS2_TDD_V07_QueryTypeCase/uppercase_a_is_kept
+=== RUN   TestConfig_PTOSS2_TDD_V07_QueryTypeCase/unknown_lowercase_type_is_rejected
+=== CONT  TestConfig_PTOSS2_TDD_V08_QueryNameSyntax
+=== RUN   TestConfig_PTOSS2_TDD_V08_QueryNameSyntax/empty_label_between_dots
+=== PAUSE TestConfig_PTOSS2_TDD_V08_QueryNameSyntax/empty_label_between_dots
+=== RUN   TestConfig_PTOSS2_TDD_V08_QueryNameSyntax/label_with_64_characters
+=== PAUSE TestConfig_PTOSS2_TDD_V08_QueryNameSyntax/label_with_64_characters
+=== RUN   TestConfig_PTOSS2_TDD_V08_QueryNameSyntax/leading_dot
+=== PAUSE TestConfig_PTOSS2_TDD_V08_QueryNameSyntax/leading_dot
+=== RUN   TestConfig_PTOSS2_TDD_V08_QueryNameSyntax/label_with_63_characters_is_kept
+=== PAUSE TestConfig_PTOSS2_TDD_V08_QueryNameSyntax/label_with_63_characters_is_kept
+=== PAUSE TestConfig_PTOSS2_TDD_V07_QueryTypeCase/unknown_lowercase_type_is_rejected
+=== CONT  TestConfig_PTOSS2_F4_BlackBox
+=== RUN   TestConfig_PTOSS2_F4_BlackBox/CP01_documented_A_query_is_normalized_to_fqdn
+=== CONT  TestConfig_PTOSS2_F4_WhiteBox
+=== PAUSE TestConfig_PTOSS2_F4_BlackBox/CP01_documented_A_query_is_normalized_to_fqdn
+=== RUN   TestConfig_PTOSS2_F4_WhiteBox/CB01_empty_name_is_reported_before_invalid_type
+=== PAUSE TestConfig_PTOSS2_F4_WhiteBox/CB01_empty_name_is_reported_before_invalid_type
+=== RUN   TestConfig_PTOSS2_F4_WhiteBox/CB02_relative_name_is_normalized_before_type_error
+=== PAUSE TestConfig_PTOSS2_F4_WhiteBox/CB02_relative_name_is_normalized_before_type_error
+=== RUN   TestConfig_PTOSS2_F4_BlackBox/CP02_fqdn_query_name_is_kept
+=== PAUSE TestConfig_PTOSS2_F4_BlackBox/CP02_fqdn_query_name_is_kept
+=== RUN   TestConfig_PTOSS2_F4_BlackBox/CP03_root_name_is_kept
+=== PAUSE TestConfig_PTOSS2_F4_BlackBox/CP03_root_name_is_kept
+=== RUN   TestConfig_PTOSS2_TDD_V07_QueryTypeCase/unknown_mixed_case_type_is_rejected
+=== PAUSE TestConfig_PTOSS2_TDD_V07_QueryTypeCase/unknown_mixed_case_type_is_rejected
+=== CONT  TestConfig_PTOSS2_TDD_V07_QueryTypeCase/lowercase_a
+=== RUN   TestConfig_PTOSS2_TDD_V08_QueryNameSyntax/relative_name_is_kept
+=== PAUSE TestConfig_PTOSS2_TDD_V08_QueryNameSyntax/relative_name_is_kept
+=== RUN   TestConfig_PTOSS2_TDD_V08_QueryNameSyntax/fqdn_is_kept
+=== PAUSE TestConfig_PTOSS2_TDD_V08_QueryNameSyntax/fqdn_is_kept
+=== CONT  TestConfig_PTOSS2_TDD_V07_QueryTypeCase/capitalized_cname
+=== CONT  TestConfig_PTOSS2_TDD_V07_QueryTypeCase/unknown_mixed_case_type_is_rejected
+=== RUN   TestConfig_PTOSS2_TDD_V08_QueryNameSyntax/root_is_kept
+=== CONT  TestConfig_PTOSS2_TDD_V07_QueryTypeCase/uppercase_a_is_kept
+=== RUN   TestConfig_PTOSS2_F4_BlackBox/CP04_single_character_name_is_normalized
+=== PAUSE TestConfig_PTOSS2_F4_BlackBox/CP04_single_character_name_is_normalized
+=== RUN   TestConfig_PTOSS2_F4_BlackBox/CP05_empty_query_name_is_rejected
+=== PAUSE TestConfig_PTOSS2_F4_BlackBox/CP05_empty_query_name_is_rejected
+=== CONT  TestConfig_PTOSS2_TDD_V07_QueryTypeCase/lowercase_aaaa
+=== CONT  TestConfig_PTOSS2_TDD_V07_QueryTypeCase/mixed_case_mx
+=== RUN   TestConfig_PTOSS2_F4_WhiteBox/CB03_fqdn_with_invalid_type_keeps_name
+=== PAUSE TestConfig_PTOSS2_F4_WhiteBox/CB03_fqdn_with_invalid_type_keeps_name
+=== RUN   TestConfig_PTOSS2_F4_WhiteBox/CB04_meta_type_from_library_table_is_accepted
+=== PAUSE TestConfig_PTOSS2_F4_WhiteBox/CB04_meta_type_from_library_table_is_accepted
+=== CONT  TestConfig_PTOSS2_F4_WhiteBox/CB01_empty_name_is_reported_before_invalid_type
+=== CONT  TestConfig_PTOSS2_TDD_V07_QueryTypeCase/unknown_lowercase_type_is_rejected
+--- PASS: TestConfig_PTOSS2_TDD_V07_QueryTypeCase (0.00s)
+    --- PASS: TestConfig_PTOSS2_TDD_V07_QueryTypeCase/lowercase_a (0.00s)
+    --- PASS: TestConfig_PTOSS2_TDD_V07_QueryTypeCase/unknown_mixed_case_type_is_rejected (0.00s)
+    --- PASS: TestConfig_PTOSS2_TDD_V07_QueryTypeCase/capitalized_cname (0.00s)
+    --- PASS: TestConfig_PTOSS2_TDD_V07_QueryTypeCase/uppercase_a_is_kept (0.00s)
+    --- PASS: TestConfig_PTOSS2_TDD_V07_QueryTypeCase/lowercase_aaaa (0.00s)
+    --- PASS: TestConfig_PTOSS2_TDD_V07_QueryTypeCase/mixed_case_mx (0.00s)
+    --- PASS: TestConfig_PTOSS2_TDD_V07_QueryTypeCase/unknown_lowercase_type_is_rejected (0.00s)
+=== CONT  TestConfig_PTOSS2_F4_WhiteBox/CB04_meta_type_from_library_table_is_accepted
+=== CONT  TestConfig_PTOSS2_F4_WhiteBox/CB03_fqdn_with_invalid_type_keeps_name
+=== CONT  TestConfig_PTOSS2_F4_WhiteBox/CB02_relative_name_is_normalized_before_type_error
+--- PASS: TestConfig_PTOSS2_F4_WhiteBox (0.00s)
+    --- PASS: TestConfig_PTOSS2_F4_WhiteBox/CB01_empty_name_is_reported_before_invalid_type (0.00s)
+    --- PASS: TestConfig_PTOSS2_F4_WhiteBox/CB04_meta_type_from_library_table_is_accepted (0.00s)
+    --- PASS: TestConfig_PTOSS2_F4_WhiteBox/CB03_fqdn_with_invalid_type_keeps_name (0.00s)
+    --- PASS: TestConfig_PTOSS2_F4_WhiteBox/CB02_relative_name_is_normalized_before_type_error (0.00s)
+=== PAUSE TestConfig_PTOSS2_TDD_V08_QueryNameSyntax/root_is_kept
+=== RUN   TestConfig_PTOSS2_TDD_V08_QueryNameSyntax/service_name_with_underscores_is_kept
+=== PAUSE TestConfig_PTOSS2_TDD_V08_QueryNameSyntax/service_name_with_underscores_is_kept
+=== RUN   TestConfig_PTOSS2_F4_BlackBox/CP06_AAAA_query_is_accepted
+=== RUN   TestConfig_PTOSS2_TDD_V08_QueryNameSyntax/ipv4_name_for_ptr_is_kept
+=== PAUSE TestConfig_PTOSS2_TDD_V08_QueryNameSyntax/ipv4_name_for_ptr_is_kept
+=== CONT  TestConfig_PTOSS2_TDD_V08_QueryNameSyntax/empty_label_between_dots
+=== PAUSE TestConfig_PTOSS2_F4_BlackBox/CP06_AAAA_query_is_accepted
+=== CONT  TestConfig_PTOSS2_TDD_V08_QueryNameSyntax/ipv4_name_for_ptr_is_kept
+=== RUN   TestConfig_PTOSS2_F4_BlackBox/CP07_documented_MX_query_is_accepted
+=== PAUSE TestConfig_PTOSS2_F4_BlackBox/CP07_documented_MX_query_is_accepted
+=== CONT  TestConfig_PTOSS2_TDD_V08_QueryNameSyntax/service_name_with_underscores_is_kept
+=== RUN   TestConfig_PTOSS2_F4_BlackBox/CP08_CNAME_query_is_accepted
+=== CONT  TestConfig_PTOSS2_TDD_V08_QueryNameSyntax/root_is_kept
+=== PAUSE TestConfig_PTOSS2_F4_BlackBox/CP08_CNAME_query_is_accepted
+=== CONT  TestConfig_PTOSS2_TDD_V08_QueryNameSyntax/label_with_64_characters
+=== CONT  TestConfig_PTOSS2_TDD_V08_QueryNameSyntax/fqdn_is_kept
+=== CONT  TestConfig_PTOSS2_TDD_V08_QueryNameSyntax/relative_name_is_kept
+=== CONT  TestConfig_PTOSS2_TDD_V08_QueryNameSyntax/label_with_63_characters_is_kept
+=== CONT  TestConfig_PTOSS2_TDD_V08_QueryNameSyntax/leading_dot
+--- PASS: TestConfig_PTOSS2_TDD_V08_QueryNameSyntax (0.00s)
+    --- PASS: TestConfig_PTOSS2_TDD_V08_QueryNameSyntax/empty_label_between_dots (0.00s)
+    --- PASS: TestConfig_PTOSS2_TDD_V08_QueryNameSyntax/ipv4_name_for_ptr_is_kept (0.00s)
+    --- PASS: TestConfig_PTOSS2_TDD_V08_QueryNameSyntax/service_name_with_underscores_is_kept (0.00s)
+    --- PASS: TestConfig_PTOSS2_TDD_V08_QueryNameSyntax/root_is_kept (0.00s)
+    --- PASS: TestConfig_PTOSS2_TDD_V08_QueryNameSyntax/label_with_64_characters (0.00s)
+    --- PASS: TestConfig_PTOSS2_TDD_V08_QueryNameSyntax/fqdn_is_kept (0.00s)
+    --- PASS: TestConfig_PTOSS2_TDD_V08_QueryNameSyntax/relative_name_is_kept (0.00s)
+    --- PASS: TestConfig_PTOSS2_TDD_V08_QueryNameSyntax/label_with_63_characters_is_kept (0.00s)
+    --- PASS: TestConfig_PTOSS2_TDD_V08_QueryNameSyntax/leading_dot (0.00s)
+=== RUN   TestConfig_PTOSS2_F4_BlackBox/CP09_empty_query_type_is_rejected
+=== PAUSE TestConfig_PTOSS2_F4_BlackBox/CP09_empty_query_type_is_rejected
+=== RUN   TestConfig_PTOSS2_F4_BlackBox/CP10_unknown_query_type_is_rejected
+=== PAUSE TestConfig_PTOSS2_F4_BlackBox/CP10_unknown_query_type_is_rejected
+=== RUN   TestConfig_PTOSS2_F4_BlackBox/CP11_type_one_letter_longer_than_AAAA_is_rejected
+=== PAUSE TestConfig_PTOSS2_F4_BlackBox/CP11_type_one_letter_longer_than_AAAA_is_rejected
+=== CONT  TestConfig_PTOSS2_F4_BlackBox/CP01_documented_A_query_is_normalized_to_fqdn
+=== CONT  TestConfig_PTOSS2_F4_BlackBox/CP11_type_one_letter_longer_than_AAAA_is_rejected
+=== CONT  TestConfig_PTOSS2_F4_BlackBox/CP10_unknown_query_type_is_rejected
+=== CONT  TestConfig_PTOSS2_F4_BlackBox/CP09_empty_query_type_is_rejected
+=== CONT  TestConfig_PTOSS2_F4_BlackBox/CP08_CNAME_query_is_accepted
+=== CONT  TestConfig_PTOSS2_F4_BlackBox/CP07_documented_MX_query_is_accepted
+=== CONT  TestConfig_PTOSS2_F4_BlackBox/CP06_AAAA_query_is_accepted
+=== CONT  TestConfig_PTOSS2_F4_BlackBox/CP05_empty_query_name_is_rejected
+=== CONT  TestConfig_PTOSS2_F4_BlackBox/CP04_single_character_name_is_normalized
+=== CONT  TestConfig_PTOSS2_F4_BlackBox/CP03_root_name_is_kept
+=== CONT  TestConfig_PTOSS2_F4_BlackBox/CP02_fqdn_query_name_is_kept
+--- PASS: TestConfig_PTOSS2_F4_BlackBox (0.00s)
+    --- PASS: TestConfig_PTOSS2_F4_BlackBox/CP01_documented_A_query_is_normalized_to_fqdn (0.00s)
+    --- PASS: TestConfig_PTOSS2_F4_BlackBox/CP11_type_one_letter_longer_than_AAAA_is_rejected (0.00s)
+    --- PASS: TestConfig_PTOSS2_F4_BlackBox/CP10_unknown_query_type_is_rejected (0.00s)
+    --- PASS: TestConfig_PTOSS2_F4_BlackBox/CP09_empty_query_type_is_rejected (0.00s)
+    --- PASS: TestConfig_PTOSS2_F4_BlackBox/CP08_CNAME_query_is_accepted (0.00s)
+    --- PASS: TestConfig_PTOSS2_F4_BlackBox/CP07_documented_MX_query_is_accepted (0.00s)
+    --- PASS: TestConfig_PTOSS2_F4_BlackBox/CP06_AAAA_query_is_accepted (0.00s)
+    --- PASS: TestConfig_PTOSS2_F4_BlackBox/CP05_empty_query_name_is_rejected (0.00s)
+    --- PASS: TestConfig_PTOSS2_F4_BlackBox/CP04_single_character_name_is_normalized (0.00s)
+    --- PASS: TestConfig_PTOSS2_F4_BlackBox/CP03_root_name_is_kept (0.00s)
+    --- PASS: TestConfig_PTOSS2_F4_BlackBox/CP02_fqdn_query_name_is_kept (0.00s)
+PASS
+ok  	github.com/TwiN/gatus/v5/config/endpoint/dns	0.007s
+
+==============================================================================
+V08 GREEN - regressao de ./config/... (pacotes de configuracao)
+Inicio: 2026-11-02T14:04:40.512-03:00
+Fim: 2026-11-02T14:04:46.721-03:00
+Branch: ptoss2-dns-lookup; HEAD: 0437dd85d9663b97e5fc4afe7f6fe59f5590e014
+Estado de config/endpoint/dns (git status --porcelain):
+   M config/endpoint/dns/dns.go
+  ?? config/endpoint/dns/dns_ptoss2_tdd_test.go
+  ?? config/endpoint/dns/dns_ptoss2_test.go
+  ?? config/endpoint/dns/dns_ptoss2_whitebox_test.go
+Hash git (git hash-object) dos arquivos executados:
+  e91cb56e3f8b5e11e6e5d9251b9667d6684e4a20  config/endpoint/dns/dns.go
+  dc6dd040f7f027939d395435e3dac9a60485957d  config/endpoint/dns/dns_ptoss2_tdd_test.go
+  e88cec91360516421f99c60bd1961d133a38619f  config/endpoint/dns/dns_ptoss2_test.go
+  c85a82fb00b0f32ed3559533e6adf7363a95ee4e  config/endpoint/dns/dns_ptoss2_whitebox_test.go
+  57e96296c263f89676328ea7f584972a99310311  config/endpoint/dns/dns_test.go
+Comando: go test -mod=readonly -count=1 ./config/...
+Exit: 0
+Resumo: funcoes 0 PASS / 0 FAIL; subtestes 0 PASS / 0 FAIL; SKIP 0; exit 0
+Saida:
+ok  	github.com/TwiN/gatus/v5/config	0.029s
+ok  	github.com/TwiN/gatus/v5/config/announcement	0.024s
+ok  	github.com/TwiN/gatus/v5/config/connectivity	0.024s
+ok  	github.com/TwiN/gatus/v5/config/endpoint	3.028s
+ok  	github.com/TwiN/gatus/v5/config/endpoint/dns	0.026s
+?   	github.com/TwiN/gatus/v5/config/endpoint/heartbeat	[no test files]
+ok  	github.com/TwiN/gatus/v5/config/endpoint/ssh	0.026s
+ok  	github.com/TwiN/gatus/v5/config/endpoint/ui	0.025s
+ok  	github.com/TwiN/gatus/v5/config/gontext	0.023s
+ok  	github.com/TwiN/gatus/v5/config/key	0.023s
+ok  	github.com/TwiN/gatus/v5/config/maintenance	0.023s
+?   	github.com/TwiN/gatus/v5/config/remote	[no test files]
+ok  	github.com/TwiN/gatus/v5/config/suite	1.620s
+ok  	github.com/TwiN/gatus/v5/config/tunneling	0.022s
+ok  	github.com/TwiN/gatus/v5/config/tunneling/sshtunnel	0.015s
+ok  	github.com/TwiN/gatus/v5/config/ui	0.007s
+ok  	github.com/TwiN/gatus/v5/config/web	0.032s
+
+==============================================================================
+ESTADO FINAL - gofmt -l do pacote dns (saida vazia = sem diferencas)
+Inicio: 2026-11-02T14:04:46.981-03:00
+Fim: 2026-11-02T14:04:47.818-03:00
+Branch: ptoss2-dns-lookup; HEAD: 0437dd85d9663b97e5fc4afe7f6fe59f5590e014
+Estado de config/endpoint/dns (git status --porcelain):
+   M config/endpoint/dns/dns.go
+  ?? config/endpoint/dns/dns_ptoss2_tdd_test.go
+  ?? config/endpoint/dns/dns_ptoss2_test.go
+  ?? config/endpoint/dns/dns_ptoss2_whitebox_test.go
+Hash git (git hash-object) dos arquivos executados:
+  e91cb56e3f8b5e11e6e5d9251b9667d6684e4a20  config/endpoint/dns/dns.go
+  dc6dd040f7f027939d395435e3dac9a60485957d  config/endpoint/dns/dns_ptoss2_tdd_test.go
+  e88cec91360516421f99c60bd1961d133a38619f  config/endpoint/dns/dns_ptoss2_test.go
+  c85a82fb00b0f32ed3559533e6adf7363a95ee4e  config/endpoint/dns/dns_ptoss2_whitebox_test.go
+  57e96296c263f89676328ea7f584972a99310311  config/endpoint/dns/dns_test.go
+Comando: gofmt -l config/endpoint/dns
+Exit: 0
+Resumo: funcoes 0 PASS / 0 FAIL; subtestes 0 PASS / 0 FAIL; SKIP 0; exit 0
+Saida:
+
+==============================================================================
+ESTADO FINAL - go vet do pacote dns
+Inicio: 2026-11-02T14:04:48.080-03:00
+Fim: 2026-11-02T14:04:49.097-03:00
+Branch: ptoss2-dns-lookup; HEAD: 0437dd85d9663b97e5fc4afe7f6fe59f5590e014
+Estado de config/endpoint/dns (git status --porcelain):
+   M config/endpoint/dns/dns.go
+  ?? config/endpoint/dns/dns_ptoss2_tdd_test.go
+  ?? config/endpoint/dns/dns_ptoss2_test.go
+  ?? config/endpoint/dns/dns_ptoss2_whitebox_test.go
+Hash git (git hash-object) dos arquivos executados:
+  e91cb56e3f8b5e11e6e5d9251b9667d6684e4a20  config/endpoint/dns/dns.go
+  dc6dd040f7f027939d395435e3dac9a60485957d  config/endpoint/dns/dns_ptoss2_tdd_test.go
+  e88cec91360516421f99c60bd1961d133a38619f  config/endpoint/dns/dns_ptoss2_test.go
+  c85a82fb00b0f32ed3559533e6adf7363a95ee4e  config/endpoint/dns/dns_ptoss2_whitebox_test.go
+  57e96296c263f89676328ea7f584972a99310311  config/endpoint/dns/dns_test.go
+Comando: go vet -mod=readonly ./config/endpoint/dns
+Exit: 0
+Resumo: funcoes 0 PASS / 0 FAIL; subtestes 0 PASS / 0 FAIL; SKIP 0; exit 0
+Saida:
+
+==============================================================================
+ESTADO FINAL - cobertura do pacote dns (herdados + F4 + V07 + V08)
+Inicio: 2026-11-02T14:04:49.358-03:00
+Fim: 2026-11-02T14:04:50.507-03:00
+Branch: ptoss2-dns-lookup; HEAD: 0437dd85d9663b97e5fc4afe7f6fe59f5590e014
+Estado de config/endpoint/dns (git status --porcelain):
+   M config/endpoint/dns/dns.go
+  ?? config/endpoint/dns/dns_ptoss2_tdd_test.go
+  ?? config/endpoint/dns/dns_ptoss2_test.go
+  ?? config/endpoint/dns/dns_ptoss2_whitebox_test.go
+Hash git (git hash-object) dos arquivos executados:
+  e91cb56e3f8b5e11e6e5d9251b9667d6684e4a20  config/endpoint/dns/dns.go
+  dc6dd040f7f027939d395435e3dac9a60485957d  config/endpoint/dns/dns_ptoss2_tdd_test.go
+  e88cec91360516421f99c60bd1961d133a38619f  config/endpoint/dns/dns_ptoss2_test.go
+  c85a82fb00b0f32ed3559533e6adf7363a95ee4e  config/endpoint/dns/dns_ptoss2_whitebox_test.go
+  57e96296c263f89676328ea7f584972a99310311  config/endpoint/dns/dns_test.go
+Comando: go test -mod=readonly -count=1 -v -covermode=count -coverprofile=docs/ptoss2/tdd-i4/evidencias/dns.cover.out ./config/endpoint/dns
+Exit: 0
+Resumo: funcoes 6 PASS / 0 FAIL; subtestes 31 PASS / 0 FAIL; SKIP 0; exit 0
+Saida:
+=== RUN   TestConfig_PTOSS2_TDD_V07_QueryTypeCase
+=== PAUSE TestConfig_PTOSS2_TDD_V07_QueryTypeCase
+=== RUN   TestConfig_PTOSS2_TDD_V08_QueryNameSyntax
+=== PAUSE TestConfig_PTOSS2_TDD_V08_QueryNameSyntax
+=== RUN   TestConfig_PTOSS2_F4_BlackBox
+=== PAUSE TestConfig_PTOSS2_F4_BlackBox
+=== RUN   TestConfig_PTOSS2_F4_WhiteBox
+=== PAUSE TestConfig_PTOSS2_F4_WhiteBox
+=== RUN   TestConfig_ValidateAndSetDefault
+--- PASS: TestConfig_ValidateAndSetDefault (0.00s)
+=== RUN   TestConfig_ValidateAndSetDefaultsWithInvalidDNSQueryType
+--- PASS: TestConfig_ValidateAndSetDefaultsWithInvalidDNSQueryType (0.00s)
+=== CONT  TestConfig_PTOSS2_TDD_V07_QueryTypeCase
+=== RUN   TestConfig_PTOSS2_TDD_V07_QueryTypeCase/lowercase_a
+=== PAUSE TestConfig_PTOSS2_TDD_V07_QueryTypeCase/lowercase_a
+=== RUN   TestConfig_PTOSS2_TDD_V07_QueryTypeCase/mixed_case_mx
+=== PAUSE TestConfig_PTOSS2_TDD_V07_QueryTypeCase/mixed_case_mx
+=== RUN   TestConfig_PTOSS2_TDD_V07_QueryTypeCase/lowercase_aaaa
+=== PAUSE TestConfig_PTOSS2_TDD_V07_QueryTypeCase/lowercase_aaaa
+=== RUN   TestConfig_PTOSS2_TDD_V07_QueryTypeCase/capitalized_cname
+=== PAUSE TestConfig_PTOSS2_TDD_V07_QueryTypeCase/capitalized_cname
+=== RUN   TestConfig_PTOSS2_TDD_V07_QueryTypeCase/uppercase_a_is_kept
+=== PAUSE TestConfig_PTOSS2_TDD_V07_QueryTypeCase/uppercase_a_is_kept
+=== RUN   TestConfig_PTOSS2_TDD_V07_QueryTypeCase/unknown_lowercase_type_is_rejected
+=== PAUSE TestConfig_PTOSS2_TDD_V07_QueryTypeCase/unknown_lowercase_type_is_rejected
+=== RUN   TestConfig_PTOSS2_TDD_V07_QueryTypeCase/unknown_mixed_case_type_is_rejected
+=== PAUSE TestConfig_PTOSS2_TDD_V07_QueryTypeCase/unknown_mixed_case_type_is_rejected
+=== CONT  TestConfig_PTOSS2_TDD_V07_QueryTypeCase/lowercase_a
+=== CONT  TestConfig_PTOSS2_F4_BlackBox
+=== RUN   TestConfig_PTOSS2_F4_BlackBox/CP01_documented_A_query_is_normalized_to_fqdn
+=== PAUSE TestConfig_PTOSS2_F4_BlackBox/CP01_documented_A_query_is_normalized_to_fqdn
+=== RUN   TestConfig_PTOSS2_F4_BlackBox/CP02_fqdn_query_name_is_kept
+=== PAUSE TestConfig_PTOSS2_F4_BlackBox/CP02_fqdn_query_name_is_kept
+=== RUN   TestConfig_PTOSS2_F4_BlackBox/CP03_root_name_is_kept
+=== PAUSE TestConfig_PTOSS2_F4_BlackBox/CP03_root_name_is_kept
+=== RUN   TestConfig_PTOSS2_F4_BlackBox/CP04_single_character_name_is_normalized
+=== CONT  TestConfig_PTOSS2_TDD_V08_QueryNameSyntax
+=== RUN   TestConfig_PTOSS2_TDD_V08_QueryNameSyntax/empty_label_between_dots
+=== PAUSE TestConfig_PTOSS2_TDD_V08_QueryNameSyntax/empty_label_between_dots
+=== RUN   TestConfig_PTOSS2_TDD_V08_QueryNameSyntax/label_with_64_characters
+=== PAUSE TestConfig_PTOSS2_TDD_V08_QueryNameSyntax/label_with_64_characters
+=== RUN   TestConfig_PTOSS2_TDD_V08_QueryNameSyntax/leading_dot
+=== PAUSE TestConfig_PTOSS2_F4_BlackBox/CP04_single_character_name_is_normalized
+=== CONT  TestConfig_PTOSS2_TDD_V07_QueryTypeCase/unknown_mixed_case_type_is_rejected
+=== CONT  TestConfig_PTOSS2_TDD_V07_QueryTypeCase/unknown_lowercase_type_is_rejected
+=== CONT  TestConfig_PTOSS2_TDD_V07_QueryTypeCase/uppercase_a_is_kept
+=== RUN   TestConfig_PTOSS2_F4_BlackBox/CP05_empty_query_name_is_rejected
+=== CONT  TestConfig_PTOSS2_TDD_V07_QueryTypeCase/capitalized_cname
+=== CONT  TestConfig_PTOSS2_TDD_V07_QueryTypeCase/lowercase_aaaa
+=== CONT  TestConfig_PTOSS2_TDD_V07_QueryTypeCase/mixed_case_mx
+--- PASS: TestConfig_PTOSS2_TDD_V07_QueryTypeCase (0.00s)
+    --- PASS: TestConfig_PTOSS2_TDD_V07_QueryTypeCase/lowercase_a (0.00s)
+    --- PASS: TestConfig_PTOSS2_TDD_V07_QueryTypeCase/unknown_mixed_case_type_is_rejected (0.00s)
+    --- PASS: TestConfig_PTOSS2_TDD_V07_QueryTypeCase/unknown_lowercase_type_is_rejected (0.00s)
+    --- PASS: TestConfig_PTOSS2_TDD_V07_QueryTypeCase/uppercase_a_is_kept (0.00s)
+    --- PASS: TestConfig_PTOSS2_TDD_V07_QueryTypeCase/capitalized_cname (0.00s)
+    --- PASS: TestConfig_PTOSS2_TDD_V07_QueryTypeCase/lowercase_aaaa (0.00s)
+    --- PASS: TestConfig_PTOSS2_TDD_V07_QueryTypeCase/mixed_case_mx (0.00s)
+=== CONT  TestConfig_PTOSS2_F4_WhiteBox
+=== RUN   TestConfig_PTOSS2_F4_WhiteBox/CB01_empty_name_is_reported_before_invalid_type
+=== PAUSE TestConfig_PTOSS2_F4_WhiteBox/CB01_empty_name_is_reported_before_invalid_type
+=== PAUSE TestConfig_PTOSS2_F4_BlackBox/CP05_empty_query_name_is_rejected
+=== RUN   TestConfig_PTOSS2_F4_WhiteBox/CB02_relative_name_is_normalized_before_type_error
+=== PAUSE TestConfig_PTOSS2_F4_WhiteBox/CB02_relative_name_is_normalized_before_type_error
+=== RUN   TestConfig_PTOSS2_F4_BlackBox/CP06_AAAA_query_is_accepted
+=== RUN   TestConfig_PTOSS2_F4_WhiteBox/CB03_fqdn_with_invalid_type_keeps_name
+=== PAUSE TestConfig_PTOSS2_F4_WhiteBox/CB03_fqdn_with_invalid_type_keeps_name
+=== RUN   TestConfig_PTOSS2_F4_WhiteBox/CB04_meta_type_from_library_table_is_accepted
+=== PAUSE TestConfig_PTOSS2_F4_BlackBox/CP06_AAAA_query_is_accepted
+=== RUN   TestConfig_PTOSS2_F4_BlackBox/CP07_documented_MX_query_is_accepted
+=== PAUSE TestConfig_PTOSS2_F4_BlackBox/CP07_documented_MX_query_is_accepted
+=== RUN   TestConfig_PTOSS2_F4_BlackBox/CP08_CNAME_query_is_accepted
+=== PAUSE TestConfig_PTOSS2_F4_BlackBox/CP08_CNAME_query_is_accepted
+=== PAUSE TestConfig_PTOSS2_F4_WhiteBox/CB04_meta_type_from_library_table_is_accepted
+=== CONT  TestConfig_PTOSS2_F4_WhiteBox/CB01_empty_name_is_reported_before_invalid_type
+=== CONT  TestConfig_PTOSS2_F4_WhiteBox/CB04_meta_type_from_library_table_is_accepted
+=== PAUSE TestConfig_PTOSS2_TDD_V08_QueryNameSyntax/leading_dot
+=== RUN   TestConfig_PTOSS2_TDD_V08_QueryNameSyntax/label_with_63_characters_is_kept
+=== PAUSE TestConfig_PTOSS2_TDD_V08_QueryNameSyntax/label_with_63_characters_is_kept
+=== RUN   TestConfig_PTOSS2_TDD_V08_QueryNameSyntax/relative_name_is_kept
+=== PAUSE TestConfig_PTOSS2_TDD_V08_QueryNameSyntax/relative_name_is_kept
+=== RUN   TestConfig_PTOSS2_F4_BlackBox/CP09_empty_query_type_is_rejected
+=== CONT  TestConfig_PTOSS2_F4_WhiteBox/CB03_fqdn_with_invalid_type_keeps_name
+=== CONT  TestConfig_PTOSS2_F4_WhiteBox/CB02_relative_name_is_normalized_before_type_error
+--- PASS: TestConfig_PTOSS2_F4_WhiteBox (0.00s)
+    --- PASS: TestConfig_PTOSS2_F4_WhiteBox/CB01_empty_name_is_reported_before_invalid_type (0.00s)
+    --- PASS: TestConfig_PTOSS2_F4_WhiteBox/CB04_meta_type_from_library_table_is_accepted (0.00s)
+    --- PASS: TestConfig_PTOSS2_F4_WhiteBox/CB03_fqdn_with_invalid_type_keeps_name (0.00s)
+    --- PASS: TestConfig_PTOSS2_F4_WhiteBox/CB02_relative_name_is_normalized_before_type_error (0.00s)
+=== RUN   TestConfig_PTOSS2_TDD_V08_QueryNameSyntax/fqdn_is_kept
+=== PAUSE TestConfig_PTOSS2_TDD_V08_QueryNameSyntax/fqdn_is_kept
+=== RUN   TestConfig_PTOSS2_TDD_V08_QueryNameSyntax/root_is_kept
+=== PAUSE TestConfig_PTOSS2_TDD_V08_QueryNameSyntax/root_is_kept
+=== RUN   TestConfig_PTOSS2_TDD_V08_QueryNameSyntax/service_name_with_underscores_is_kept
+=== PAUSE TestConfig_PTOSS2_TDD_V08_QueryNameSyntax/service_name_with_underscores_is_kept
+=== PAUSE TestConfig_PTOSS2_F4_BlackBox/CP09_empty_query_type_is_rejected
+=== RUN   TestConfig_PTOSS2_TDD_V08_QueryNameSyntax/ipv4_name_for_ptr_is_kept
+=== RUN   TestConfig_PTOSS2_F4_BlackBox/CP10_unknown_query_type_is_rejected
+=== PAUSE TestConfig_PTOSS2_TDD_V08_QueryNameSyntax/ipv4_name_for_ptr_is_kept
+=== PAUSE TestConfig_PTOSS2_F4_BlackBox/CP10_unknown_query_type_is_rejected
+=== CONT  TestConfig_PTOSS2_TDD_V08_QueryNameSyntax/label_with_64_characters
+=== RUN   TestConfig_PTOSS2_F4_BlackBox/CP11_type_one_letter_longer_than_AAAA_is_rejected
+=== PAUSE TestConfig_PTOSS2_F4_BlackBox/CP11_type_one_letter_longer_than_AAAA_is_rejected
+=== CONT  TestConfig_PTOSS2_F4_BlackBox/CP01_documented_A_query_is_normalized_to_fqdn
+=== CONT  TestConfig_PTOSS2_TDD_V08_QueryNameSyntax/empty_label_between_dots
+=== CONT  TestConfig_PTOSS2_F4_BlackBox/CP11_type_one_letter_longer_than_AAAA_is_rejected
+=== CONT  TestConfig_PTOSS2_TDD_V08_QueryNameSyntax/ipv4_name_for_ptr_is_kept
+=== CONT  TestConfig_PTOSS2_TDD_V08_QueryNameSyntax/service_name_with_underscores_is_kept
+=== CONT  TestConfig_PTOSS2_F4_BlackBox/CP05_empty_query_name_is_rejected
+=== CONT  TestConfig_PTOSS2_TDD_V08_QueryNameSyntax/root_is_kept
+=== CONT  TestConfig_PTOSS2_TDD_V08_QueryNameSyntax/relative_name_is_kept
+=== CONT  TestConfig_PTOSS2_TDD_V08_QueryNameSyntax/fqdn_is_kept
+=== CONT  TestConfig_PTOSS2_F4_BlackBox/CP03_root_name_is_kept
+=== CONT  TestConfig_PTOSS2_TDD_V08_QueryNameSyntax/leading_dot
+=== CONT  TestConfig_PTOSS2_F4_BlackBox/CP04_single_character_name_is_normalized
+=== CONT  TestConfig_PTOSS2_F4_BlackBox/CP10_unknown_query_type_is_rejected
+=== CONT  TestConfig_PTOSS2_F4_BlackBox/CP02_fqdn_query_name_is_kept
+=== CONT  TestConfig_PTOSS2_F4_BlackBox/CP09_empty_query_type_is_rejected
+=== CONT  TestConfig_PTOSS2_F4_BlackBox/CP08_CNAME_query_is_accepted
+=== CONT  TestConfig_PTOSS2_F4_BlackBox/CP07_documented_MX_query_is_accepted
+=== CONT  TestConfig_PTOSS2_F4_BlackBox/CP06_AAAA_query_is_accepted
+--- PASS: TestConfig_PTOSS2_F4_BlackBox (0.00s)
+    --- PASS: TestConfig_PTOSS2_F4_BlackBox/CP01_documented_A_query_is_normalized_to_fqdn (0.00s)
+    --- PASS: TestConfig_PTOSS2_F4_BlackBox/CP11_type_one_letter_longer_than_AAAA_is_rejected (0.00s)
+    --- PASS: TestConfig_PTOSS2_F4_BlackBox/CP05_empty_query_name_is_rejected (0.00s)
+    --- PASS: TestConfig_PTOSS2_F4_BlackBox/CP03_root_name_is_kept (0.00s)
+    --- PASS: TestConfig_PTOSS2_F4_BlackBox/CP04_single_character_name_is_normalized (0.00s)
+    --- PASS: TestConfig_PTOSS2_F4_BlackBox/CP10_unknown_query_type_is_rejected (0.00s)
+    --- PASS: TestConfig_PTOSS2_F4_BlackBox/CP02_fqdn_query_name_is_kept (0.00s)
+    --- PASS: TestConfig_PTOSS2_F4_BlackBox/CP09_empty_query_type_is_rejected (0.00s)
+    --- PASS: TestConfig_PTOSS2_F4_BlackBox/CP08_CNAME_query_is_accepted (0.00s)
+    --- PASS: TestConfig_PTOSS2_F4_BlackBox/CP07_documented_MX_query_is_accepted (0.00s)
+    --- PASS: TestConfig_PTOSS2_F4_BlackBox/CP06_AAAA_query_is_accepted (0.00s)
+=== CONT  TestConfig_PTOSS2_TDD_V08_QueryNameSyntax/label_with_63_characters_is_kept
+--- PASS: TestConfig_PTOSS2_TDD_V08_QueryNameSyntax (0.00s)
+    --- PASS: TestConfig_PTOSS2_TDD_V08_QueryNameSyntax/label_with_64_characters (0.00s)
+    --- PASS: TestConfig_PTOSS2_TDD_V08_QueryNameSyntax/empty_label_between_dots (0.00s)
+    --- PASS: TestConfig_PTOSS2_TDD_V08_QueryNameSyntax/ipv4_name_for_ptr_is_kept (0.00s)
+    --- PASS: TestConfig_PTOSS2_TDD_V08_QueryNameSyntax/service_name_with_underscores_is_kept (0.00s)
+    --- PASS: TestConfig_PTOSS2_TDD_V08_QueryNameSyntax/root_is_kept (0.00s)
+    --- PASS: TestConfig_PTOSS2_TDD_V08_QueryNameSyntax/relative_name_is_kept (0.00s)
+    --- PASS: TestConfig_PTOSS2_TDD_V08_QueryNameSyntax/fqdn_is_kept (0.00s)
+    --- PASS: TestConfig_PTOSS2_TDD_V08_QueryNameSyntax/leading_dot (0.00s)
+    --- PASS: TestConfig_PTOSS2_TDD_V08_QueryNameSyntax/label_with_63_characters_is_kept (0.00s)
+PASS
+coverage: 100.0% of statements
+ok  	github.com/TwiN/gatus/v5/config/endpoint/dns	0.007s	coverage: 100.0% of statements
+
+==============================================================================
+V07 GREEN - repeticao da regressao de ./config/... (a execucao anterior falhou em config/suite, teste herdado com requisicoes HTTPS reais a example.org)
+Inicio: 2026-11-02T14:05:24.348-03:00
+Fim: 2026-11-02T14:05:34.966-03:00
+Branch: ptoss2-dns-lookup; HEAD: 0437dd85d9663b97e5fc4afe7f6fe59f5590e014
+Estado de config/endpoint/dns (git status --porcelain):
+   M config/endpoint/dns/dns.go
+  ?? config/endpoint/dns/dns_ptoss2_tdd_test.go
+  ?? config/endpoint/dns/dns_ptoss2_test.go
+  ?? config/endpoint/dns/dns_ptoss2_whitebox_test.go
+Hash git (git hash-object) dos arquivos executados:
+  af16018e4f8e55cc3085f90a4f6292067e047fd0  config/endpoint/dns/dns.go
+  68625f25b13af2d1b680f0a5ac2a8f07c676a5e8  config/endpoint/dns/dns_ptoss2_tdd_test.go
+  e88cec91360516421f99c60bd1961d133a38619f  config/endpoint/dns/dns_ptoss2_test.go
+  c85a82fb00b0f32ed3559533e6adf7363a95ee4e  config/endpoint/dns/dns_ptoss2_whitebox_test.go
+  57e96296c263f89676328ea7f584972a99310311  config/endpoint/dns/dns_test.go
+Comando: go test -mod=readonly -count=1 ./config/...
+Exit: 0
+Resumo: funcoes 0 PASS / 0 FAIL; subtestes 0 PASS / 0 FAIL; SKIP 0; exit 0
+Saida:
+ok  	github.com/TwiN/gatus/v5/config	0.031s
+ok  	github.com/TwiN/gatus/v5/config/announcement	0.013s
+ok  	github.com/TwiN/gatus/v5/config/connectivity	0.021s
+ok  	github.com/TwiN/gatus/v5/config/endpoint	1.047s
+ok  	github.com/TwiN/gatus/v5/config/endpoint/dns	0.015s
+?   	github.com/TwiN/gatus/v5/config/endpoint/heartbeat	[no test files]
+ok  	github.com/TwiN/gatus/v5/config/endpoint/ssh	0.014s
+ok  	github.com/TwiN/gatus/v5/config/endpoint/ui	0.013s
+ok  	github.com/TwiN/gatus/v5/config/gontext	0.011s
+ok  	github.com/TwiN/gatus/v5/config/key	0.015s
+ok  	github.com/TwiN/gatus/v5/config/maintenance	0.012s
+?   	github.com/TwiN/gatus/v5/config/remote	[no test files]
+ok  	github.com/TwiN/gatus/v5/config/suite	7.686s
+ok  	github.com/TwiN/gatus/v5/config/tunneling	0.012s
+ok  	github.com/TwiN/gatus/v5/config/tunneling/sshtunnel	0.016s
+ok  	github.com/TwiN/gatus/v5/config/ui	0.009s
+ok  	github.com/TwiN/gatus/v5/config/web	0.033s
