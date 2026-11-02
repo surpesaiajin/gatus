@@ -31,6 +31,7 @@ func (d *Config) ValidateAndSetDefault() error {
 	if !strings.HasSuffix(d.QueryName, ".") {
 		d.QueryName += "."
 	}
+	d.QueryType = strings.ToUpper(d.QueryType)
 	if _, ok := dns.StringToType[d.QueryType]; !ok {
 		return ErrDNSWithInvalidQueryType
 	}
