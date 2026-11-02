@@ -5,11 +5,9 @@ import (
 	"testing"
 )
 
-// TestConfig_PTOSS2_F4_BlackBox implements the CP01-CP11 cases for
-// ValidateAndSetDefault. Cases come from equivalence partitioning of the query
-// name (absent, relative, fully qualified, root) and of the query type (known,
-// unknown, absent), plus boundary values on the length of both fields.
-// Only the configuration is validated; no DNS query is sent.
+// TestConfig_PTOSS2_F4_BlackBox implements the CP01-CP11 cases for ValidateAndSetDefault
+// Cases come from equivalence partitioning of the query name (absent, relative, fully qualified, root) and of the query type (known, unknown, absent), plus boundary values on the length of both fields
+// Only the configuration is validated - no DNS query is sent.
 func TestConfig_PTOSS2_F4_BlackBox(t *testing.T) {
 	t.Parallel()
 

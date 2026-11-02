@@ -5,11 +5,9 @@ import (
 	"testing"
 )
 
-// TestConfig_PTOSS2_F4_WhiteBox complements CP01-CP11 with the decision paths
-// of ValidateAndSetDefault: D1 (empty name), D2 (name without trailing dot) and
-// D3 (type missing from dns.StringToType). The cases check the order of the
-// decisions and the state left in Config when an error is returned, which the
-// black-box cases did not assert.
+// TestConfig_PTOSS2_F4_WhiteBox complements CP01-CP11 with the decision paths of ValidateAndSetDefault:
+// D1 (empty name), D2 (name without trailing dot) and D3 (type missing from dns.StringToType)
+// The cases check the order of the decisions and the state left in Config when an error is returned, which the black box cases did not assert.
 func TestConfig_PTOSS2_F4_WhiteBox(t *testing.T) {
 	t.Parallel()
 
@@ -29,7 +27,7 @@ func TestConfig_PTOSS2_F4_WhiteBox(t *testing.T) {
 			wantErr:       ErrDNSWithNoQueryName,
 		},
 		{
-			// D1=F, D2=T, D3=T: the name is changed before the type is rejected.
+			// D1=F, D2=T, D3=T: the name is changed before the type is rejected
 			name:          "CB02_relative_name_is_normalized_before_type_error",
 			queryName:     "example.com",
 			queryType:     "XYZ",
@@ -37,7 +35,7 @@ func TestConfig_PTOSS2_F4_WhiteBox(t *testing.T) {
 			wantErr:       ErrDNSWithInvalidQueryType,
 		},
 		{
-			// D1=F, D2=F, D3=T: the only feasible path not exercised by CP01-CP11.
+			// D1=F, D2=F, D3=T: the only feasible path not exercised by CP01-CP11
 			name:          "CB03_fqdn_with_invalid_type_keeps_name",
 			queryName:     "example.com.",
 			queryType:     "XYZ",
@@ -45,7 +43,7 @@ func TestConfig_PTOSS2_F4_WhiteBox(t *testing.T) {
 			wantErr:       ErrDNSWithInvalidQueryType,
 		},
 		{
-			// D3=F for a key of dns.StringToType that is a query meta-type.
+			// D3=F for a key of dns.StringToType that is a query meta-type
 			name:          "CB04_meta_type_from_library_table_is_accepted",
 			queryName:     "example.com",
 			queryType:     "ANY",

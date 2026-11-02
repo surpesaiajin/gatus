@@ -6,8 +6,8 @@ import (
 	"testing"
 )
 
-// V07 checks one behavior: query types are accepted regardless of letter case
-// and stored in upper case; unknown types stay invalid.
+// V07 checks one behavior: query types are accepted regardless of letter case and stored in upper case.
+// Unknown types stay invalid.
 func TestConfig_PTOSS2_TDD_V07_QueryTypeCase(t *testing.T) {
 	t.Parallel()
 
@@ -73,7 +73,7 @@ func TestConfig_PTOSS2_TDD_V07_QueryTypeCase(t *testing.T) {
 
 // V08 checks one behavior: query names that dns.IsDomainName rejects fail
 // during configuration, while valid names, the root and service names with
-// underscores are kept.
+// underscores are kept
 func TestConfig_PTOSS2_TDD_V08_QueryNameSyntax(t *testing.T) {
 	t.Parallel()
 
