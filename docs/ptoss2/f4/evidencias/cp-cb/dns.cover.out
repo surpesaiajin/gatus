@@ -1,0 +1,8 @@
+mode: count
+github.com/TwiN/gatus/v5/config/endpoint/dns/dns.go:28.2,28.27 1 17
+github.com/TwiN/gatus/v5/config/endpoint/dns/dns.go:29.3,30.1 1 3
+github.com/TwiN/gatus/v5/config/endpoint/dns/dns.go:31.2,31.42 1 14
+github.com/TwiN/gatus/v5/config/endpoint/dns/dns.go:32.3,33.1 1 11
+github.com/TwiN/gatus/v5/config/endpoint/dns/dns.go:34.2,34.49 1 14
+github.com/TwiN/gatus/v5/config/endpoint/dns/dns.go:35.3,36.1 1 6
+github.com/TwiN/gatus/v5/config/endpoint/dns/dns.go:37.2,37.12 1 8
