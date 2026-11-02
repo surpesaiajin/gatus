@@ -31,6 +31,7 @@ var (
 	ErrInvalidClientTLSConfig    = errors.New("invalid TLS configuration: certificate-file and private-key-file must be specified")
 
 	ErrInvalidClientOAuth2AndIAPConfig = errors.New("invalid client configuration: oauth2 and identity-aware-proxy cannot be used at the same time")
+	ErrInvalidClientProxyURL           = errors.New("invalid proxy-url")
 
 	defaultConfig = Config{
 		Insecure:       false,

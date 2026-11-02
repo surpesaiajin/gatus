@@ -87,3 +87,46 @@ func TestConfig_PTOSS2_TDD_V01_OAuth2AndIAPConflict(t *testing.T) {
 		})
 	}
 }
+
+// TestConfig_PTOSS2_TDD_V02_ProxyURL specifies that a malformed proxy URL is
+// rejected by ValidateAndSetDefaults. Before this cycle the error only
+// appeared in getHTTPClient, which logged it and silently ignored the proxy.
+// An empty proxy and supported URLs, including SOCKS, stay accepted.
+func TestConfig_PTOSS2_TDD_V02_ProxyURL(t *testing.T) {
+	t.Parallel()
+
+	tests := []struct {
+		name     string
+		proxyURL string
+		wantErr  bool
+	}{
+		{name: "missing_scheme_is_rejected", proxyURL: "://", wantErr: true},
+		{name: "unclosed_ipv6_bracket_is_rejected", proxyURL: "http://[::1", wantErr: true},
+		{name: "non_numeric_port_is_rejected", proxyURL: "http://proxy.local:abc", wantErr: true},
+		{name: "invalid_escape_is_rejected", proxyURL: "http://%zz", wantErr: true},
+		{name: "control_empty_proxy_is_accepted", proxyURL: "", wantErr: false},
+		{name: "control_http_proxy_is_accepted", proxyURL: "http://proxy.local:3128", wantErr: false},
+		{name: "control_https_proxy_is_accepted", proxyURL: "https://proxy.local", wantErr: false},
+		{name: "control_socks5_proxy_is_accepted", proxyURL: "socks5://127.0.0.1:1080", wantErr: false},
+		{name: "control_socks5h_proxy_with_credentials_is_accepted", proxyURL: "socks5h://user:pass@proxy.local:1080", wantErr: false},
+	}
+
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			t.Parallel()
+			cfg := &Config{ProxyURL: tt.proxyURL}
+
+			err := cfg.ValidateAndSetDefaults()
+
+			if tt.wantErr && !errors.Is(err, ErrInvalidClientProxyURL) {
+				t.Errorf("ValidateAndSetDefaults() with proxy %q error = %v, want %v", tt.proxyURL, err, ErrInvalidClientProxyURL)
+			}
+			if !tt.wantErr && err != nil {
+				t.Errorf("ValidateAndSetDefaults() with proxy %q error = %v, want nil", tt.proxyURL, err)
+			}
+			if cfg.ProxyURL != tt.proxyURL {
+				t.Errorf("ProxyURL changed to %q, want unchanged %q", cfg.ProxyURL, tt.proxyURL)
+			}
+		})
+	}
+}
