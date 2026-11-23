@@ -1,0 +1,28 @@
+{
+  "lote": "20261123-120850",
+  "preparadoEm": "2026-11-23T12:09:42.9025725-03:00",
+  "revisaoGatus": "e6a9b0610c0db0d3ba9c2f7a67cad0d2b5cd61a3",
+  "revisaoDaBranch": "cdcd5721e84ffad220c09dbf23a84b3fe6849c40",
+  "cpu": {
+    "Name": "11th Gen Intel(R) Core(TM) i5-1135G7 @ 2.40GHz",
+    "NumberOfCores": 4,
+    "NumberOfLogicalProcessors": 8
+  },
+  "ramBytes": 8299847680,
+  "sistema": {
+    "Caption": "Microsoft Windows 11 Home Single Language",
+    "Version": "10.0.26200",
+    "BuildNumber": "26200"
+  },
+  "docker": "28.5.1",
+  "compose": "2.40.3-desktop.1",
+  "motor": "linux/x86_64, 8 vCPUs, 3963265024 bytes de RAM",
+  "k6": "k6 v1.5.0+dirty (commit/7961cefa12-dirty, go1.25.5, linux/amd64)",
+  "imagemK6": "grafana/k6@sha256:2072ea9eafa596532d9aee0cc0e0a50cfb0e7fb703981a46179af5f4f22c5ea4",
+  "imagemGatus": "sha256:efbbce7ddc2dcc7402a4147761e98801514ee5641fe87558dacaab83ed424b63",
+  "python": "Python 3.12.16",
+  "imagemPython": "python@sha256:c5ba3deef00c7758561a0f03c26f44f10589263d40e732b8748e0d1f38f6dd89",
+  "rede": "bridge, internal=true",
+  "limites": "Compose sem limites individuais para os três serviços.",
+  "outrosContainersAtivos": 5
+}

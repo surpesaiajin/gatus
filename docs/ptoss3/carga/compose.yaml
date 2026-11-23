@@ -1,0 +1,33 @@
+name: ptoss3-carga
+
+services:
+  fixture:
+    image: python:3.12-alpine@sha256:c5ba3deef00c7758561a0f03c26f44f10589263d40e732b8748e0d1f38f6dd89
+    command: ["python", "-u", "/fixture/servidor.py"]
+    volumes:
+      - ../ambiente/fixture/servidor.py:/fixture/servidor.py:ro
+
+  gatus:
+    image: ptoss3-carga-gatus:e6a9b061
+    pull_policy: never
+    depends_on:
+      - fixture
+    environment:
+      GATUS_CONFIG_PATH: /config/gatus.yaml
+    volumes:
+      - ./gatus.yaml:/config/gatus.yaml:ro
+
+  k6:
+    image: grafana/k6:1.5.0
+    profiles: [medicao]
+    environment:
+      BASE_URL: http://gatus:8080
+      K6_NO_COLOR: "true"
+      K6_NO_USAGE_REPORT: "true"
+    volumes:
+      - ./consulta-estados.js:/scripts/consulta-estados.js:ro
+      - ./resultados:/resultados
+
+networks:
+  default:
+    internal: true
