@@ -1,0 +1,7 @@
+# 2026-11-24T01:12:10Z GET http://127.0.0.1:8080/api/v1/endpoints/historico_inexistente/statuses?page=1&pageSize=2
+HTTP/1.1 404 Not Found
+Date: Tue, 24 Nov 2026 01:12:09 GMT
+Content-Type: text/plain; charset=utf-8
+Content-Length: 18
+
+endpoint not found
