@@ -1,0 +1,7 @@
+# 2026-11-24T01:12:10Z GET http://127.0.0.1:8080/api/v1/endpoints/historico_pagina-historico/statuses?page=1&pageSize=6
+HTTP/1.1 200 OK
+Date: Tue, 24 Nov 2026 01:12:09 GMT
+Content-Type: application/json
+Content-Length: 1329
+
+{"name":"pagina-historico","group":"historico","key":"historico_pagina-historico","results":[{"status":200,"hostname":"fixture","duration":3181917,"conditionResults":[{"condition":"[STATUS] == 200","success":true}],"success":true,"timestamp":"2026-11-24T01:11:44.824322966Z"},{"status":200,"hostname":"fixture","duration":1524959,"conditionResults":[{"condition":"[STATUS] == 200","success":true}],"success":true,"timestamp":"2026-11-24T01:11:49.825347177Z"},{"status":200,"hostname":"fixture","duration":3972375,"conditionResults":[{"condition":"[STATUS] == 200","success":true}],"success":true,"timestamp":"2026-11-24T01:11:54.827621138Z"},{"status":200,"hostname":"fixture","duration":3179584,"conditionResults":[{"condition":"[STATUS] == 200","success":true}],"success":true,"timestamp":"2026-11-24T01:11:59.824617209Z"},{"status":200,"hostname":"fixture","duration":3227250,"conditionResults":[{"condition":"[STATUS] == 200","success":true}],"success":true,"timestamp":"2026-11-24T01:12:04.826898962Z"},{"status":200,"hostname":"fixture","duration":3463000,"conditionResults":[{"condition":"[STATUS] == 200","success":true}],"success":true,"timestamp":"2026-11-24T01:12:09.827030881Z"}],"events":[{"type":"START","timestamp":"2026-11-24T01:11:14.818319133Z"},{"type":"HEALTHY","timestamp":"2026-11-24T01:11:14.818310925Z"}]}

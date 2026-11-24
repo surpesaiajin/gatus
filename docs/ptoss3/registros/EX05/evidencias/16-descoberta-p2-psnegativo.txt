@@ -1,0 +1,7 @@
+# 2026-11-24T01:12:10Z GET http://127.0.0.1:8080/api/v1/endpoints/historico_pagina-historico/statuses?page=2&pageSize=-3
+HTTP/1.1 200 OK
+Date: Tue, 24 Nov 2026 01:12:09 GMT
+Content-Type: application/json
+Content-Length: 232
+
+{"name":"pagina-historico","group":"historico","key":"historico_pagina-historico","results":[],"events":[{"type":"START","timestamp":"2026-11-24T01:11:14.818319133Z"},{"type":"HEALTHY","timestamp":"2026-11-24T01:11:14.818310925Z"}]}

@@ -1,0 +1,7 @@
+# 2026-11-24T01:12:10Z GET http://127.0.0.1:8080/api/v1/endpoints/regras_regra-json/statuses?page=1&pageSize=2
+HTTP/1.1 200 OK
+Date: Tue, 24 Nov 2026 01:12:09 GMT
+Content-Type: application/json
+Content-Length: 703
+
+{"name":"regra-json","group":"regras","key":"regras_regra-json","results":[{"status":200,"hostname":"fixture","duration":4417000,"conditionResults":[{"condition":"[STATUS] == 200","success":true},{"condition":"[BODY].checks.ativos \u003e= 2","success":true}],"success":true,"timestamp":"2026-11-24T01:12:05.384891629Z"},{"status":200,"hostname":"fixture","duration":3952625,"conditionResults":[{"condition":"[STATUS] == 200","success":true},{"condition":"[BODY].checks.ativos \u003e= 2","success":true}],"success":true,"timestamp":"2026-11-24T01:12:08.384533672Z"}],"events":[{"type":"START","timestamp":"2026-11-24T01:11:14.374926674Z"},{"type":"HEALTHY","timestamp":"2026-11-24T01:11:14.374839383Z"}]}
