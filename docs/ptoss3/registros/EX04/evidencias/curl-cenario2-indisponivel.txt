@@ -1,0 +1,11 @@
+﻿Capturado em 2026-11-23T21:40:24.940-03:00
+> curl.exe -sS -i -m 5 http://127.0.0.1:18080/
+curl: (52) Empty reply from server
+exit=52
+> curl.exe -sS -i -m 5 "http://127.0.0.1:18080/api/v1/endpoints/configuracao_recarga-nova/statuses?page=1&pageSize=6"
+curl: (52) Empty reply from server
+exit=52
+> docker compose -p ptoss3-ex04 ps
+NAME                    IMAGE                COMMAND                  SERVICE   CREATED         STATUS         PORTS
+ptoss3-ex04-fixture-1   python:3.12-alpine   "python -u /fixture/…"   fixture   4 minutes ago   Up 4 minutes   
+ptoss3-ex04-gatus-1     ptoss3-ex04-gatus    "/gatus"                 gatus     4 minutes ago   Up 4 minutes   127.0.0.1:18080->8080/tcp

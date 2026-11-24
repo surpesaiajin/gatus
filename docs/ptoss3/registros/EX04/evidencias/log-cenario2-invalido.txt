@@ -1,0 +1,46 @@
+﻿gatus-1  | 2026-11-24T00:38:56.103833534Z 2026/11/24 00:38:56 [watchdog.executeEndpoint] Monitored group=monitoramento; endpoint=recuperacao-http; key=monitoramento_recuperacao-http; success=true; errors=0; duration=3ms
+gatus-1  | 2026-11-24T00:38:56.325755652Z 2026/11/24 00:38:56 [watchdog.executeEndpoint] Monitored group=vitrine; endpoint=painel-ok; key=vitrine_painel-ok; success=true; errors=0; duration=1ms
+gatus-1  | 2026-11-24T00:38:56.546110769Z 2026/11/24 00:38:56 [watchdog.executeEndpoint] Monitored group=vitrine; endpoint=painel-falha; key=vitrine_painel-falha; success=false; errors=0; duration=2ms
+gatus-1  | 2026-11-24T00:38:56.771955389Z 2026/11/24 00:38:56 [watchdog.executeEndpoint] Monitored group=regras; endpoint=regra-json; key=regras_regra-json; success=true; errors=0; duration=3ms
+gatus-1  | 2026-11-24T00:38:56.991840264Z 2026/11/24 00:38:56 [watchdog.executeEndpoint] Monitored group=configuracao; endpoint=recarga-nova; key=configuracao_recarga-nova; success=true; errors=0; duration=1ms
+gatus-1  | 2026-11-24T00:38:57.214869657Z 2026/11/24 00:38:57 [watchdog.executeEndpoint] Monitored group=historico; endpoint=pagina-historico; key=historico_pagina-historico; success=true; errors=0; duration=1ms
+gatus-1  | 2026-11-24T00:38:59.103855748Z 2026/11/24 00:38:59 [watchdog.executeEndpoint] Monitored group=monitoramento; endpoint=recuperacao-http; key=monitoramento_recuperacao-http; success=true; errors=0; duration=3ms
+gatus-1  | 2026-11-24T00:38:59.323819061Z 2026/11/24 00:38:59 [watchdog.executeEndpoint] Monitored group=vitrine; endpoint=painel-ok; key=vitrine_painel-ok; success=true; errors=0; duration=1ms
+gatus-1  | 2026-11-24T00:38:59.546080326Z 2026/11/24 00:38:59 [watchdog.executeEndpoint] Monitored group=vitrine; endpoint=painel-falha; key=vitrine_painel-falha; success=false; errors=0; duration=2ms
+gatus-1  | 2026-11-24T00:38:59.771494438Z 2026/11/24 00:38:59 [watchdog.executeEndpoint] Monitored group=regras; endpoint=regra-json; key=regras_regra-json; success=true; errors=0; duration=3ms
+gatus-1  | 2026-11-24T00:38:59.991410307Z 2026/11/24 00:38:59 [watchdog.executeEndpoint] Monitored group=configuracao; endpoint=recarga-nova; key=configuracao_recarga-nova; success=true; errors=0; duration=1ms
+gatus-1  | 2026-11-24T00:39:02.104332425Z 2026/11/24 00:39:02 [watchdog.executeEndpoint] Monitored group=monitoramento; endpoint=recuperacao-http; key=monitoramento_recuperacao-http; success=true; errors=0; duration=3ms
+gatus-1  | 2026-11-24T00:39:02.214144046Z 2026/11/24 00:39:02 [watchdog.executeEndpoint] Monitored group=historico; endpoint=pagina-historico; key=historico_pagina-historico; success=true; errors=0; duration=1ms
+gatus-1  | 2026-11-24T00:39:02.324025648Z 2026/11/24 00:39:02 [watchdog.executeEndpoint] Monitored group=vitrine; endpoint=painel-ok; key=vitrine_painel-ok; success=true; errors=0; duration=2ms
+gatus-1  | 2026-11-24T00:39:02.545014189Z 2026/11/24 00:39:02 [watchdog.executeEndpoint] Monitored group=vitrine; endpoint=painel-falha; key=vitrine_painel-falha; success=false; errors=0; duration=1ms
+gatus-1  | 2026-11-24T00:39:02.771696419Z 2026/11/24 00:39:02 [watchdog.executeEndpoint] Monitored group=regras; endpoint=regra-json; key=regras_regra-json; success=true; errors=0; duration=3ms
+gatus-1  | 2026-11-24T00:39:02.991758463Z 2026/11/24 00:39:02 [watchdog.executeEndpoint] Monitored group=configuracao; endpoint=recarga-nova; key=configuracao_recarga-nova; success=true; errors=0; duration=2ms
+gatus-1  | 2026-11-24T00:39:05.103674611Z 2026/11/24 00:39:05 [watchdog.executeEndpoint] Monitored group=monitoramento; endpoint=recuperacao-http; key=monitoramento_recuperacao-http; success=true; errors=0; duration=3ms
+gatus-1  | 2026-11-24T00:39:05.323394870Z 2026/11/24 00:39:05 [watchdog.executeEndpoint] Monitored group=vitrine; endpoint=painel-ok; key=vitrine_painel-ok; success=true; errors=0; duration=1ms
+gatus-1  | 2026-11-24T00:39:05.545505324Z 2026/11/24 00:39:05 [watchdog.executeEndpoint] Monitored group=vitrine; endpoint=painel-falha; key=vitrine_painel-falha; success=false; errors=0; duration=1ms
+gatus-1  | 2026-11-24T00:39:05.772030625Z 2026/11/24 00:39:05 [watchdog.executeEndpoint] Monitored group=regras; endpoint=regra-json; key=regras_regra-json; success=true; errors=0; duration=3ms
+gatus-1  | 2026-11-24T00:39:05.990962753Z 2026/11/24 00:39:05 [watchdog.executeEndpoint] Monitored group=configuracao; endpoint=recarga-nova; key=configuracao_recarga-nova; success=true; errors=0; duration=2ms
+gatus-1  | 2026-11-24T00:39:07.214002729Z 2026/11/24 00:39:07 [watchdog.executeEndpoint] Monitored group=historico; endpoint=pagina-historico; key=historico_pagina-historico; success=true; errors=0; duration=1ms
+gatus-1  | 2026-11-24T00:39:08.104532178Z 2026/11/24 00:39:08 [watchdog.executeEndpoint] Monitored group=monitoramento; endpoint=recuperacao-http; key=monitoramento_recuperacao-http; success=true; errors=0; duration=3ms
+gatus-1  | 2026-11-24T00:39:08.323484865Z 2026/11/24 00:39:08 [watchdog.executeEndpoint] Monitored group=vitrine; endpoint=painel-ok; key=vitrine_painel-ok; success=true; errors=0; duration=1ms
+gatus-1  | 2026-11-24T00:39:08.545492843Z 2026/11/24 00:39:08 [watchdog.executeEndpoint] Monitored group=vitrine; endpoint=painel-falha; key=vitrine_painel-falha; success=false; errors=0; duration=1ms
+gatus-1  | 2026-11-24T00:39:08.772271584Z 2026/11/24 00:39:08 [watchdog.executeEndpoint] Monitored group=regras; endpoint=regra-json; key=regras_regra-json; success=true; errors=0; duration=3ms
+gatus-1  | 2026-11-24T00:39:08.991123034Z 2026/11/24 00:39:08 [watchdog.executeEndpoint] Monitored group=configuracao; endpoint=recarga-nova; key=configuracao_recarga-nova; success=true; errors=0; duration=1ms
+gatus-1  | 2026-11-24T00:39:11.105513025Z 2026/11/24 00:39:11 [watchdog.executeEndpoint] Monitored group=monitoramento; endpoint=recuperacao-http; key=monitoramento_recuperacao-http; success=true; errors=0; duration=3ms
+gatus-1  | 2026-11-24T00:39:11.324527371Z 2026/11/24 00:39:11 [watchdog.executeEndpoint] Monitored group=vitrine; endpoint=painel-ok; key=vitrine_painel-ok; success=true; errors=0; duration=1ms
+gatus-1  | 2026-11-24T00:39:11.546433654Z 2026/11/24 00:39:11 [watchdog.executeEndpoint] Monitored group=vitrine; endpoint=painel-falha; key=vitrine_painel-falha; success=false; errors=0; duration=2ms
+gatus-1  | 2026-11-24T00:39:11.772836635Z 2026/11/24 00:39:11 [watchdog.executeEndpoint] Monitored group=regras; endpoint=regra-json; key=regras_regra-json; success=true; errors=0; duration=3ms
+gatus-1  | 2026-11-24T00:39:11.992730169Z 2026/11/24 00:39:11 [watchdog.executeEndpoint] Monitored group=configuracao; endpoint=recarga-nova; key=configuracao_recarga-nova; success=true; errors=0; duration=1ms
+gatus-1  | 2026-11-24T00:39:12.215117302Z 2026/11/24 00:39:12 [main.listenToConfigurationFileChanges] Configuration file has been modified
+gatus-1  | 2026-11-24T00:39:12.215162120Z 2026/11/24 00:39:12 [controller.Handle] Server has shut down successfully
+gatus-1  | 2026-11-24T00:39:12.215167227Z 2026/11/24 00:39:12 [watchdog.monitorEndpoint] Canceling current execution of group=vitrine; endpoint=painel-falha; key=vitrine_painel-falha
+gatus-1  | 2026-11-24T00:39:12.215170591Z 2026/11/24 00:39:12 [watchdog.monitorEndpoint] Canceling current execution of group=vitrine; endpoint=painel-ok; key=vitrine_painel-ok
+gatus-1  | 2026-11-24T00:39:12.215173344Z 2026/11/24 00:39:12 [watchdog.monitorEndpoint] Canceling current execution of group=monitoramento; endpoint=recuperacao-http; key=monitoramento_recuperacao-http
+gatus-1  | 2026-11-24T00:39:12.215176218Z 2026/11/24 00:39:12 [watchdog.monitorEndpoint] Canceling current execution of group=configuracao; endpoint=recarga-nova; key=configuracao_recarga-nova
+gatus-1  | 2026-11-24T00:39:12.215179012Z 2026/11/24 00:39:12 [watchdog.monitorEndpoint] Canceling current execution of group=regras; endpoint=regra-json; key=regras_regra-json
+gatus-1  | 2026-11-24T00:39:12.215645966Z 2026/11/24 00:39:12 [watchdog.executeEndpoint] Monitored group=historico; endpoint=pagina-historico; key=historico_pagina-historico; success=true; errors=0; duration=2ms
+gatus-1  | 2026-11-24T00:39:12.215654647Z 2026/11/24 00:39:12 [watchdog.monitorEndpoint] Canceling current execution of group=historico; endpoint=pagina-historico; key=historico_pagina-historico
+gatus-1  | 2026-11-24T00:39:13.216468064Z 2026/11/24 00:39:13 [config.LoadConfiguration] Reading configuration from configFile=/config/config.yaml
+gatus-1  | 2026-11-24T00:39:13.217768123Z 2026/11/24 00:39:13 [main.listenToConfigurationFileChanges] Failed to load new configuration: error parsing config: yaml: unmarshal errors:
+gatus-1  | 2026-11-24T00:39:13.217775973Z   line 41: cannot unmarshal !!str `invalido` into time.Duration
+gatus-1  | 2026-11-24T00:39:13.217778016Z 2026/11/24 00:39:13 [main.listenToConfigurationFileChanges] The configuration file was updated, but it is not valid. The old configuration will continue being used.

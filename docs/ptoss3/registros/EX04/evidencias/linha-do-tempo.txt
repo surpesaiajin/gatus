@@ -1,0 +1,8 @@
+﻿Edicao 1 (recarga-original -> recarga-nova) salva em 2026-11-23T21:37:22.362-03:00
+Edicao 2 (interval: 3s -> interval: invalido no bloco recarga-nova) salva em 2026-11-23T21:38:58.674-03:00
+Edicao 3a (restauracao com Copy-Item da copia original) em 2026-11-23T21:41:36.991-03:00; LastWriteTime antes=2026-11-23T21:38:58.679-03:00 depois=2026-11-23T21:27:06.290-03:00
+git status config: []
+mtime visto no conteiner: 2026-11-24 00:27:06.290799200 +0000
+Linhas de log do gatus entre 00:39:14Z e 00:43:03Z (UTC), apos o Copy-Item: 0
+Edicao 3b (mesmo conteudo original; LastWriteTime atualizado para a hora atual, como ao salvar no editor) em 2026-11-23T21:43:03.730-03:00
+mtime visto no conteiner: 2026-11-24 00:43:03.730690200 +0000

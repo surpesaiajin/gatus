@@ -1,0 +1,13 @@
+﻿diff --git a/docs/ptoss3/ambiente/config/config.yaml b/docs/ptoss3/ambiente/config/config.yaml
+index 671d3b33..2a5bd8ad 100644
+--- a/docs/ptoss3/ambiente/config/config.yaml
++++ b/docs/ptoss3/ambiente/config/config.yaml
+@@ -35,7 +35,7 @@ endpoints:
+       - "[STATUS] == 200"
+       - "[BODY].checks.ativos >= 2"
+ 
+-  - name: recarga-original
++  - name: recarga-nova
+     group: configuracao
+     url: http://fixture:8000/ok
+     interval: 3s
