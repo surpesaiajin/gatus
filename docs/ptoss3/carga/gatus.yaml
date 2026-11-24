@@ -1,0 +1,35 @@
+storage:
+  type: memory
+  maximum-number-of-results: 50
+
+endpoints:
+  - name: servico-1
+    group: seminario
+    url: http://fixture:8000/ok
+    interval: 1s
+    conditions:
+      - "[STATUS] == 200"
+  - name: servico-2
+    group: seminario
+    url: http://fixture:8000/ok
+    interval: 1s
+    conditions:
+      - "[STATUS] == 200"
+  - name: servico-3
+    group: seminario
+    url: http://fixture:8000/ok
+    interval: 1s
+    conditions:
+      - "[STATUS] == 200"
+  - name: servico-4
+    group: seminario
+    url: http://fixture:8000/ok
+    interval: 1s
+    conditions:
+      - "[STATUS] == 200"
+  - name: servico-5
+    group: seminario
+    url: http://fixture:8000/ok
+    interval: 1s
+    conditions:
+      - "[STATUS] == 200"

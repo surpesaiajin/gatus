@@ -1,0 +1,41 @@
+
+
+  █ THRESHOLDS 
+
+    checks
+    ✓ 'rate==1' rate=100.00%
+
+    http_req_duration
+    ✓ 'p(95)<500' p(95)=4.77ms
+
+    http_req_failed
+    ✓ 'rate==0' rate=0.00%
+
+
+  █ TOTAL RESULTS 
+
+    checks_total.......: 4800    39.847404/s
+    checks_succeeded...: 100.00% 4800 out of 4800
+    checks_failed......: 0.00%   0 out of 4800
+
+    ✓ HTTP 200
+    ✓ JSON com serviços e históricos esperados
+
+    HTTP
+    http_req_duration..............: avg=1.43ms p(95)=4.77ms max=24.02ms
+      { expected_response:true }...: avg=1.43ms p(95)=4.77ms max=24.02ms
+    http_req_failed................: 0.00%  0 out of 2400
+    http_reqs......................: 2400   19.923702/s
+
+    EXECUTION
+    iteration_duration.............: avg=1s     p(95)=1s     max=1.03s  
+    iterations.....................: 2400   19.923702/s
+    vus............................: 20     min=20        max=20
+    vus_max........................: 20     min=20        max=20
+
+    NETWORK
+    data_received..................: 111 MB 921 kB/s
+    data_sent......................: 264 kB 2.2 kB/s
+
+
+

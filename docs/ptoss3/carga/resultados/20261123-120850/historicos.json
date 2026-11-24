@@ -1,0 +1,14 @@
+{
+  "emUtc": "2026-11-23T15:09:41.500655+00:00",
+  "rota": "http://gatus:8080/api/v1/endpoints/statuses?page=1&pageSize=50",
+  "http": 200,
+  "grupo": "seminario",
+  "historicos": {
+    "servico-1": 50,
+    "servico-2": 50,
+    "servico-3": 50,
+    "servico-4": 50,
+    "servico-5": 50
+  },
+  "ultimosChecksSaudaveis": true
+}

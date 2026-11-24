@@ -1,0 +1,180 @@
+--- C1-R1 ---
+
+
+  █ TOTAL RESULTS 
+
+    checks_total.......: 40      1.992534/s
+    checks_succeeded...: 100.00% 40 out of 40
+    checks_failed......: 0.00%   0 out of 40
+
+    ✓ HTTP 200
+    ✓ JSON com serviços e históricos esperados
+
+    HTTP
+    http_req_duration..............: avg=1.05ms p(95)=1.83ms max=2.73ms
+      { expected_response:true }...: avg=1.05ms p(95)=1.83ms max=2.73ms
+    http_req_failed................: 0.00%  0 out of 20
+    http_reqs......................: 20     0.996267/s
+
+    EXECUTION
+    iteration_duration.............: avg=1s     p(95)=1s     max=1s    
+    iterations.....................: 20     0.996267/s
+    vus............................: 1      min=1       max=1
+    vus_max........................: 1      min=1       max=1
+
+    NETWORK
+    data_received..................: 925 kB 46 kB/s
+    data_sent......................: 2.2 kB 110 B/s
+
+
+
+--- C2-R1 ---
+
+
+  █ TOTAL RESULTS 
+
+    checks_total.......: 40      1.993156/s
+    checks_succeeded...: 100.00% 40 out of 40
+    checks_failed......: 0.00%   0 out of 40
+
+    ✓ HTTP 200
+    ✓ JSON com serviços e históricos esperados
+
+    HTTP
+    http_req_duration..............: avg=1.06ms p(95)=2.05ms max=6.65ms
+      { expected_response:true }...: avg=1.06ms p(95)=2.05ms max=6.65ms
+    http_req_failed................: 0.00%  0 out of 20
+    http_reqs......................: 20     0.996578/s
+
+    EXECUTION
+    iteration_duration.............: avg=1s     p(95)=1s     max=1.01s 
+    iterations.....................: 20     0.996578/s
+    vus............................: 1      min=1       max=1
+    vus_max........................: 1      min=1       max=1
+
+    NETWORK
+    data_received..................: 925 kB 46 kB/s
+    data_sent......................: 2.2 kB 110 B/s
+
+
+
+--- C3-R1 ---
+
+
+  █ TOTAL RESULTS 
+
+    checks_total.......: 40      1.993211/s
+    checks_succeeded...: 100.00% 40 out of 40
+    checks_failed......: 0.00%   0 out of 40
+
+    ✓ HTTP 200
+    ✓ JSON com serviços e históricos esperados
+
+    HTTP
+    http_req_duration..............: avg=802.37µs p(95)=1.21ms max=2.18ms
+      { expected_response:true }...: avg=802.37µs p(95)=1.21ms max=2.18ms
+    http_req_failed................: 0.00%  0 out of 20
+    http_reqs......................: 20     0.996605/s
+
+    EXECUTION
+    iteration_duration.............: avg=1s       p(95)=1s     max=1s    
+    iterations.....................: 20     0.996605/s
+    vus............................: 1      min=1       max=1
+    vus_max........................: 1      min=1       max=1
+
+    NETWORK
+    data_received..................: 925 kB 46 kB/s
+    data_sent......................: 2.2 kB 110 B/s
+
+
+
+--- C1-R2 ---
+
+
+  █ TOTAL RESULTS 
+
+    checks_total.......: 40      1.99371/s
+    checks_succeeded...: 100.00% 40 out of 40
+    checks_failed......: 0.00%   0 out of 40
+
+    ✓ HTTP 200
+    ✓ JSON com serviços e históricos esperados
+
+    HTTP
+    http_req_duration..............: avg=903.87µs p(95)=2.1ms max=2.28ms
+      { expected_response:true }...: avg=903.87µs p(95)=2.1ms max=2.28ms
+    http_req_failed................: 0.00%  0 out of 20
+    http_reqs......................: 20     0.996855/s
+
+    EXECUTION
+    iteration_duration.............: avg=1s       p(95)=1s    max=1s    
+    iterations.....................: 20     0.996855/s
+    vus............................: 1      min=1       max=1
+    vus_max........................: 1      min=1       max=1
+
+    NETWORK
+    data_received..................: 925 kB 46 kB/s
+    data_sent......................: 2.2 kB 110 B/s
+
+
+
+--- C2-R2 ---
+
+
+  █ TOTAL RESULTS 
+
+    checks_total.......: 40      1.99313/s
+    checks_succeeded...: 100.00% 40 out of 40
+    checks_failed......: 0.00%   0 out of 40
+
+    ✓ HTTP 200
+    ✓ JSON com serviços e históricos esperados
+
+    HTTP
+    http_req_duration..............: avg=910.61µs p(95)=1.39ms max=1.64ms
+      { expected_response:true }...: avg=910.61µs p(95)=1.39ms max=1.64ms
+    http_req_failed................: 0.00%  0 out of 20
+    http_reqs......................: 20     0.996565/s
+
+    EXECUTION
+    iteration_duration.............: avg=1s       p(95)=1s     max=1s    
+    iterations.....................: 20     0.996565/s
+    vus............................: 1      min=1       max=1
+    vus_max........................: 1      min=1       max=1
+
+    NETWORK
+    data_received..................: 925 kB 46 kB/s
+    data_sent......................: 2.2 kB 110 B/s
+
+
+
+--- C3-R2 ---
+
+
+  █ TOTAL RESULTS 
+
+    checks_total.......: 40      1.993051/s
+    checks_succeeded...: 100.00% 40 out of 40
+    checks_failed......: 0.00%   0 out of 40
+
+    ✓ HTTP 200
+    ✓ JSON com serviços e históricos esperados
+
+    HTTP
+    http_req_duration..............: avg=893.36µs p(95)=1.29ms max=1.46ms
+      { expected_response:true }...: avg=893.36µs p(95)=1.29ms max=1.46ms
+    http_req_failed................: 0.00%  0 out of 20
+    http_reqs......................: 20     0.996526/s
+
+    EXECUTION
+    iteration_duration.............: avg=1s       p(95)=1s     max=1s    
+    iterations.....................: 20     0.996526/s
+    vus............................: 1      min=1       max=1
+    vus_max........................: 1      min=1       max=1
+
+    NETWORK
+    data_received..................: 925 kB 46 kB/s
+    data_sent......................: 2.2 kB 110 B/s
+
+
+
