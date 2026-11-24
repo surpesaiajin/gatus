@@ -1,0 +1,42 @@
+﻿gatus-1  | 2026-11-24T00:39:12.215117302Z 2026/11/24 00:39:12 [main.listenToConfigurationFileChanges] Configuration file has been modified
+gatus-1  | 2026-11-24T00:39:12.215162120Z 2026/11/24 00:39:12 [controller.Handle] Server has shut down successfully
+gatus-1  | 2026-11-24T00:39:12.215167227Z 2026/11/24 00:39:12 [watchdog.monitorEndpoint] Canceling current execution of group=vitrine; endpoint=painel-falha; key=vitrine_painel-falha
+gatus-1  | 2026-11-24T00:39:12.215170591Z 2026/11/24 00:39:12 [watchdog.monitorEndpoint] Canceling current execution of group=vitrine; endpoint=painel-ok; key=vitrine_painel-ok
+gatus-1  | 2026-11-24T00:39:12.215173344Z 2026/11/24 00:39:12 [watchdog.monitorEndpoint] Canceling current execution of group=monitoramento; endpoint=recuperacao-http; key=monitoramento_recuperacao-http
+gatus-1  | 2026-11-24T00:39:12.215176218Z 2026/11/24 00:39:12 [watchdog.monitorEndpoint] Canceling current execution of group=configuracao; endpoint=recarga-nova; key=configuracao_recarga-nova
+gatus-1  | 2026-11-24T00:39:12.215179012Z 2026/11/24 00:39:12 [watchdog.monitorEndpoint] Canceling current execution of group=regras; endpoint=regra-json; key=regras_regra-json
+gatus-1  | 2026-11-24T00:39:12.215645966Z 2026/11/24 00:39:12 [watchdog.executeEndpoint] Monitored group=historico; endpoint=pagina-historico; key=historico_pagina-historico; success=true; errors=0; duration=2ms
+gatus-1  | 2026-11-24T00:39:12.215654647Z 2026/11/24 00:39:12 [watchdog.monitorEndpoint] Canceling current execution of group=historico; endpoint=pagina-historico; key=historico_pagina-historico
+gatus-1  | 2026-11-24T00:39:13.216468064Z 2026/11/24 00:39:13 [config.LoadConfiguration] Reading configuration from configFile=/config/config.yaml
+gatus-1  | 2026-11-24T00:39:13.217768123Z 2026/11/24 00:39:13 [main.listenToConfigurationFileChanges] Failed to load new configuration: error parsing config: yaml: unmarshal errors:
+gatus-1  | 2026-11-24T00:39:13.217775973Z   line 41: cannot unmarshal !!str `invalido` into time.Duration
+gatus-1  | 2026-11-24T00:39:13.217778016Z 2026/11/24 00:39:13 [main.listenToConfigurationFileChanges] The configuration file was updated, but it is not valid. The old configuration will continue being used.
+gatus-1  | 2026-11-24T00:43:13.222597864Z 2026/11/24 00:43:13 [main.listenToConfigurationFileChanges] Configuration file has been modified
+gatus-1  | 2026-11-24T00:43:14.223645742Z 2026/11/24 00:43:14 [config.LoadConfiguration] Reading configuration from configFile=/config/config.yaml
+gatus-1  | 2026-11-24T00:43:14.227251883Z 2026/11/24 00:43:14 [config.ValidateAlertingConfig] Alerting is not configured
+gatus-1  | 2026-11-24T00:43:14.227596667Z 2026/11/24 00:43:14 [config.ValidateEndpointsConfig] Validated 6 endpoints
+gatus-1  | 2026-11-24T00:43:14.227606567Z 2026/11/24 00:43:14 [config.ValidateEndpointsConfig] Validated 0 external endpoints
+gatus-1  | 2026-11-24T00:43:14.227610034Z 2026/11/24 00:43:14 [config.ValidateSuitesConfig] No suites configured
+gatus-1  | 2026-11-24T00:43:14.227612890Z 2026/11/24 00:43:14 [store.Initialize] Creating storage provider of type=memory
+gatus-1  | 2026-11-24T00:43:14.227615726Z 2026/11/24 00:43:14 [main.initializeStorage] Total endpoint keys to preserve: 6
+gatus-1  | 2026-11-24T00:43:14.228441479Z 2026/11/24 00:43:14 [controller.Handle] Listening on 0.0.0.0:8080
+gatus-1  | 2026-11-24T00:43:14.228857249Z 
+gatus-1  | 2026-11-24T00:43:14.228866248Z  ┌───────────────────────────────────────────────────┐ 
+gatus-1  | 2026-11-24T00:43:14.228870336Z  │                  Fiber v2.52.13                   │ 
+gatus-1  | 2026-11-24T00:43:14.228887932Z  │                 http://[::]:8080                  │ 
+gatus-1  | 2026-11-24T00:43:14.228893914Z  │                                                   │ 
+gatus-1  | 2026-11-24T00:43:14.228897201Z  │ Handlers ............ 41  Processes ........... 1 │ 
+gatus-1  | 2026-11-24T00:43:14.228900007Z  │ Prefork ....... Disabled  PID ................. 1 │ 
+gatus-1  | 2026-11-24T00:43:14.228902812Z  └───────────────────────────────────────────────────┘ 
+gatus-1  | 2026-11-24T00:43:14.228905708Z 
+gatus-1  | 2026-11-24T00:43:14.458394876Z 2026/11/24 00:43:14 [watchdog.executeEndpoint] Monitored group=monitoramento; endpoint=recuperacao-http; key=monitoramento_recuperacao-http; success=true; errors=0; duration=8ms
+gatus-1  | 2026-11-24T00:43:14.674577647Z 2026/11/24 00:43:14 [watchdog.executeEndpoint] Monitored group=vitrine; endpoint=painel-ok; key=vitrine_painel-ok; success=true; errors=0; duration=1ms
+gatus-1  | 2026-11-24T00:43:14.897553891Z 2026/11/24 00:43:14 [watchdog.executeEndpoint] Monitored group=vitrine; endpoint=painel-falha; key=vitrine_painel-falha; success=false; errors=0; duration=1ms
+gatus-1  | 2026-11-24T00:43:15.122401334Z 2026/11/24 00:43:15 [watchdog.executeEndpoint] Monitored group=regras; endpoint=regra-json; key=regras_regra-json; success=true; errors=0; duration=3ms
+gatus-1  | 2026-11-24T00:43:15.342732912Z 2026/11/24 00:43:15 [watchdog.executeEndpoint] Monitored group=configuracao; endpoint=recarga-original; key=configuracao_recarga-original; success=true; errors=0; duration=2ms
+gatus-1  | 2026-11-24T00:43:15.564962093Z 2026/11/24 00:43:15 [watchdog.executeEndpoint] Monitored group=historico; endpoint=pagina-historico; key=historico_pagina-historico; success=true; errors=0; duration=1ms
+gatus-1  | 2026-11-24T00:43:17.462252064Z 2026/11/24 00:43:17 [watchdog.executeEndpoint] Monitored group=monitoramento; endpoint=recuperacao-http; key=monitoramento_recuperacao-http; success=true; errors=0; duration=3ms
+gatus-1  | 2026-11-24T00:43:17.676554539Z 2026/11/24 00:43:17 [watchdog.executeEndpoint] Monitored group=vitrine; endpoint=painel-ok; key=vitrine_painel-ok; success=true; errors=0; duration=2ms
+gatus-1  | 2026-11-24T00:43:17.899392215Z 2026/11/24 00:43:17 [watchdog.executeEndpoint] Monitored group=vitrine; endpoint=painel-falha; key=vitrine_painel-falha; success=false; errors=0; duration=1ms
+gatus-1  | 2026-11-24T00:43:18.126147559Z 2026/11/24 00:43:18 [watchdog.executeEndpoint] Monitored group=regras; endpoint=regra-json; key=regras_regra-json; success=true; errors=0; duration=3ms
+gatus-1  | 2026-11-24T00:43:18.345334240Z 2026/11/24 00:43:18 [watchdog.executeEndpoint] Monitored group=configuracao; endpoint=recarga-original; key=configuracao_recarga-original; success=true; errors=0; duration=2ms

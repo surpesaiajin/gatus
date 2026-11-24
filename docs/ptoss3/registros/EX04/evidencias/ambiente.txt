@@ -1,0 +1,10 @@
+﻿Data local: 2026-11-23T21:36:46.8905312-03:00
+Branch: ptoss3-ex04
+Commit: cdcd5721e84ffad220c09dbf23a84b3fe6849c40
+Windows: Microsoft Windows NT 10.0.26200.0
+PowerShell: 5.1.26100.9818
+Docker: cliente 29.8.0 / motor 29.8.0
+Compose: 5.5.1
+Projeto compose: ptoss3-ex04
+Porta: 18080
+Copia da configuracao original fora de config/: C:\Users\leona\AppData\Local\Temp\ptoss3-ex04-apoio\config-original.yaml
